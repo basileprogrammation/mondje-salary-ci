@@ -1,8 +1,8 @@
 {
-  "name": "bahn-salary-estimator",
+  "name": "mondje-salary-estimator",
   "version": "1.0.0",
   "private": true,
-  "description": "BAHN Salary Estimator - Côte d'Ivoire",
+  "description": "Mondje Salary Estimator - Côte d'Ivoire",
   "dependencies": {
     "firebase": "^12.7.0",
     "html-to-image": "^1.11.13",

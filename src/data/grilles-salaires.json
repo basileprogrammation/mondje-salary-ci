@@ -1,0 +1,1326 @@
+{
+  "metadata": {
+    "titre": "Grille Salariale Complète de la Fonction Publique de Côte d'Ivoire",
+    "description": "Référentiel complet des métiers et salaires de la fonction publique ivoirienne",
+    "date_mise_a_jour": "2025-01-17",
+    "source": "Ministère de la Fonction Publique - Côte d'Ivoire",
+    "devise": "FCFA",
+    "version": "2.0"
+  },
+
+  "grilles_salariales_par_categorie": {
+    "categorie_A": {
+      "nom": "Catégorie A",
+      "description": "Fonctions de conception, direction et encadrement supérieur",
+      "diplome_requis": "BAC+3 minimum (Licence, Master, Doctorat)",
+      "grades_disponibles": ["A7", "A6", "A5", "A4", "A3", "A2", "A1"],
+      
+      "grilles_par_grade": {
+        "A7": {
+          "grade": "A7",
+          "designation": "Cadre supérieur de l'Etat",
+          "salaire_base_min": 520000,
+          "salaire_base_max": 750000,
+          "salaire_avec_primes_min": 650000,
+          "salaire_avec_primes_max": 1000000,
+          "echelons": [
+            {"echelon": 1, "salaire_base": 520000, "anciennete_requise_mois": 0},
+            {"echelon": 2, "salaire_base": 580000, "anciennete_requise_mois": 12},
+            {"echelon": 3, "salaire_base": 650000, "anciennete_requise_mois": 24},
+            {"echelon": 4, "salaire_base": 700000, "anciennete_requise_mois": 36},
+            {"echelon": 5, "salaire_base": 750000, "anciennete_requise_mois": 48}
+          ],
+          "exemples_metiers": ["Directeur Général", "Secrétaire Général"]
+        },
+        "A6": {
+          "grade": "A6",
+          "designation": "Haut cadre",
+          "salaire_base_min": 420000,
+          "salaire_base_max": 520000,
+          "salaire_avec_primes_min": 520000,
+          "salaire_avec_primes_max": 680000,
+          "echelons": [
+            {"echelon": 1, "salaire_base": 420000, "anciennete_requise_mois": 0},
+            {"echelon": 2, "salaire_base": 450000, "anciennete_requise_mois": 12},
+            {"echelon": 3, "salaire_base": 480000, "anciennete_requise_mois": 24},
+            {"echelon": 4, "salaire_base": 520000, "anciennete_requise_mois": 36}
+          ],
+          "exemples_metiers": ["Médecin", "Pharmacien", "Chirurgien-Dentiste", "Vétérinaire", "Directeur Départemental", "Inspecteur"]
+        },
+        "A5": {
+          "grade": "A5",
+          "designation": "Cadre de niveau intermédiaire supérieur",
+          "salaire_base_min": 350000,
+          "salaire_base_max": 420000,
+          "salaire_avec_primes_min": 430000,
+          "salaire_avec_primes_max": 550000,
+          "echelons": [
+            {"echelon": 1, "salaire_base": 350000, "anciennete_requise_mois": 0},
+            {"echelon": 2, "salaire_base": 380000, "anciennete_requise_mois": 12},
+            {"echelon": 3, "salaire_base": 400000, "anciennete_requise_mois": 24},
+            {"echelon": 4, "salaire_base": 420000, "anciennete_requise_mois": 36}
+          ],
+          "exemples_metiers": ["Administrateur Civil", "Magistrat"]
+        },
+        "A4": {
+          "grade": "A4",
+          "designation": "Cadre intermédiaire",
+          "salaire_base_min": 280000,
+          "salaire_base_max": 350000,
+          "salaire_avec_primes_min": 350000,
+          "salaire_avec_primes_max": 450000,
+          "echelons": [
+            {"echelon": 1, "salaire_base": 280000, "anciennete_requise_mois": 0},
+            {"echelon": 2, "salaire_base": 300000, "anciennete_requise_mois": 12},
+            {"echelon": 3, "salaire_base": 325000, "anciennete_requise_mois": 24},
+            {"echelon": 4, "salaire_base": 350000, "anciennete_requise_mois": 36}
+          ],
+          "exemples_metiers": ["Attaché Principal", "Chef de Bureau", "Inspecteur de l'Enseignement"]
+        },
+        "A3": {
+          "grade": "A3",
+          "designation": "Attaché d'administration - Débutant",
+          "salaire_base_min": 247539,
+          "salaire_base_max": 380000,
+          "salaire_avec_primes_min": 320000,
+          "salaire_avec_primes_max": 480000,
+          "echelons": [
+            {"echelon": 1, "salaire_base": 247539, "anciennete_requise_mois": 0},
+            {"echelon": 2, "salaire_base": 280000, "anciennete_requise_mois": 12},
+            {"echelon": 3, "salaire_base": 320000, "anciennete_requise_mois": 24},
+            {"echelon": 4, "salaire_base": 350000, "anciennete_requise_mois": 36},
+            {"echelon": 5, "salaire_base": 380000, "anciennete_requise_mois": 48}
+          ],
+          "exemples_metiers": ["Attaché d'Administration", "Ingénieur débutant", "Professeur de Lycée", "Professeur de Collège"]
+        },
+        "A2": {
+          "grade": "A2",
+          "designation": "Cadre supérieur confirmé",
+          "salaire_base_min": 380000,
+          "salaire_base_max": 480000,
+          "salaire_avec_primes_min": 470000,
+          "salaire_avec_primes_max": 620000,
+          "echelons": [
+            {"echelon": 1, "salaire_base": 380000, "anciennete_requise_mois": 0},
+            {"echelon": 2, "salaire_base": 410000, "anciennete_requise_mois": 12},
+            {"echelon": 3, "salaire_base": 440000, "anciennete_requise_mois": 24},
+            {"echelon": 4, "salaire_base": 480000, "anciennete_requise_mois": 36}
+          ],
+          "exemples_metiers": ["Sous-Directeur", "Chef de Service", "Préfet", "Contrôleur Général d'Etat"]
+        },
+        "A1": {
+          "grade": "A1",
+          "designation": "Grade terminal - Haut cadre",
+          "salaire_base_min": 450000,
+          "salaire_base_max": 650000,
+          "salaire_avec_primes_min": 550000,
+          "salaire_avec_primes_max": 850000,
+          "echelons": [
+            {"echelon": 1, "salaire_base": 450000, "anciennete_requise_mois": 0},
+            {"echelon": 2, "salaire_base": 480000, "anciennete_requise_mois": 12},
+            {"echelon": 3, "salaire_base": 520000, "anciennete_requise_mois": 24},
+            {"echelon": 4, "salaire_base": 570000, "anciennete_requise_mois": 36},
+            {"echelon": 5, "salaire_base": 650000, "anciennete_requise_mois": 48}
+          ],
+          "exemples_metiers": ["Directeur Central", "Inspecteur Général", "Préfet de Région"]
+        }
+      },
+
+      "corps_metiers_detailles": {
+        "administration_generale": {
+          "domaine": "Administration Générale",
+          "metiers": [
+            {
+              "nom": "Administrateur Civil",
+              "grade_entree": "A5",
+              "salaire_brut_debut": 350000,
+              "salaire_avec_primes_debut": 430000,
+              "salaire_brut_max": 420000,
+              "salaire_avec_primes_max": 550000,
+              "progression_carriere": "A5 → A4 → A3 → A2 → A1"
+            },
+            {
+              "nom": "Attaché d'Administration",
+              "grade_entree": "A3",
+              "salaire_brut_debut": 247539,
+              "salaire_avec_primes_debut": 320000,
+              "salaire_brut_max": 380000,
+              "salaire_avec_primes_max": 480000,
+              "progression_carriere": "A3 → A2 → A1"
+            },
+            {
+              "nom": "Conseiller des Affaires Etrangères",
+              "grade_entree": "A3",
+              "salaire_brut_debut": 247539,
+              "salaire_avec_primes_debut": 320000,
+              "salaire_brut_max": 380000,
+              "salaire_avec_primes_max": 480000,
+              "progression_carriere": "A3 → A2 → A1"
+            },
+            {
+              "nom": "Inspecteur des Impôts",
+              "grade_entree": "A3",
+              "salaire_brut_debut": 247539,
+              "salaire_avec_primes_debut": 320000,
+              "salaire_brut_max": 380000,
+              "salaire_avec_primes_max": 480000,
+              "progression_carriere": "A3 → A2 → A1"
+            },
+            {
+              "nom": "Inspecteur du Trésor",
+              "grade_entree": "A3",
+              "salaire_brut_debut": 247539,
+              "salaire_avec_primes_debut": 320000,
+              "salaire_brut_max": 380000,
+              "salaire_avec_primes_max": 480000,
+              "progression_carriere": "A3 → A2 → A1"
+            },
+            {
+              "nom": "Contrôleur Général d'Etat",
+              "grade_entree": "A2",
+              "salaire_brut_debut": 380000,
+              "salaire_avec_primes_debut": 470000,
+              "salaire_brut_max": 480000,
+              "salaire_avec_primes_max": 620000,
+              "note": "Fonction généralement de haut niveau (nomination/avancement)."
+            },
+            {
+              "nom": "Préfet",
+              "grade_entree": "A2",
+              "salaire_brut_debut": 380000,
+              "salaire_avec_primes_debut": 470000,
+              "salaire_brut_max": 480000,
+              "salaire_avec_primes_max": 620000,
+              "note": "Fonction généralement de haut niveau (nomination)."
+            },
+            {
+              "nom": "Sous-Préfet",
+              "grade_entree": "A3",
+              "salaire_brut_debut": 247539,
+              "salaire_avec_primes_debut": 320000,
+              "salaire_brut_max": 380000,
+              "salaire_avec_primes_max": 480000
+            },
+            {
+              "nom": "Secrétaire Général de Préfecture",
+              "grade_entree": "A3",
+              "salaire_brut_debut": 247539,
+              "salaire_avec_primes_debut": 320000,
+              "salaire_brut_max": 380000,
+              "salaire_avec_primes_max": 480000
+            }
+          ]
+        },
+        "education_formation": {
+          "domaine": "Education et Formation",
+          "metiers": [
+            {
+              "nom": "Professeur de Lycée",
+              "grade_entree": "A3",
+              "salaire_brut_debut": 407720,
+              "salaire_avec_primes_debut": 480000,
+              "salaire_brut_max": 380000,
+              "salaire_avec_primes_max": 580000,
+              "note": "Avec primes pédagogiques et indemnités. Salaire de départ plus élevé que le grade de base."
+            },
+            {
+              "nom": "Professeur de Collège",
+              "grade_entree": "A3",
+              "salaire_brut_debut": 247539,
+              "salaire_avec_primes_debut": 320000,
+              "salaire_brut_max": 380000,
+              "salaire_avec_primes_max": 480000,
+              "note": "Primes pédagogiques possibles selon textes."
+            },
+            {
+              "nom": "Conseiller Pédagogique",
+              "grade_entree": "A3",
+              "salaire_brut_debut": 247539,
+              "salaire_avec_primes_debut": 320000,
+              "salaire_brut_max": 380000,
+              "salaire_avec_primes_max": 480000
+            },
+            {
+              "nom": "Inspecteur de l'Enseignement",
+              "grade_entree": "A4",
+              "salaire_brut_debut": 280000,
+              "salaire_avec_primes_debut": 350000,
+              "salaire_brut_max": 350000,
+              "salaire_avec_primes_max": 450000,
+              "note": "Souvent accessible par avancement/concours interne."
+            },
+            {
+              "nom": "Conseiller d'Orientation",
+              "grade_entree": "A3",
+              "salaire_brut_debut": 247539,
+              "salaire_avec_primes_debut": 320000,
+              "salaire_brut_max": 380000,
+              "salaire_avec_primes_max": 480000
+            }
+          ]
+        },
+        "sante": {
+          "domaine": "Santé",
+          "metiers": [
+            {
+              "nom": "Médecin",
+              "grade_entree": "A6",
+              "salaire_brut_debut": 577404,
+              "salaire_avec_primes_debut": 750000,
+              "salaire_brut_max": 520000,
+              "salaire_avec_primes_max": 680000,
+              "note": "Avec indemnités de sujétion et gardes. Régime indemnitaire santé possible."
+            },
+            {
+              "nom": "Pharmacien",
+              "grade_entree": "A6",
+              "salaire_brut_debut": 420000,
+              "salaire_avec_primes_debut": 520000,
+              "salaire_brut_max": 520000,
+              "salaire_avec_primes_max": 680000
+            },
+            {
+              "nom": "Chirurgien-Dentiste",
+              "grade_entree": "A6",
+              "salaire_brut_debut": 420000,
+              "salaire_avec_primes_debut": 520000,
+              "salaire_brut_max": 520000,
+              "salaire_avec_primes_max": 680000
+            },
+            {
+              "nom": "Vétérinaire",
+              "grade_entree": "A6",
+              "salaire_brut_debut": 420000,
+              "salaire_avec_primes_debut": 520000,
+              "salaire_brut_max": 520000,
+              "salaire_avec_primes_max": 680000
+            },
+            {
+              "nom": "Sage-Femme d'Etat",
+              "grade_entree": "A3",
+              "salaire_brut_debut": 247539,
+              "salaire_avec_primes_debut": 320000,
+              "salaire_brut_max": 380000,
+              "salaire_avec_primes_max": 480000
+            }
+          ]
+        },
+        "technique_ingenierie": {
+          "domaine": "Technique et Ingénierie",
+          "metiers": [
+            {
+              "nom": "Ingénieur des Travaux Publics",
+              "grade_entree": "A3",
+              "salaire_brut_debut": 247539,
+              "salaire_avec_primes_debut": 320000,
+              "salaire_brut_max": 380000,
+              "salaire_avec_primes_max": 480000
+            },
+            {
+              "nom": "Ingénieur Informaticien",
+              "grade_entree": "A3",
+              "salaire_brut_debut": 350000,
+              "salaire_avec_primes_debut": 450000,
+              "salaire_brut_max": 380000,
+              "salaire_avec_primes_max": 580000,
+              "note": "Augmentation de 40 000 FCFA minimum prévue. Salaire plus élevé que le grade de base."
+            },
+            {
+              "nom": "Ingénieur Agronome",
+              "grade_entree": "A3",
+              "salaire_brut_debut": 247539,
+              "salaire_avec_primes_debut": 320000,
+              "salaire_brut_max": 380000,
+              "salaire_avec_primes_max": 480000
+            },
+            {
+              "nom": "Ingénieur Statisticien",
+              "grade_entree": "A3",
+              "salaire_brut_debut": 247539,
+              "salaire_avec_primes_debut": 320000,
+              "salaire_brut_max": 380000,
+              "salaire_avec_primes_max": 480000
+            },
+            {
+              "nom": "Ingénieur des Mines",
+              "grade_entree": "A3",
+              "salaire_brut_debut": 247539,
+              "salaire_avec_primes_debut": 320000,
+              "salaire_brut_max": 380000,
+              "salaire_avec_primes_max": 480000
+            },
+            {
+              "nom": "Ingénieur Télécommunications",
+              "grade_entree": "A3",
+              "salaire_brut_debut": 247539,
+              "salaire_avec_primes_debut": 320000,
+              "salaire_brut_max": 380000,
+              "salaire_avec_primes_max": 480000
+            },
+            {
+              "nom": "Architecte",
+              "grade_entree": "A3",
+              "salaire_brut_debut": 247539,
+              "salaire_avec_primes_debut": 320000,
+              "salaire_brut_max": 380000,
+              "salaire_avec_primes_max": 480000
+            },
+            {
+              "nom": "Urbaniste",
+              "grade_entree": "A3",
+              "salaire_brut_debut": 247539,
+              "salaire_avec_primes_debut": 320000,
+              "salaire_brut_max": 380000,
+              "salaire_avec_primes_max": 480000
+            }
+          ]
+        },
+        "finances": {
+          "domaine": "Finances",
+          "metiers": [
+            {
+              "nom": "Inspecteur des Finances",
+              "grade_entree": "A3",
+              "salaire_brut_debut": 247539,
+              "salaire_avec_primes_debut": 320000,
+              "salaire_brut_max": 380000,
+              "salaire_avec_primes_max": 480000
+            },
+            {
+              "nom": "Administrateur des Services Financiers",
+              "grade_entree": "A3",
+              "salaire_brut_debut": 247539,
+              "salaire_avec_primes_debut": 320000,
+              "salaire_brut_max": 380000,
+              "salaire_avec_primes_max": 480000
+            },
+            {
+              "nom": "Contrôleur des Finances",
+              "grade_entree": "A3",
+              "salaire_brut_debut": 247539,
+              "salaire_avec_primes_debut": 320000,
+              "salaire_brut_max": 380000,
+              "salaire_avec_primes_max": 480000
+            },
+            {
+              "nom": "Comptable Principal",
+              "grade_entree": "A3",
+              "salaire_brut_debut": 247539,
+              "salaire_avec_primes_debut": 320000,
+              "salaire_brut_max": 380000,
+              "salaire_avec_primes_max": 480000
+            }
+          ]
+        },
+        "justice": {
+          "domaine": "Justice",
+          "metiers": [
+            {
+              "nom": "Magistrat",
+              "grade_entree": "A5",
+              "salaire_brut_debut": 350000,
+              "salaire_avec_primes_debut": 430000,
+              "salaire_brut_max": 420000,
+              "salaire_avec_primes_max": 550000,
+              "note": "Peut relever d'un régime particulier selon textes."
+            },
+            {
+              "nom": "Greffier en Chef",
+              "grade_entree": "A3",
+              "salaire_brut_debut": 247539,
+              "salaire_avec_primes_debut": 320000,
+              "salaire_brut_max": 380000,
+              "salaire_avec_primes_max": 480000
+            },
+            {
+              "nom": "Administrateur des Services Judiciaires",
+              "grade_entree": "A3",
+              "salaire_brut_debut": 247539,
+              "salaire_avec_primes_debut": 320000,
+              "salaire_brut_max": 380000,
+              "salaire_avec_primes_max": 480000
+            }
+          ]
+        },
+        "culture_communication": {
+          "domaine": "Culture et Communication",
+          "metiers": [
+            {
+              "nom": "Conservateur de Bibliothèque",
+              "grade_entree": "A3",
+              "salaire_brut_debut": 247539,
+              "salaire_avec_primes_debut": 320000,
+              "salaire_brut_max": 380000,
+              "salaire_avec_primes_max": 480000
+            },
+            {
+              "nom": "Archiviste-Paléographe",
+              "grade_entree": "A3",
+              "salaire_brut_debut": 247539,
+              "salaire_avec_primes_debut": 320000,
+              "salaire_brut_max": 380000,
+              "salaire_avec_primes_max": 480000
+            },
+            {
+              "nom": "Attaché de Presse",
+              "grade_entree": "A3",
+              "salaire_brut_debut": 247539,
+              "salaire_avec_primes_debut": 320000,
+              "salaire_brut_max": 380000,
+              "salaire_avec_primes_max": 480000
+            }
+          ]
+        }
+      }
+    },
+
+    "categorie_B": {
+      "nom": "Catégorie B",
+      "description": "Fonctions d'application et d'encadrement intermédiaire",
+      "diplome_requis": "BAC à BAC+2 (BTS, DUT, Licence Pro)",
+      "grades_disponibles": ["B3", "B2", "B1"],
+      
+      "grilles_par_grade": {
+        "B3": {
+          "grade": "B3",
+          "designation": "Cadre intermédiaire confirmé",
+          "salaire_base_min": 350000,
+          "salaire_base_max": 420000,
+          "salaire_avec_primes_min": 430000,
+          "salaire_avec_primes_max": 530000,
+          "echelons": [
+            {"echelon": 1, "salaire_base": 350000, "anciennete_requise_mois": 0},
+            {"echelon": 2, "salaire_base": 375000, "anciennete_requise_mois": 12},
+            {"echelon": 3, "salaire_base": 400000, "anciennete_requise_mois": 24},
+            {"echelon": 4, "salaire_base": 420000, "anciennete_requise_mois": 36}
+          ],
+          "exemples_metiers": ["Chef de Service Technique", "Officier de Police", "Commandant de Police"]
+        },
+        "B2": {
+          "grade": "B2",
+          "designation": "Agent principal",
+          "salaire_base_min": 280000,
+          "salaire_base_max": 350000,
+          "salaire_avec_primes_min": 340000,
+          "salaire_avec_primes_max": 430000,
+          "echelons": [
+            {"echelon": 1, "salaire_base": 280000, "anciennete_requise_mois": 0},
+            {"echelon": 2, "salaire_base": 300000, "anciennete_requise_mois": 12},
+            {"echelon": 3, "salaire_base": 325000, "anciennete_requise_mois": 24},
+            {"echelon": 4, "salaire_base": 350000, "anciennete_requise_mois": 36}
+          ],
+          "exemples_metiers": ["Technicien Supérieur", "Infirmier Principal", "Instituteur Principal"]
+        },
+        "B1": {
+          "grade": "B1",
+          "designation": "Agent d'application débutant",
+          "salaire_base_min": 200000,
+          "salaire_base_max": 280000,
+          "salaire_avec_primes_min": 250000,
+          "salaire_avec_primes_max": 350000,
+          "echelons": [
+            {"echelon": 1, "salaire_base": 200000, "anciennete_requise_mois": 0},
+            {"echelon": 2, "salaire_base": 230000, "anciennete_requise_mois": 12},
+            {"echelon": 3, "salaire_base": 260000, "anciennete_requise_mois": 24},
+            {"echelon": 4, "salaire_base": 280000, "anciennete_requise_mois": 36}
+          ],
+          "exemples_metiers": ["Secrétaire d'Administration", "Contrôleur des Impôts", "Professeur des Ecoles"]
+        }
+      },
+
+      "corps_metiers_detailles": {
+        "administration": {
+          "domaine": "Administration",
+          "metiers": [
+            {
+              "nom": "Secrétaire d'Administration",
+              "grade_entree": "B1",
+              "salaire_brut_debut": 200000,
+              "salaire_avec_primes_debut": 250000,
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 350000
+            },
+            {
+              "nom": "Contrôleur des Impôts",
+              "grade_entree": "B1",
+              "salaire_brut_debut": 200000,
+              "salaire_avec_primes_debut": 250000,
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 350000
+            },
+            {
+              "nom": "Contrôleur du Trésor",
+              "grade_entree": "B1",
+              "salaire_brut_debut": 200000,
+              "salaire_avec_primes_debut": 250000,
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 350000
+            },
+            {
+              "nom": "Agent de Constatation des Douanes",
+              "grade_entree": "B1",
+              "salaire_brut_debut": 200000,
+              "salaire_avec_primes_debut": 250000,
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 350000
+            },
+            {
+              "nom": "Secrétaire de Mairie",
+              "grade_entree": "B1",
+              "salaire_brut_debut": 200000,
+              "salaire_avec_primes_debut": 250000,
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 350000
+            }
+          ]
+        },
+        "education": {
+          "domaine": "Education",
+          "metiers": [
+            {
+              "nom": "Professeur des Ecoles (CAFOP)",
+              "grade_entree": "B1",
+              "salaire_brut_debut": 307000,
+              "salaire_avec_primes_debut": 380000,
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 450000,
+              "note": "Avec revalorisation 2014 et primes pédagogiques. Salaire de départ plus élevé que le grade de base."
+            },
+            {
+              "nom": "Instituteur Principal",
+              "grade_entree": "B2",
+              "salaire_brut_debut": 280000,
+              "salaire_avec_primes_debut": 340000,
+              "salaire_brut_max": 350000,
+              "salaire_avec_primes_max": 430000
+            },
+            {
+              "nom": "Surveillant d'Externat",
+              "grade_entree": "B1",
+              "salaire_brut_debut": 200000,
+              "salaire_avec_primes_debut": 250000,
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 350000
+            }
+          ]
+        },
+        "sante": {
+          "domaine": "Santé",
+          "metiers": [
+            {
+              "nom": "Infirmier d'Etat",
+              "grade_entree": "B2",
+              "salaire_brut_debut": 280000,
+              "salaire_avec_primes_debut": 350000,
+              "salaire_brut_max": 350000,
+              "salaire_avec_primes_max": 430000,
+              "note": "Avec indemnités de garde et primes. Gardes/indemnités possibles selon textes."
+            },
+            {
+              "nom": "Sage-Femme",
+              "grade_entree": "B2",
+              "salaire_brut_debut": 280000,
+              "salaire_avec_primes_debut": 340000,
+              "salaire_brut_max": 350000,
+              "salaire_avec_primes_max": 430000
+            },
+            {
+              "nom": "Technicien Supérieur de Laboratoire",
+              "grade_entree": "B2",
+              "salaire_brut_debut": 280000,
+              "salaire_avec_primes_debut": 340000,
+              "salaire_brut_max": 350000,
+              "salaire_avec_primes_max": 430000
+            },
+            {
+              "nom": "Kinésithérapeute",
+              "grade_entree": "B2",
+              "salaire_brut_debut": 280000,
+              "salaire_avec_primes_debut": 340000,
+              "salaire_brut_max": 350000,
+              "salaire_avec_primes_max": 430000
+            },
+            {
+              "nom": "Assistant Médical",
+              "grade_entree": "B2",
+              "salaire_brut_debut": 280000,
+              "salaire_avec_primes_debut": 340000,
+              "salaire_brut_max": 350000,
+              "salaire_avec_primes_max": 430000
+            }
+          ]
+        },
+        "technique": {
+          "domaine": "Technique",
+          "metiers": [
+            {
+              "nom": "Technicien Supérieur des Travaux Publics",
+              "grade_entree": "B2",
+              "salaire_brut_debut": 280000,
+              "salaire_avec_primes_debut": 340000,
+              "salaire_brut_max": 350000,
+              "salaire_avec_primes_max": 430000
+            },
+            {
+              "nom": "Technicien Supérieur Informatique",
+              "grade_entree": "B2",
+              "salaire_brut_debut": 250000,
+              "salaire_avec_primes_debut": 320000,
+              "salaire_brut_max": 350000,
+              "salaire_avec_primes_max": 430000
+            },
+            {
+              "nom": "Technicien Supérieur de l'Agriculture",
+              "grade_entree": "B2",
+              "salaire_brut_debut": 280000,
+              "salaire_avec_primes_debut": 340000,
+              "salaire_brut_max": 350000,
+              "salaire_avec_primes_max": 430000
+            },
+            {
+              "nom": "Dessinateur Principal",
+              "grade_entree": "B1",
+              "salaire_brut_debut": 200000,
+              "salaire_avec_primes_debut": 250000,
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 350000
+            },
+            {
+              "nom": "Métreur-Vérificateur",
+              "grade_entree": "B1",
+              "salaire_brut_debut": 200000,
+              "salaire_avec_primes_debut": 250000,
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 350000
+            }
+          ]
+        },
+        "securite": {
+          "domaine": "Sécurité",
+          "metiers": [
+            {
+              "nom": "Officier de Police",
+              "grade_entree": "B3",
+              "salaire_brut_debut": 350000,
+              "salaire_avec_primes_debut": 430000,
+              "salaire_brut_max": 420000,
+              "salaire_avec_primes_max": 530000,
+              "note": "Primes de risque possibles selon textes."
+            },
+            {
+              "nom": "Commandant de Police",
+              "grade_entree": "B3",
+              "salaire_brut_debut": 350000,
+              "salaire_avec_primes_debut": 430000,
+              "salaire_brut_max": 420000,
+              "salaire_avec_primes_max": 530000
+            },
+            {
+              "nom": "Officier des Eaux et Forêts",
+              "grade_entree": "B3",
+              "salaire_brut_debut": 350000,
+              "salaire_avec_primes_debut": 430000,
+              "salaire_brut_max": 420000,
+              "salaire_avec_primes_max": 530000
+            }
+          ]
+        }
+      }
+    },
+
+    "categorie_C": {
+      "nom": "Catégorie C",
+      "description": "Fonctions d'application et de soutien",
+      "diplome_requis": "BEPC, CAP, BEP",
+      "grades_disponibles": ["C3", "C2", "C1"],
+      
+      "grilles_par_grade": {
+        "C3": {
+          "grade": "C3",
+          "designation": "Agent confirmé",
+          "salaire_base_min": 280000,
+          "salaire_base_max": 330000,
+          "salaire_avec_primes_min": 340000,
+          "salaire_avec_primes_max": 400000,
+          "echelons": [
+            {"echelon": 1, "salaire_base": 280000, "anciennete_requise_mois": 0},
+            {"echelon": 2, "salaire_base": 300000, "anciennete_requise_mois": 12},
+            {"echelon": 3, "salaire_base": 315000, "anciennete_requise_mois": 24},
+            {"echelon": 4, "salaire_base": 330000, "anciennete_requise_mois": 36}
+          ],
+          "exemples_metiers": ["Agent Chef", "Technicien Confirmé"]
+        },
+        "C2": {
+          "grade": "C2",
+          "designation": "Agent qualifié",
+          "salaire_base_min": 230000,
+          "salaire_base_max": 280000,
+          "salaire_avec_primes_min": 280000,
+          "salaire_avec_primes_max": 340000,
+          "echelons": [
+            {"echelon": 1, "salaire_base": 230000, "anciennete_requise_mois": 0},
+            {"echelon": 2, "salaire_base": 250000, "anciennete_requise_mois": 12},
+            {"echelon": 3, "salaire_base": 265000, "anciennete_requise_mois": 24},
+            {"echelon": 4, "salaire_base": 280000, "anciennete_requise_mois": 36}
+          ],
+          "exemples_metiers": ["Agent Technique Principal", "Secrétaire"]
+        },
+        "C1": {
+          "grade": "C1",
+          "designation": "Agent d'exécution débutant",
+          "salaire_base_min": 180000,
+          "salaire_base_max": 230000,
+          "salaire_avec_primes_min": 220000,
+          "salaire_avec_primes_max": 280000,
+          "echelons": [
+            {"echelon": 1, "salaire_base": 180000, "anciennete_requise_mois": 0},
+            {"echelon": 2, "salaire_base": 200000, "anciennete_requise_mois": 12},
+            {"echelon": 3, "salaire_base": 220000, "anciennete_requise_mois": 24},
+            {"echelon": 4, "salaire_base": 230000, "anciennete_requise_mois": 36}
+          ],
+          "exemples_metiers": ["Agent Administratif", "Aide-Soignant"]
+        }
+      },
+
+      "corps_metiers_detailles": {
+        "administration": {
+          "domaine": "Administration",
+          "metiers": [
+            {
+              "nom": "Agent Administratif",
+              "grade_entree": "C1",
+              "salaire_brut_debut": 180000,
+              "salaire_avec_primes_debut": 220000,
+              "salaire_brut_max": 230000,
+              "salaire_avec_primes_max": 280000
+            },
+            {
+              "nom": "Commis des Services Financiers",
+              "grade_entree": "C1",
+              "salaire_brut_debut": 180000,
+              "salaire_avec_primes_debut": 220000,
+              "salaire_brut_max": 230000,
+              "salaire_avec_primes_max": 280000
+            },
+            {
+              "nom": "Agent des Impôts",
+              "grade_entree": "C1",
+              "salaire_brut_debut": 180000,
+              "salaire_avec_primes_debut": 220000,
+              "salaire_brut_max": 230000,
+              "salaire_avec_primes_max": 280000
+            },
+            {
+              "nom": "Agent de Constatation",
+              "grade_entree": "C1",
+              "salaire_brut_debut": 180000,
+              "salaire_avec_primes_debut": 220000,
+              "salaire_brut_max": 230000,
+              "salaire_avec_primes_max": 280000
+            },
+            {
+              "nom": "Secrétaire de Bureau",
+              "grade_entree": "C1",
+              "salaire_brut_debut": 180000,
+              "salaire_avec_primes_debut": 220000,
+              "salaire_brut_max": 230000,
+              "salaire_avec_primes_max": 280000
+            }
+          ]
+        },
+        "education": {
+          "domaine": "Education",
+          "metiers": [
+            {
+              "nom": "Moniteur d'Enseignement",
+              "grade_entree": "C1",
+              "salaire_brut_debut": 180000,
+              "salaire_avec_primes_debut": 220000,
+              "salaire_brut_max": 230000,
+              "salaire_avec_primes_max": 280000
+            },
+            {
+              "nom": "Aide-Educateur",
+              "grade_entree": "C1",
+              "salaire_brut_debut": 180000,
+              "salaire_avec_primes_debut": 220000,
+              "salaire_brut_max": 230000,
+              "salaire_avec_primes_max": 280000
+            },
+            {
+              "nom": "Agent de Service Scolaire",
+              "grade_entree": "C1",
+              "salaire_brut_debut": 180000,
+              "salaire_avec_primes_debut": 220000,
+              "salaire_brut_max": 230000,
+              "salaire_avec_primes_max": 280000
+            }
+          ]
+        },
+        "sante": {
+          "domaine": "Santé",
+          "metiers": [
+            {
+              "nom": "Aide-Soignant",
+              "grade_entree": "C1",
+              "salaire_brut_debut": 180000,
+              "salaire_avec_primes_debut": 220000,
+              "salaire_brut_max": 230000,
+              "salaire_avec_primes_max": 280000
+            },
+            {
+              "nom": "Agent de Santé",
+              "grade_entree": "C1",
+              "salaire_brut_debut": 180000,
+              "salaire_avec_primes_debut": 220000,
+              "salaire_brut_max": 230000,
+              "salaire_avec_primes_max": 280000
+            },
+            {
+              "nom": "Technicien de Laboratoire",
+              "grade_entree": "C1",
+              "salaire_brut_debut": 180000,
+              "salaire_avec_primes_debut": 220000,
+              "salaire_brut_max": 230000,
+              "salaire_avec_primes_max": 280000
+            },
+            {
+              "nom": "Aide de Pharmacie",
+              "grade_entree": "C1",
+              "salaire_brut_debut": 180000,
+              "salaire_avec_primes_debut": 220000,
+              "salaire_brut_max": 230000,
+              "salaire_avec_primes_max": 280000
+            }
+          ]
+        },
+        "technique": {
+          "domaine": "Technique",
+          "metiers": [
+            {
+              "nom": "Technicien des Travaux Publics",
+              "grade_entree": "C1",
+              "salaire_brut_debut": 180000,
+              "salaire_avec_primes_debut": 220000,
+              "salaire_brut_max": 230000,
+              "salaire_avec_primes_max": 280000
+            },
+            {
+              "nom": "Agent Technique de l'Agriculture",
+              "grade_entree": "C1",
+              "salaire_brut_debut": 180000,
+              "salaire_avec_primes_debut": 220000,
+              "salaire_brut_max": 230000,
+              "salaire_avec_primes_max": 280000
+            },
+            {
+              "nom": "Conducteur de Travaux",
+              "grade_entree": "C1",
+              "salaire_brut_debut": 180000,
+              "salaire_avec_primes_debut": 220000,
+              "salaire_brut_max": 230000,
+              "salaire_avec_primes_max": 280000
+            },
+            {
+              "nom": "Dessinateur",
+              "grade_entree": "C1",
+              "salaire_brut_debut": 180000,
+              "salaire_avec_primes_debut": 220000,
+              "salaire_brut_max": 230000,
+              "salaire_avec_primes_max": 280000
+            }
+          ]
+        },
+        "securite": {
+          "domaine": "Sécurité",
+          "metiers": [
+            {
+              "nom": "Gardien de la Paix",
+              "grade_entree": "C1",
+              "salaire_brut_debut": 180000,
+              "salaire_avec_primes_debut": 220000,
+              "salaire_brut_max": 230000,
+              "salaire_avec_primes_max": 280000
+            },
+            {
+              "nom": "Agent de Police Municipale",
+              "grade_entree": "C1",
+              "salaire_brut_debut": 180000,
+              "salaire_avec_primes_debut": 220000,
+              "salaire_brut_max": 230000,
+              "salaire_avec_primes_max": 280000
+            },
+            {
+              "nom": "Garde Forestier",
+              "grade_entree": "C1",
+              "salaire_brut_debut": 180000,
+              "salaire_avec_primes_debut": 220000,
+              "salaire_brut_max": 230000,
+              "salaire_avec_primes_max": 280000
+            }
+          ]
+        }
+      }
+    },
+
+    "categorie_D": {
+      "nom": "Catégorie D",
+      "description": "Fonctions d'exécution",
+      "diplome_requis": "CEP ou sans diplôme",
+      "grades_disponibles": ["D3", "D2", "D1"],
+      
+      "grilles_par_grade": {
+        "D3": {
+          "grade": "D3",
+          "designation": "Agent principal",
+          "salaire_base_min": 240000,
+          "salaire_base_max": 280000,
+          "salaire_avec_primes_min": 290000,
+          "salaire_avec_primes_max": 340000,
+          "echelons": [
+            {"echelon": 1, "salaire_base": 240000, "anciennete_requise_mois": 0},
+            {"echelon": 2, "salaire_base": 255000, "anciennete_requise_mois": 12},
+            {"echelon": 3, "salaire_base": 270000, "anciennete_requise_mois": 24},
+            {"echelon": 4, "salaire_base": 280000, "anciennete_requise_mois": 36}
+          ],
+          "exemples_metiers": ["Chef d'Equipe", "Agent Principal"]
+        },
+        "D2": {
+          "grade": "D2",
+          "designation": "Agent qualifié",
+          "salaire_base_min": 200000,
+          "salaire_base_max": 240000,
+          "salaire_avec_primes_min": 240000,
+          "salaire_avec_primes_max": 290000,
+          "echelons": [
+            {"echelon": 1, "salaire_base": 200000, "anciennete_requise_mois": 0},
+            {"echelon": 2, "salaire_base": 215000, "anciennete_requise_mois": 12},
+            {"echelon": 3, "salaire_base": 230000, "anciennete_requise_mois": 24},
+            {"echelon": 4, "salaire_base": 240000, "anciennete_requise_mois": 36}
+          ],
+          "exemples_metiers": ["Ouvrier Qualifié", "Chauffeur"]
+        },
+        "D1": {
+          "grade": "D1",
+          "designation": "Agent de base",
+          "salaire_base_min": 169769,
+          "salaire_base_max": 200000,
+          "salaire_avec_primes_min": 200000,
+          "salaire_avec_primes_max": 240000,
+          "echelons": [
+            {"echelon": 1, "salaire_base": 169769, "anciennete_requise_mois": 0},
+            {"echelon": 2, "salaire_base": 180000, "anciennete_requise_mois": 12},
+            {"echelon": 3, "salaire_base": 190000, "anciennete_requise_mois": 24},
+            {"echelon": 4, "salaire_base": 200000, "anciennete_requise_mois": 36}
+          ],
+          "exemples_metiers": ["Agent de Bureau", "Garde de Sous-Préfecture", "Planton"]
+        }
+      },
+
+      "corps_metiers_detailles": {
+        "services_generaux": {
+          "domaine": "Services Généraux",
+          "metiers": [
+            {
+              "nom": "Agent de Bureau",
+              "grade_entree": "D1",
+              "salaire_brut_debut": 169769,
+              "salaire_avec_primes_debut": 200000,
+              "salaire_brut_max": 200000,
+              "salaire_avec_primes_max": 240000
+            },
+            {
+              "nom": "Garde de Sous-Préfecture",
+              "grade_entree": "D1",
+              "salaire_brut_debut": 169769,
+              "salaire_avec_primes_debut": 200000,
+              "salaire_brut_max": 200000,
+              "salaire_avec_primes_max": 240000
+            },
+            {
+              "nom": "Huissier",
+              "grade_entree": "D1",
+              "salaire_brut_debut": 169769,
+              "salaire_avec_primes_debut": 200000,
+              "salaire_brut_max": 200000,
+              "salaire_avec_primes_max": 240000
+            },
+            {
+              "nom": "Planton",
+              "grade_entree": "D1",
+              "salaire_brut_debut": 169769,
+              "salaire_avec_primes_debut": 200000,
+              "salaire_brut_max": 200000,
+              "salaire_avec_primes_max": 240000
+            },
+            {
+              "nom": "Chauffeur",
+              "grade_entree": "D2",
+              "salaire_brut_debut": 200000,
+              "salaire_avec_primes_debut": 240000,
+              "salaire_brut_max": 240000,
+              "salaire_avec_primes_max": 290000
+            }
+          ]
+        },
+        "technique": {
+          "domaine": "Technique",
+          "metiers": [
+            {
+              "nom": "Ouvrier Qualifié",
+              "grade_entree": "D2",
+              "salaire_brut_debut": 200000,
+              "salaire_avec_primes_debut": 240000,
+              "salaire_brut_max": 240000,
+              "salaire_avec_primes_max": 290000
+            },
+            {
+              "nom": "Ouvrier Spécialisé",
+              "grade_entree": "D1",
+              "salaire_brut_debut": 169769,
+              "salaire_avec_primes_debut": 200000,
+              "salaire_brut_max": 200000,
+              "salaire_avec_primes_max": 240000
+            },
+            {
+              "nom": "Manoeuvre",
+              "grade_entree": "D1",
+              "salaire_brut_debut": 169769,
+              "salaire_avec_primes_debut": 200000,
+              "salaire_brut_max": 200000,
+              "salaire_avec_primes_max": 240000
+            },
+            {
+              "nom": "Gardien d'Immeuble",
+              "grade_entree": "D1",
+              "salaire_brut_debut": 169769,
+              "salaire_avec_primes_debut": 200000,
+              "salaire_brut_max": 200000,
+              "salaire_avec_primes_max": 240000
+            }
+          ]
+        },
+        "services": {
+          "domaine": "Services",
+          "metiers": [
+            {
+              "nom": "Agent d'Entretien",
+              "grade_entree": "D1",
+              "salaire_brut_debut": 169769,
+              "salaire_avec_primes_debut": 200000,
+              "salaire_brut_max": 200000,
+              "salaire_avec_primes_max": 240000
+            },
+            {
+              "nom": "Agent de Service",
+              "grade_entree": "D1",
+              "salaire_brut_debut": 169769,
+              "salaire_avec_primes_debut": 200000,
+              "salaire_brut_max": 200000,
+              "salaire_avec_primes_max": 240000
+            },
+            {
+              "nom": "Cuisinier",
+              "grade_entree": "D1",
+              "salaire_brut_debut": 169769,
+              "salaire_avec_primes_debut": 200000,
+              "salaire_brut_max": 200000,
+              "salaire_avec_primes_max": 240000
+            },
+            {
+              "nom": "Jardinier",
+              "grade_entree": "D1",
+              "salaire_brut_debut": 169769,
+              "salaire_avec_primes_debut": 200000,
+              "salaire_brut_max": 200000,
+              "salaire_avec_primes_max": 240000
+            }
+          ]
+        }
+      }
+    }
+  },
+
+  "composantes_remuneration": {
+    "salaire_base": {
+      "nom": "Traitement de Base",
+      "description": "Salaire brut mensuel selon le grade et l'échelon",
+      "soumis_a_pension": true
+    },
+    "indemnite_residence": {
+      "nom": "Indemnité de Résidence",
+      "description": "Variable selon la zone géographique",
+      "taux": "1% à 3% du salaire de base",
+      "zones": {
+        "zone_1": {"villes": ["Abidjan"], "taux": "3%"},
+        "zone_2": {"villes": ["Yamoussoukro", "Bouaké", "San-Pedro"], "taux": "2%"},
+        "zone_3": {"villes": ["Autres villes"], "taux": "1%"}
+      }
+    },
+    "prestations_familiales": {
+      "nom": "Allocations Familiales",
+      "description": "Selon le nombre d'enfants à charge",
+      "montant_par_enfant": 5000,
+      "limite_enfants": 6,
+      "note": "5000 FCFA par enfant (jusqu'à 6 enfants maximum)"
+    },
+    "primes_diverses": {
+      "nom": "Primes et Indemnités",
+      "types": [
+        {
+          "nom": "Prime Pédagogique",
+          "concerne": "Personnel enseignant (Catégories A, B, C)",
+          "taux": "20-30% du salaire de base",
+          "exemples": ["Professeur de Lycée", "Professeur de Collège", "Instituteur"]
+        },
+        {
+          "nom": "Indemnité de Sujétion",
+          "concerne": "Personnel de santé",
+          "montant": "Variable selon le poste et le lieu d'exercice",
+          "exemples": ["Médecin", "Infirmier", "Sage-femme"]
+        },
+        {
+          "nom": "Prime de Risque",
+          "concerne": "Personnel de sécurité",
+          "taux": "15-25% du salaire de base",
+          "exemples": ["Officier de Police", "Gardien de la Paix"]
+        },
+        {
+          "nom": "Indemnité de Fonction",
+          "concerne": "Cadres supérieurs et dirigeants",
+          "montant": "Variable selon le poste et le niveau de responsabilité",
+          "exemples": ["Directeur Général", "Préfet", "Sous-Directeur"]
+        },
+        {
+          "nom": "Prime de Garde",
+          "concerne": "Personnel de santé en service de garde",
+          "montant": "Variable selon la fréquence et le type de garde"
+        },
+        {
+          "nom": "Indemnité de Logement",
+          "concerne": "Certains corps spécifiques",
+          "montant": "Variable selon le grade et la localité"
+        }
+      ]
+    }
+  },
+
+  "deductions_obligatoires": {
+    "cotisation_retraite": {
+      "nom": "Cotisation Pension (CGRAE)",
+      "taux": "11.10%",
+      "base": "Salaire brut de base",
+      "note": "Caisse Générale de Retraite des Agents de l'Etat"
+    },
+    "impot_sur_salaire": {
+      "nom": "Impôt sur Traitements et Salaires (ITS)",
+      "description": "Barème progressif par tranche de revenu",
+      "tranches": [
+        {"min": 0, "max": 50000, "taux": "0%", "note": "Exonéré"},
+        {"min": 50001, "max": 130000, "taux": "1.5%"},
+        {"min": 130001, "max": 200000, "taux": "5%"},
+        {"min": 200001, "max": 300000, "taux": "10%"},
+        {"min": 300001, "max": 400000, "taux": "15%"},
+        {"min": 400001, "max": 600000, "taux": "20%"},
+        {"min": 600001, "max": 1000000, "taux": "25%"},
+        {"min": 1000001, "max": null, "taux": "30%", "note": "Au-delà de 1 000 000 FCFA"}
+      ]
+    },
+    "cnps": {
+      "nom": "CNPS (Caisse Nationale de Prévoyance Sociale)",
+      "taux_employe": "3.2%",
+      "taux_employeur": "5.75%",
+      "base": "Salaire brut plafonné",
+      "plafond_mensuel": 1647315,
+      "note": "Pour régimes complémentaires (retraite, famille, maladie)"
+    }
+  },
+
+  "exemples_calcul_salaire_net": {
+    "exemple_1": {
+      "metier": "Professeur de Lycée (A3, échelon 1)",
+      "salaire_base": 407720,
+      "primes_indemnites": 72280,
+      "salaire_brut_total": 480000,
+      "deductions": {
+        "cotisation_retraite": 45256,
+        "its": 72000,
+        "cnps": 15360
+      },
+      "salaire_net_estime": 347384
+    },
+    "exemple_2": {
+      "metier": "Instituteur CAFOP (B1, échelon 1)",
+      "salaire_base": 307000,
+      "primes_indemnites": 73000,
+      "salaire_brut_total": 380000,
+      "deductions": {
+        "cotisation_retraite": 34077,
+        "its": 56000,
+        "cnps": 12160
+      },
+      "salaire_net_estime": 277763
+    },
+    "exemple_3": {
+      "metier": "Médecin (A6, échelon 1)",
+      "salaire_base": 577404,
+      "primes_indemnites": 172596,
+      "salaire_brut_total": 750000,
+      "deductions": {
+        "cotisation_retraite": 64092,
+        "its": 187500,
+        "cnps": 24000
+      },
+      "salaire_net_estime": 474408
+    }
+  },
+
+  "comparaisons_regionales": {
+    "note": "Salaires mensuels moyens pour référence (2024-2025)",
+    "pays": {
+      "Côte d'Ivoire": {
+        "Instituteur": {"salaire": 307000, "devise": "FCFA"},
+        "Professeur de Lycée": {"salaire": 407720, "devise": "FCFA"},
+        "Médecin": {"salaire": 577404, "devise": "FCFA"}
+      },
+      "Sénégal": {
+        "Instituteur": {"salaire": 200000, "devise": "FCFA"},
+        "Professeur de Lycée": {"salaire": 230000, "devise": "FCFA"},
+        "Médecin": {"salaire": 400000, "devise": "FCFA"}
+      },
+      "Burkina Faso": {
+        "Instituteur": {"salaire": 100000, "devise": "FCFA"},
+        "Professeur de Lycée": {"salaire": 165000, "devise": "FCFA"},
+        "Médecin": {"salaire": 250000, "devise": "FCFA"}
+      },
+      "Maroc": {
+        "Instituteur": {"salaire": 250000, "devise": "FCFA équivalent"},
+        "Professeur de Lycée": {"salaire": 300000, "devise": "FCFA équivalent"},
+        "Médecin": {"salaire": 450000, "devise": "FCFA équivalent"}
+      }
+    }
+  },
+
+  "notes_importantes": [
+    "Les salaires indiqués sont des salaires bruts mensuels avant déductions obligatoires",
+    "Les primes et indemnités varient selon les ministères, les postes et les zones géographiques",
+    "Une réforme salariale est en cours d'étude (2024-2025) pour harmoniser les grilles",
+    "Les salaires évoluent avec l'ancienneté (échelons) et les avancements de grade",
+    "Le déblocage des avancements indiciaires concerne environ 38 680 fonctionnaires",
+    "La masse salariale de la fonction publique représente 45% des ressources propres de l'État",
+    "Certains métiers bénéficient de salaires de départ supérieurs au grade de base (ex: Médecin, Professeur de Lycée, Ingénieur Informaticien)",
+    "Les allocations familiales sont plafonnées à 6 enfants (6 × 5000 = 30 000 FCFA maximum)",
+    "L'indemnité de résidence varie de 1% à 3% selon la zone géographique d'affectation"
+  ],
+
+  "glossaire": {
+    "CGRAE": "Caisse Générale de Retraite des Agents de l'Etat",
+    "CNPS": "Caisse Nationale de Prévoyance Sociale",
+    "ITS": "Impôt sur Traitements et Salaires",
+    "CAFOP": "Centre d'Animation et de Formation Pédagogique",
+    "Echelon": "Niveau de rémunération au sein d'un même grade, progressant avec l'ancienneté",
+    "Grade": "Niveau hiérarchique dans la fonction publique (A1-A7, B1-B3, C1-C3, D1-D3)",
+    "Salaire brut": "Salaire avant déductions (cotisations et impôts)",
+    "Salaire net": "Salaire après déductions obligatoires"
+  }
+}

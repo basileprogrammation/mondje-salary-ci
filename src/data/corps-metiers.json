@@ -1,0 +1,701 @@
+{
+  "description": "Liste complète des corps de métiers de la Fonction Publique de Côte d'Ivoire (enrichie avec mots-clés)",
+  "date_mise_a_jour": "2025-01-17",
+  "source": "Ministère de la Fonction Publique - Côte d'Ivoire",
+  "note": "Chaque métier inclut des mots-clés pour faciliter la recherche",
+  "categories": {
+    "categorie_A": {
+      "nom": "Catégorie A",
+      "description": "Fonctions de conception, direction et encadrement supérieur",
+      "diplome_requis": "BAC+3 minimum (Licence, Master, Doctorat)",
+      "grades": ["A7", "A6", "A5", "A4", "A3", "A2", "A1"],
+      "corps_metiers": [
+        {
+          "domaine": "Administration Générale",
+          "metiers": [
+            { 
+              "nom": "Administrateur Civil", 
+              "grade_entree_estime": "A5", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["administrateur", "administration", "civil", "cadre", "gestionnaire"]
+            },
+            { 
+              "nom": "Attaché d'Administration", 
+              "grade_entree_estime": "A3", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["attaché", "administration", "administratif", "gestionnaire"]
+            },
+            { 
+              "nom": "Conseiller des Affaires Etrangères", 
+              "grade_entree_estime": "A3", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["conseiller", "diplomate", "affaires etrangeres", "international", "diplomatie"]
+            },
+            { 
+              "nom": "Inspecteur des Impôts", 
+              "grade_entree_estime": "A3", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["inspecteur", "impots", "fiscal", "fiscalite", "controle fiscal", "dgi"]
+            },
+            { 
+              "nom": "Inspecteur du Trésor", 
+              "grade_entree_estime": "A3", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["inspecteur", "tresor", "finances publiques", "comptable public", "dgtcp"]
+            },
+            { 
+              "nom": "Contrôleur Général d'Etat", 
+              "grade_entree_estime": "A2", 
+              "salaire_brut_debut_estime": null, 
+              "note": "Fonction généralement de haut niveau (nomination/avancement).",
+              "mots_cles": ["controleur", "controle", "inspection", "audit", "cge"]
+            },
+            { 
+              "nom": "Préfet", 
+              "grade_entree_estime": "A2", 
+              "salaire_brut_debut_estime": null, 
+              "note": "Fonction généralement de haut niveau (nomination).",
+              "mots_cles": ["prefet", "prefecture", "autorite territoriale", "administration territoriale"]
+            },
+            { 
+              "nom": "Sous-Préfet", 
+              "grade_entree_estime": "A3", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["sous-prefet", "sous prefet", "prefecture", "administration territoriale"]
+            },
+            { 
+              "nom": "Secrétaire Général de Préfecture", 
+              "grade_entree_estime": "A3", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["secretaire general", "prefecture", "administration", "sg"]
+            }
+          ]
+        },
+        {
+          "domaine": "Education et Formation",
+          "metiers": [
+            { 
+              "nom": "Professeur de Lycée", 
+              "grade_entree_estime": "A3", 
+              "salaire_brut_debut_estime": null, 
+              "note": "Primes pédagogiques possibles selon textes.",
+              "mots_cles": ["professeur", "enseignant", "lycee", "secondaire", "education", "prof", "enseignement"]
+            },
+            { 
+              "nom": "Professeur de Collège", 
+              "grade_entree_estime": "A3", 
+              "salaire_brut_debut_estime": null, 
+              "note": "Primes pédagogiques possibles selon textes.",
+              "mots_cles": ["professeur", "enseignant", "college", "secondaire", "education", "prof", "enseignement"]
+            },
+            { 
+              "nom": "Conseiller Pédagogique", 
+              "grade_entree_estime": "A3", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["conseiller", "pedagogique", "pedagogie", "education", "formation", "encadrement"]
+            },
+            { 
+              "nom": "Inspecteur de l'Enseignement", 
+              "grade_entree_estime": "A4", 
+              "salaire_brut_debut_estime": null, 
+              "note": "Souvent accessible par avancement/concours interne.",
+              "mots_cles": ["inspecteur", "enseignement", "education", "pedagogie", "inspection", "encadreur"]
+            },
+            { 
+              "nom": "Conseiller d'Orientation", 
+              "grade_entree_estime": "A3", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["conseiller", "orientation", "scolaire", "education", "guidance", "psychologue"]
+            }
+          ]
+        },
+        {
+          "domaine": "Santé",
+          "metiers": [
+            { 
+              "nom": "Médecin", 
+              "grade_entree_estime": "A6", 
+              "salaire_brut_debut_estime": null, 
+              "note": "Régime indemnitaire santé possible (gardes/sujétion).",
+              "mots_cles": ["medecin", "docteur", "sante", "medical", "generaliste", "specialiste", "doc"]
+            },
+            { 
+              "nom": "Pharmacien", 
+              "grade_entree_estime": "A6", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["pharmacien", "pharmacie", "medicament", "sante", "pharmaceutique"]
+            },
+            { 
+              "nom": "Chirurgien-Dentiste", 
+              "grade_entree_estime": "A6", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["chirurgien", "dentiste", "dental", "dents", "odontologie", "stomatologue", "sante bucco-dentaire"]
+            },
+            { 
+              "nom": "Vétérinaire", 
+              "grade_entree_estime": "A6", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["veterinaire", "animaux", "elevage", "sante animale", "vet"]
+            },
+            { 
+              "nom": "Sage-Femme d'Etat", 
+              "grade_entree_estime": "A3", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["sage-femme", "sage femme", "maternite", "accouchement", "gynecologie", "obstetrique", "sante maternelle"]
+            }
+          ]
+        },
+        {
+          "domaine": "Technique et Ingénierie",
+          "metiers": [
+            { 
+              "nom": "Ingénieur des Travaux Publics", 
+              "grade_entree_estime": "A3", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["ingenieur", "travaux publics", "btp", "genie civil", "construction", "routes", "tp"]
+            },
+            { 
+              "nom": "Ingénieur Informaticien", 
+              "grade_entree_estime": "A3", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["ingenieur", "informatique", "informaticien", "it", "systeme", "developpeur", "tech", "technologie"]
+            },
+            { 
+              "nom": "Ingénieur Agronome", 
+              "grade_entree_estime": "A3", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["ingenieur", "agronome", "agriculture", "agronomie", "rural", "agro"]
+            },
+            { 
+              "nom": "Ingénieur Statisticien", 
+              "grade_entree_estime": "A3", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["ingenieur", "statisticien", "statistique", "data", "donnees", "analyste"]
+            },
+            { 
+              "nom": "Ingénieur des Mines", 
+              "grade_entree_estime": "A3", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["ingenieur", "mines", "minier", "geologie", "extraction", "minerai"]
+            },
+            { 
+              "nom": "Ingénieur Télécommunications", 
+              "grade_entree_estime": "A3", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["ingenieur", "telecommunication", "telecom", "reseau", "communication", "signal"]
+            },
+            { 
+              "nom": "Architecte", 
+              "grade_entree_estime": "A3", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["architecte", "architecture", "batiment", "construction", "design", "conception"]
+            },
+            { 
+              "nom": "Urbaniste", 
+              "grade_entree_estime": "A3", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["urbaniste", "urbanisme", "amenagement", "ville", "territoire", "planification urbaine"]
+            }
+          ]
+        },
+        {
+          "domaine": "Finances",
+          "metiers": [
+            { 
+              "nom": "Inspecteur des Finances", 
+              "grade_entree_estime": "A3", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["inspecteur", "finances", "financier", "controle financier", "budget", "inspection"]
+            },
+            { 
+              "nom": "Administrateur des Services Financiers", 
+              "grade_entree_estime": "A3", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["administrateur", "finances", "financier", "gestion financiere", "budget"]
+            },
+            { 
+              "nom": "Contrôleur des Finances", 
+              "grade_entree_estime": "A3", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["controleur", "finances", "financier", "controle", "budget", "comptabilite"]
+            },
+            { 
+              "nom": "Comptable Principal", 
+              "grade_entree_estime": "A3", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["comptable", "comptabilite", "finances", "gestion", "budget"]
+            }
+          ]
+        },
+        {
+          "domaine": "Justice",
+          "metiers": [
+            { 
+              "nom": "Magistrat", 
+              "grade_entree_estime": "A5", 
+              "salaire_brut_debut_estime": null, 
+              "note": "Peut relever d'un régime particulier selon textes.",
+              "mots_cles": ["magistrat", "juge", "procureur", "justice", "tribunal", "juridique", "droit"]
+            },
+            { 
+              "nom": "Greffier en Chef", 
+              "grade_entree_estime": "A3", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["greffier", "greffe", "justice", "tribunal", "juridique"]
+            },
+            { 
+              "nom": "Administrateur des Services Judiciaires", 
+              "grade_entree_estime": "A3", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["administrateur", "judiciaire", "justice", "tribunal", "juridique"]
+            }
+          ]
+        },
+        {
+          "domaine": "Culture et Communication",
+          "metiers": [
+            { 
+              "nom": "Conservateur de Bibliothèque", 
+              "grade_entree_estime": "A3", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["conservateur", "bibliotheque", "bibliotheconomie", "culture", "livre", "documentation"]
+            },
+            { 
+              "nom": "Archiviste-Paléographe", 
+              "grade_entree_estime": "A3", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["archiviste", "archive", "paleographe", "documentation", "patrimoine", "histoire"]
+            },
+            { 
+              "nom": "Attaché de Presse", 
+              "grade_entree_estime": "A3", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["attache de presse", "communication", "media", "journalisme", "presse", "relations publiques"]
+            }
+          ]
+        }
+      ]
+    },
+
+    "categorie_B": {
+      "nom": "Catégorie B",
+      "description": "Fonctions d'application et d'encadrement intermédiaire",
+      "diplome_requis": "BAC à BAC+2 (BTS, DUT, Licence Pro)",
+      "grades": ["B3", "B2", "B1"],
+      "corps_metiers": [
+        {
+          "domaine": "Administration",
+          "metiers": [
+            { 
+              "nom": "Secrétaire d'Administration", 
+              "grade_entree_estime": "B1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["secretaire", "administration", "administratif", "bureau", "secretariat"]
+            },
+            { 
+              "nom": "Contrôleur des Impôts", 
+              "grade_entree_estime": "B1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["controleur", "impots", "fiscal", "fiscalite", "dgi", "taxe"]
+            },
+            { 
+              "nom": "Contrôleur du Trésor", 
+              "grade_entree_estime": "B1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["controleur", "tresor", "finances", "comptable", "dgtcp"]
+            },
+            { 
+              "nom": "Agent de Constatation des Douanes", 
+              "grade_entree_estime": "B1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["douanes", "douanier", "constatation", "frontiere", "importation", "exportation"]
+            },
+            { 
+              "nom": "Secrétaire de Mairie", 
+              "grade_entree_estime": "B1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["secretaire", "mairie", "commune", "municipal", "collectivite"]
+            }
+          ]
+        },
+        {
+          "domaine": "Education",
+          "metiers": [
+            { 
+              "nom": "Professeur des Ecoles (CAFOP)", 
+              "grade_entree_estime": "B1", 
+              "salaire_brut_debut_estime": null, 
+              "note": "Primes pédagogiques possibles selon textes.",
+              "mots_cles": ["professeur", "instituteur", "enseignant", "primaire", "ecole", "cafop", "education", "maitre", "maitresse"]
+            },
+            { 
+              "nom": "Instituteur Principal", 
+              "grade_entree_estime": "B2", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["instituteur", "enseignant", "primaire", "ecole", "education", "maitre", "prof"]
+            },
+            { 
+              "nom": "Surveillant d'Externat", 
+              "grade_entree_estime": "B1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["surveillant", "education", "ecole", "discipline", "encadrement", "pion"]
+            }
+          ]
+        },
+        {
+          "domaine": "Santé",
+          "metiers": [
+            { 
+              "nom": "Infirmier d'Etat", 
+              "grade_entree_estime": "B2", 
+              "salaire_brut_debut_estime": null, 
+              "note": "Gardes/indemnités possibles selon textes.",
+              "mots_cles": ["infirmier", "infirmiere", "soins", "sante", "medical", "ide", "hopital"]
+            },
+            { 
+              "nom": "Sage-Femme", 
+              "grade_entree_estime": "B2", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["sage-femme", "sage femme", "maternite", "accouchement", "gynecologie", "sante maternelle"]
+            },
+            { 
+              "nom": "Technicien Supérieur de Laboratoire", 
+              "grade_entree_estime": "B2", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["technicien", "laboratoire", "labo", "analyse", "biologie", "medical"]
+            },
+            { 
+              "nom": "Kinésithérapeute", 
+              "grade_entree_estime": "B2", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["kinesitherapeute", "kine", "physiotherapie", "reeducation", "sante", "therapie"]
+            },
+            { 
+              "nom": "Assistant Médical", 
+              "grade_entree_estime": "B2", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["assistant", "medical", "sante", "soins", "paramédical"]
+            }
+          ]
+        },
+        {
+          "domaine": "Technique",
+          "metiers": [
+            { 
+              "nom": "Technicien Supérieur des Travaux Publics", 
+              "grade_entree_estime": "B2", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["technicien", "travaux publics", "btp", "construction", "genie civil", "tp"]
+            },
+            { 
+              "nom": "Technicien Supérieur Informatique", 
+              "grade_entree_estime": "B2", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["technicien", "informatique", "it", "ordinateur", "reseau", "systeme", "tech"]
+            },
+            { 
+              "nom": "Technicien Supérieur de l'Agriculture", 
+              "grade_entree_estime": "B2", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["technicien", "agriculture", "agricole", "rural", "agro", "culture"]
+            },
+            { 
+              "nom": "Dessinateur Principal", 
+              "grade_entree_estime": "B1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["dessinateur", "dessin", "cao", "dao", "technique", "plan"]
+            },
+            { 
+              "nom": "Métreur-Vérificateur", 
+              "grade_entree_estime": "B1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["metreur", "verificateur", "btp", "construction", "mesurage", "quantitatif"]
+            }
+          ]
+        },
+        {
+          "domaine": "Sécurité",
+          "metiers": [
+            { 
+              "nom": "Officier de Police", 
+              "grade_entree_estime": "B3", 
+              "salaire_brut_debut_estime": null, 
+              "note": "Primes de risque possibles selon textes.",
+              "mots_cles": ["officier", "police", "policier", "securite", "ordre public", "commissaire"]
+            },
+            { 
+              "nom": "Commandant de Police", 
+              "grade_entree_estime": "B3", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["commandant", "police", "policier", "securite", "ordre public"]
+            },
+            { 
+              "nom": "Officier des Eaux et Forêts", 
+              "grade_entree_estime": "B3", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["officier", "eaux et forets", "forestier", "environnement", "nature", "garde forestier"]
+            }
+          ]
+        }
+      ]
+    },
+
+    "categorie_C": {
+      "nom": "Catégorie C",
+      "description": "Fonctions d'application et de soutien",
+      "diplome_requis": "BEPC, CAP, BEP",
+      "grades": ["C3", "C2", "C1"],
+      "corps_metiers": [
+        {
+          "domaine": "Administration",
+          "metiers": [
+            { 
+              "nom": "Agent Administratif", 
+              "grade_entree_estime": "C1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["agent", "administratif", "administration", "bureau", "secretariat"]
+            },
+            { 
+              "nom": "Commis des Services Financiers", 
+              "grade_entree_estime": "C1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["commis", "financier", "finances", "comptabilite", "bureau"]
+            },
+            { 
+              "nom": "Agent des Impôts", 
+              "grade_entree_estime": "C1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["agent", "impots", "fiscal", "dgi", "taxe"]
+            },
+            { 
+              "nom": "Agent de Constatation", 
+              "grade_entree_estime": "C1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["agent", "constatation", "controle", "verification"]
+            },
+            { 
+              "nom": "Secrétaire de Bureau", 
+              "grade_entree_estime": "C1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["secretaire", "bureau", "secretariat", "administratif", "assistante"]
+            }
+          ]
+        },
+        {
+          "domaine": "Education",
+          "metiers": [
+            { 
+              "nom": "Moniteur d'Enseignement", 
+              "grade_entree_estime": "C1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["moniteur", "enseignement", "education", "formateur", "enseignant"]
+            },
+            { 
+              "nom": "Aide-Educateur", 
+              "grade_entree_estime": "C1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["aide", "educateur", "education", "ecole", "assistant"]
+            },
+            { 
+              "nom": "Agent de Service Scolaire", 
+              "grade_entree_estime": "C1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["agent", "scolaire", "ecole", "service", "education"]
+            }
+          ]
+        },
+        {
+          "domaine": "Santé",
+          "metiers": [
+            { 
+              "nom": "Aide-Soignant", 
+              "grade_entree_estime": "C1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["aide-soignant", "aide soignant", "soins", "sante", "hopital", "as"]
+            },
+            { 
+              "nom": "Agent de Santé", 
+              "grade_entree_estime": "C1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["agent", "sante", "medical", "soins", "infirmerie"]
+            },
+            { 
+              "nom": "Technicien de Laboratoire", 
+              "grade_entree_estime": "C1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["technicien", "laboratoire", "labo", "analyse", "medical"]
+            },
+            { 
+              "nom": "Aide de Pharmacie", 
+              "grade_entree_estime": "C1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["aide", "pharmacie", "medicament", "preparateur", "assistant"]
+            }
+          ]
+        },
+        {
+          "domaine": "Technique",
+          "metiers": [
+            { 
+              "nom": "Technicien des Travaux Publics", 
+              "grade_entree_estime": "C1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["technicien", "travaux publics", "btp", "construction", "tp"]
+            },
+            { 
+              "nom": "Agent Technique de l'Agriculture", 
+              "grade_entree_estime": "C1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["agent", "technique", "agriculture", "agricole", "rural"]
+            },
+            { 
+              "nom": "Conducteur de Travaux", 
+              "grade_entree_estime": "C1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["conducteur", "travaux", "btp", "construction", "chantier"]
+            },
+            { 
+              "nom": "Dessinateur", 
+              "grade_entree_estime": "C1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["dessinateur", "dessin", "plan", "cao", "technique"]
+            }
+          ]
+        },
+        {
+          "domaine": "Sécurité",
+          "metiers": [
+            { 
+              "nom": "Gardien de la Paix", 
+              "grade_entree_estime": "C1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["gardien", "paix", "police", "policier", "securite", "gendarme"]
+            },
+            { 
+              "nom": "Agent de Police Municipale", 
+              "grade_entree_estime": "C1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["agent", "police", "municipal", "securite", "commune"]
+            },
+            { 
+              "nom": "Garde Forestier", 
+              "grade_entree_estime": "C1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["garde", "forestier", "foret", "environnement", "nature", "eaux et forets"]
+            }
+          ]
+        }
+      ]
+    },
+
+    "categorie_D": {
+      "nom": "Catégorie D",
+      "description": "Fonctions d'exécution",
+      "diplome_requis": "CEP ou sans diplôme",
+      "grades": ["D3", "D2", "D1"],
+      "corps_metiers": [
+        {
+          "domaine": "Services Généraux",
+          "metiers": [
+            { 
+              "nom": "Agent de Bureau", 
+              "grade_entree_estime": "D1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["agent", "bureau", "administratif", "secretariat"]
+            },
+            { 
+              "nom": "Garde de Sous-Préfecture", 
+              "grade_entree_estime": "D1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["garde", "prefecture", "securite", "gardien"]
+            },
+            { 
+              "nom": "Huissier", 
+              "grade_entree_estime": "D1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["huissier", "agent", "bureau", "service"]
+            },
+            { 
+              "nom": "Planton", 
+              "grade_entree_estime": "D1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["planton", "agent", "bureau", "coursier", "messager"]
+            },
+            { 
+              "nom": "Chauffeur", 
+              "grade_entree_estime": "D2", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["chauffeur", "conducteur", "vehicule", "transport", "auto"]
+            }
+          ]
+        },
+        {
+          "domaine": "Technique",
+          "metiers": [
+            { 
+              "nom": "Ouvrier Qualifié", 
+              "grade_entree_estime": "D2", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["ouvrier", "qualifie", "technique", "artisan", "metier"]
+            },
+            { 
+              "nom": "Ouvrier Spécialisé", 
+              "grade_entree_estime": "D1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["ouvrier", "specialise", "technique", "production"]
+            },
+            { 
+              "nom": "Manoeuvre", 
+              "grade_entree_estime": "D1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["manoeuvre", "ouvrier", "chantier", "btp", "construction"]
+            },
+            { 
+              "nom": "Gardien d'Immeuble", 
+              "grade_entree_estime": "D1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["gardien", "immeuble", "batiment", "concierge", "securite"]
+            }
+          ]
+        },
+        {
+          "domaine": "Services",
+          "metiers": [
+            { 
+              "nom": "Agent d'Entretien", 
+              "grade_entree_estime": "D1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["agent", "entretien", "nettoyage", "menage", "proprete"]
+            },
+            { 
+              "nom": "Agent de Service", 
+              "grade_entree_estime": "D1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["agent", "service", "general", "support"]
+            },
+            { 
+              "nom": "Cuisinier", 
+              "grade_entree_estime": "D1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["cuisinier", "cuisine", "restauration", "cantine", "chef"]
+            },
+            { 
+              "nom": "Jardinier", 
+              "grade_entree_estime": "D1", 
+              "salaire_brut_debut_estime": null,
+              "mots_cles": ["jardinier", "jardin", "espaces verts", "paysagiste", "vegetation"]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "specialites": {
+    "education_formation": { "nom": "Education et Formation", "description": "Enseignants, formateurs et spécialistes de l'éducation" },
+    "scientifique_technique": { "nom": "Scientifique et Technique", "description": "Professionnels des sciences, technologie et ingénierie" },
+    "sante_action_sociale": { "nom": "Santé et Action Sociale", "description": "Personnel médical et travailleurs sociaux" },
+    "administratif_financier": { "nom": "Administratif et Financier", "description": "Gestionnaires, comptables et administrateurs" },
+    "securite_defense": { "nom": "Sécurité et Défense", "description": "Forces de l'ordre et personnel de sécurité" },
+    "culture_communication": { "nom": "Culture et Communication", "description": "Professionnels de la culture et des médias" }
+  }
+}

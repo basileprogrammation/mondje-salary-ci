@@ -1,0 +1,386 @@
+{
+  "description": "Liste complète des avantages de la Fonction Publique de Côte d'Ivoire",
+  "date_mise_a_jour": "2025-01-17",
+  "source": "Ministère de la Fonction Publique - Côte d'Ivoire",
+  
+  "avantages_generaux": {
+    "stabilite_emploi": {
+      "titre": "Stabilité de l'Emploi",
+      "description": "Emploi garanti et protégé par le statut de la fonction publique",
+      "details": [
+        "Titularisation après période de stage (généralement 1 an)",
+        "Protection contre le licenciement abusif",
+        "Maintien du poste sauf faute grave",
+        "Sécurité de l'emploi même en période de crise"
+      ],
+      "importance": "Très élevée",
+      "beneficiaires": "Tous les fonctionnaires titulaires"
+    },
+    
+    "pension_retraite": {
+      "titre": "Pension de Retraite Garantie",
+      "description": "Droit à une pension de retraite calculée sur le dernier traitement",
+      "details": [
+        "Retraite garantie par l'État",
+        "Calcul basé sur le dernier indice détenu",
+        "Pension de réversion pour les ayants droit",
+        "Âge de départ: 60 ans (55 ans pour certains corps)",
+        "Durée de service minimum: 15 ans pour pension complète"
+      ],
+      "taux_pension": "Jusqu'à 80% du dernier traitement",
+      "organisme": "CGRAE (Caisse Générale de Retraite des Agents de l'État)",
+      "importance": "Très élevée",
+      "beneficiaires": "Tous les fonctionnaires"
+    },
+    
+    "couverture_sante": {
+      "titre": "Couverture Maladie Universelle (CMU)",
+      "description": "Prise en charge médicale pour le fonctionnaire et sa famille",
+      "details": [
+        "Couverture du fonctionnaire et de sa famille",
+        "Consultations médicales prises en charge",
+        "Hospitalisation couverte",
+        "Médicaments subventionnés",
+        "Accès aux structures de santé publiques"
+      ],
+      "taux_couverture": "70% à 100% selon les soins",
+      "beneficiaires_famille": "Conjoint(e) et enfants à charge (jusqu'à 21 ans, 25 ans si études)",
+      "importance": "Très élevée",
+      "beneficiaires": "Tous les fonctionnaires et leur famille"
+    },
+    
+    "conges_payes": {
+      "titre": "Congés Payés Réglementaires",
+      "description": "Droit aux congés annuels payés",
+      "details": [
+        "Congé annuel: 30 jours ouvrables par an",
+        "Congé de maladie: Selon prescription médicale",
+        "Congé de maternité: 14 semaines (femmes)",
+        "Congé de paternité: 3 jours",
+        "Congés exceptionnels: mariage, décès, etc.",
+        "Possibilité de report de congés"
+      ],
+      "importance": "Élevée",
+      "beneficiaires": "Tous les fonctionnaires"
+    },
+    
+    "allocations_familiales": {
+      "titre": "Prestations Familiales",
+      "description": "Allocations pour enfants à charge",
+      "details": [
+        "5 000 FCFA par enfant et par mois",
+        "Jusqu'à 6 enfants",
+        "Versement automatique avec le salaire",
+        "Droit maintenu même en congé"
+      ],
+      "montant_mensuel": "5 000 FCFA/enfant (max 30 000 FCFA)",
+      "importance": "Moyenne",
+      "beneficiaires": "Fonctionnaires avec enfants à charge"
+    },
+    
+    "formation_continue": {
+      "titre": "Formation Continue et Perfectionnement",
+      "description": "Accès à des formations professionnelles",
+      "details": [
+        "Formations internes gratuites",
+        "Stages de perfectionnement",
+        "Bourses d'études supérieures",
+        "Formation à l'étranger possible",
+        "Congés de formation avec maintien du salaire"
+      ],
+      "organismes": ["ENA", "INFAS", "INP-HB", "Universités partenaires"],
+      "importance": "Élevée",
+      "beneficiaires": "Tous les fonctionnaires selon besoins"
+    },
+    
+    "avancement_carriere": {
+      "titre": "Évolution de Carrière Garantie",
+      "description": "Progression par ancienneté et concours internes",
+      "details": [
+        "Avancement d'échelon automatique (ancienneté)",
+        "Avancement de grade par concours professionnel",
+        "Promotion interne possible",
+        "Tableau d'avancement annuel",
+        "Accès aux concours internes"
+      ],
+      "rythme": "Avancement d'échelon tous les 12 à 36 mois selon le grade",
+      "importance": "Très élevée",
+      "beneficiaires": "Tous les fonctionnaires"
+    }
+  },
+  
+  "avantages_financiers": {
+    "indemnite_residence": {
+      "titre": "Indemnité de Résidence",
+      "description": "Complément selon la zone d'affectation",
+      "taux": "1% à 3% du salaire de base",
+      "zones": {
+        "zone_1": {"taux": "3%", "villes": ["Abidjan", "Yamoussoukro"]},
+        "zone_2": {"taux": "2%", "villes": ["Bouaké", "Daloa", "Korhogo", "San-Pédro"]},
+        "zone_3": {"taux": "1%", "villes": ["Autres localités"]}
+      }
+    },
+    
+    "primes_specifiques": {
+      "titre": "Primes et Indemnités Spécifiques",
+      "liste": [
+        {
+          "nom": "Prime Pédagogique",
+          "beneficiaires": "Enseignants",
+          "montant": "20-30% du salaire de base",
+          "frequence": "Mensuelle"
+        },
+        {
+          "nom": "Indemnité de Sujétion",
+          "beneficiaires": "Personnel de santé",
+          "montant": "Variable selon le poste",
+          "frequence": "Mensuelle"
+        },
+        {
+          "nom": "Prime de Risque",
+          "beneficiaires": "Forces de sécurité",
+          "montant": "15-25% du salaire de base",
+          "frequence": "Mensuelle"
+        },
+        {
+          "nom": "Indemnité de Fonction",
+          "beneficiaires": "Cadres dirigeants",
+          "montant": "Variable selon le poste",
+          "frequence": "Mensuelle"
+        },
+        {
+          "nom": "Prime de Recherche",
+          "beneficiaires": "Chercheurs et universitaires",
+          "montant": "Variable",
+          "frequence": "Mensuelle"
+        },
+        {
+          "nom": "Indemnité de Logement",
+          "beneficiaires": "Certains corps spécifiques",
+          "montant": "10-15% du salaire de base",
+          "frequence": "Mensuelle"
+        }
+      ]
+    },
+    
+    "indemnite_transport": {
+      "titre": "Indemnité de Transport",
+      "description": "Prise en charge partielle des frais de transport",
+      "details": [
+        "Montant forfaitaire mensuel",
+        "Variable selon la fonction et la zone",
+        "Ou mise à disposition d'un véhicule de service"
+      ],
+      "beneficiaires": "Selon le corps et la fonction"
+    },
+    
+    "13eme_mois": {
+      "titre": "Gratification de Fin d'Année",
+      "description": "Prime équivalente à un mois de salaire",
+      "montant": "Équivalent d'un mois de traitement de base",
+      "versement": "En décembre de chaque année",
+      "importance": "Élevée",
+      "beneficiaires": "Tous les fonctionnaires"
+    }
+  },
+  
+  "avantages_sociaux": {
+    "logement": {
+      "titre": "Facilités de Logement",
+      "description": "Accès au logement administratif ou aide au logement",
+      "details": [
+        "Logements de fonction pour certains postes",
+        "Accès facilité aux cités administratives",
+        "Prêts immobiliers bonifiés",
+        "Garantie de l'État pour emprunts bancaires"
+      ],
+      "beneficiaires": "Selon disponibilité et fonction"
+    },
+    
+    "prets_avances": {
+      "titre": "Prêts et Avances",
+      "description": "Accès à des prêts à conditions avantageuses",
+      "types": [
+        {
+          "nom": "Prêt Immobilier",
+          "taux": "Taux bonifié",
+          "duree_max": "25 ans",
+          "garantie": "Garantie de l'État"
+        },
+        {
+          "nom": "Avance sur Salaire",
+          "montant_max": "3 mois de salaire",
+          "remboursement": "Par retenue mensuelle"
+        },
+        {
+          "nom": "Prêt Social",
+          "montant": "Variable selon le besoin",
+          "taux": "Très bonifié ou sans intérêt"
+        }
+      ]
+    },
+    
+    "protection_juridique": {
+      "titre": "Protection Juridique",
+      "description": "Protection de l'État dans l'exercice des fonctions",
+      "details": [
+        "Protection contre les poursuites abusives",
+        "Assistance juridique de l'administration",
+        "Prise en charge des frais de justice dans certains cas",
+        "Protection contre les agressions"
+      ]
+    },
+    
+    "mutuelle_sante": {
+      "titre": "Mutuelle Santé Complémentaire",
+      "description": "Possibilité d'adhérer à une mutuelle",
+      "details": [
+        "Mutuelle des Fonctionnaires (MUGEFCI)",
+        "Complément de la CMU",
+        "Cotisations prélevées sur salaire",
+        "Remboursements supplémentaires"
+      ],
+      "beneficiaires": "Adhésion volontaire"
+    }
+  },
+  
+  "avantages_specifiques_par_corps": {
+    "enseignants": {
+      "corps": "Personnel Enseignant",
+      "avantages_specifiques": [
+        "Prime pédagogique (20-30% du salaire)",
+        "Vacances scolaires longues",
+        "Indemnité de correction d'examens",
+        "Accès prioritaire aux formations",
+        "Prime d'excellence pour les meilleurs",
+        "Matériel pédagogique fourni"
+      ]
+    },
+    
+    "personnel_sante": {
+      "corps": "Personnel de Santé",
+      "avantages_specifiques": [
+        "Indemnité de sujétion (astreintes, gardes)",
+        "Prime de risque sanitaire",
+        "Indemnité d'isolement (zones rurales)",
+        "Formation continue obligatoire payée",
+        "Équipements de protection fournis",
+        "Prime de motivation"
+      ]
+    },
+    
+    "forces_ordre": {
+      "corps": "Forces de l'Ordre et Sécurité",
+      "avantages_specifiques": [
+        "Prime de risque (15-25%)",
+        "Équipement fourni",
+        "Assurance décès invalidité",
+        "Logement de fonction prioritaire",
+        "Retraite anticipée (55 ans)",
+        "Prise en charge santé renforcée"
+      ]
+    },
+    
+    "cadres_superieurs": {
+      "corps": "Hauts Cadres et Dirigeants",
+      "avantages_specifiques": [
+        "Véhicule de fonction",
+        "Indemnité de représentation",
+        "Logement de fonction",
+        "Frais de mission pris en charge",
+        "Chauffeur (selon niveau)",
+        "Téléphone de service"
+      ]
+    }
+  },
+  
+  "avantages_post_service": {
+    "retraite": {
+      "titre": "Droits à la Retraite",
+      "details": [
+        "Pension calculée sur le dernier traitement",
+        "Taux: jusqu'à 80% du dernier salaire",
+        "Pension de réversion pour le conjoint survivant (50%)",
+        "Pension d'orphelin pour les enfants mineurs",
+        "Maintien de la CMU",
+        "Possibilité de cumul emploi-retraite (conditions)"
+      ]
+    },
+    
+    "capital_deces": {
+      "titre": "Capital Décès",
+      "description": "Versement aux ayants droit en cas de décès",
+      "montant": "Équivalent à 3 ans de traitement",
+      "beneficiaires": "Conjoint et enfants",
+      "conditions": "Être en activité ou en retraite"
+    },
+    
+    "medaille_honneur": {
+      "titre": "Distinctions et Décorations",
+      "description": "Reconnaissance du mérite et de l'ancienneté",
+      "types": [
+        "Médaille d'Honneur de la Fonction Publique",
+        "Ordre National de Côte d'Ivoire",
+        "Palmes Académiques (enseignants)",
+        "Médaille du Mérite de la Santé"
+      ],
+      "avantages": "Reconnaissance officielle et prime monétaire"
+    }
+  },
+  
+  "avantages_comparatifs": {
+    "vs_secteur_prive": {
+      "avantages_fonction_publique": [
+        "Stabilité de l'emploi garantie",
+        "Retraite garantie par l'État",
+        "Progression de carrière prévisible",
+        "Protection sociale complète",
+        "Sécurité juridique renforcée",
+        "Impossibilité de licenciement économique"
+      ],
+      "inconvenients_potentiels": [
+        "Salaires parfois inférieurs (postes qualifiés)",
+        "Évolution plus lente",
+        "Mobilité géographique imposée possible",
+        "Procédures administratives longues"
+      ]
+    }
+  },
+  
+  "conditions_generales": {
+    "acces_avantages": {
+      "condition_principale": "Être fonctionnaire titulaire",
+      "exceptions": [
+        "Certains avantages accessibles dès la période de stage",
+        "Contractuels: avantages limités selon contrat",
+        "Agents temporaires: avantages réduits"
+      ]
+    },
+    
+    "cumul_avantages": {
+      "principe": "Cumul possible de plusieurs avantages",
+      "limite": "Dans le respect de la réglementation en vigueur",
+      "controle": "Vérification par la Direction des Ressources Humaines"
+    }
+  },
+  
+  "evolution_recente": {
+    "reformes_2024_2025": [
+      "Réforme salariale en cours d'étude",
+      "Amélioration de la CMU",
+      "Déblocage des avancements indiciaires",
+      "Modernisation du dialogue social",
+      "Digitalisation des services (paiement en ligne)",
+      "Renforcement de la formation continue"
+    ]
+  },
+  
+  "notes_importantes": [
+    "Les avantages varient selon le grade, le corps et l'ancienneté",
+    "Certains avantages nécessitent des conditions d'éligibilité spécifiques",
+    "Les montants et taux peuvent évoluer selon les décisions gouvernementales",
+    "La jouissance de certains avantages peut être suspendue en cas de sanction disciplinaire",
+    "Les avantages sont cumulables sauf dispositions contraires",
+    "Informations à jour au 17 janvier 2025"
+  ]
+}

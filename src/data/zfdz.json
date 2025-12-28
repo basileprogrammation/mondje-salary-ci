@@ -1,0 +1,522 @@
+{
+  "secteur_prive": {
+    "derniere_mise_a_jour": "2025-01-01",
+    "source": "Études salariales CI 2024-2025",
+    "devise": "FCFA",
+    "secteurs": {
+      "achats_supply_chain": {
+        "nom": "Achats & Supply Chain",
+        "metiers": {
+          "acheteur_btp": {
+            "titre": "Acheteur BTP",
+            "niveaux": {
+              "junior": {
+                "experience": "< 5 ans",
+                "salaire_bas": 142000,
+                "salaire_moyen": 263000,
+                "salaire_haut": 433000
+              },
+              "confirme": {
+                "experience": "5-10 ans",
+                "salaire_bas": 250000,
+                "salaire_moyen": 420000,
+                "salaire_haut": 512000
+              },
+              "senior": {
+                "experience": "> 10 ans",
+                "salaire_bas": 400000,
+                "salaire_moyen": 638000,
+                "salaire_haut": 900000
+              }
+            }
+          },
+          "acheteur_grande_distribution": {
+            "titre": "Acheteur Grande Distribution",
+            "niveaux": {
+              "junior": {
+                "experience": "< 5 ans",
+                "salaire_bas": 210000,
+                "salaire_moyen": 365000,
+                "salaire_haut": 610000
+              },
+              "confirme": {
+                "experience": "5-10 ans",
+                "salaire_bas": 293000,
+                "salaire_moyen": 588000,
+                "salaire_haut": 850000
+              },
+              "senior": {
+                "experience": "> 10 ans",
+                "salaire_bas": 450000,
+                "salaire_moyen": 900000,
+                "salaire_haut": 1500000
+              }
+            }
+          },
+          "acheteur_industriel": {
+            "titre": "Acheteur Industriel",
+            "niveaux": {
+              "junior": {
+                "experience": "< 5 ans",
+                "salaire_bas": 226000,
+                "salaire_moyen": 488000,
+                "salaire_haut": 772000
+              },
+              "confirme": {
+                "experience": "5-10 ans",
+                "salaire_bas": 370000,
+                "salaire_moyen": 615000,
+                "salaire_haut": 1100000
+              },
+              "senior": {
+                "experience": "> 10 ans",
+                "salaire_bas": 500000,
+                "salaire_moyen": 800000,
+                "salaire_haut": 1300000
+              }
+            }
+          }
+        }
+      },
+      "informatique": {
+        "nom": "Informatique & IT",
+        "metiers": {
+          "developpeur_web": {
+            "titre": "Développeur Web",
+            "niveaux": {
+              "junior": {
+                "experience": "< 3 ans",
+                "salaire_bas": 200000,
+                "salaire_moyen": 350000,
+                "salaire_haut": 500000
+              },
+              "confirme": {
+                "experience": "3-7 ans",
+                "salaire_bas": 400000,
+                "salaire_moyen": 600000,
+                "salaire_haut": 800000
+              },
+              "senior": {
+                "experience": "> 7 ans",
+                "salaire_bas": 700000,
+                "salaire_moyen": 1000000,
+                "salaire_haut": 1500000
+              }
+            }
+          },
+          "data_analyst": {
+            "titre": "Data Analyst",
+            "niveaux": {
+              "junior": {
+                "experience": "< 3 ans",
+                "salaire_bas": 250000,
+                "salaire_moyen": 400000,
+                "salaire_haut": 550000
+              },
+              "confirme": {
+                "experience": "3-7 ans",
+                "salaire_bas": 450000,
+                "salaire_moyen": 700000,
+                "salaire_haut": 950000
+              },
+              "senior": {
+                "experience": "> 7 ans",
+                "salaire_bas": 800000,
+                "salaire_moyen": 1200000,
+                "salaire_haut": 1800000
+              }
+            }
+          },
+          "chef_projet_it": {
+            "titre": "Chef de Projet IT",
+            "niveaux": {
+              "junior": {
+                "experience": "< 5 ans",
+                "salaire_bas": 400000,
+                "salaire_moyen": 600000,
+                "salaire_haut": 800000
+              },
+              "confirme": {
+                "experience": "5-10 ans",
+                "salaire_bas": 700000,
+                "salaire_moyen": 1000000,
+                "salaire_haut": 1400000
+              },
+              "senior": {
+                "experience": "> 10 ans",
+                "salaire_bas": 1200000,
+                "salaire_moyen": 1800000,
+                "salaire_haut": 2500000
+              }
+            }
+          }
+        }
+      },
+      "finance_comptabilite": {
+        "nom": "Finance & Comptabilité",
+        "metiers": {
+          "comptable": {
+            "titre": "Comptable",
+            "niveaux": {
+              "junior": {
+                "experience": "< 3 ans",
+                "salaire_bas": 180000,
+                "salaire_moyen": 280000,
+                "salaire_haut": 400000
+              },
+              "confirme": {
+                "experience": "3-7 ans",
+                "salaire_bas": 350000,
+                "salaire_moyen": 500000,
+                "salaire_haut": 700000
+              },
+              "senior": {
+                "experience": "> 7 ans",
+                "salaire_bas": 600000,
+                "salaire_moyen": 900000,
+                "salaire_haut": 1200000
+              }
+            }
+          },
+          "controleur_gestion": {
+            "titre": "Contrôleur de Gestion",
+            "niveaux": {
+              "junior": {
+                "experience": "< 3 ans",
+                "salaire_bas": 250000,
+                "salaire_moyen": 400000,
+                "salaire_haut": 550000
+              },
+              "confirme": {
+                "experience": "3-7 ans",
+                "salaire_bas": 500000,
+                "salaire_moyen": 750000,
+                "salaire_haut": 1000000
+              },
+              "senior": {
+                "experience": "> 7 ans",
+                "salaire_bas": 900000,
+                "salaire_moyen": 1300000,
+                "salaire_haut": 1800000
+              }
+            }
+          },
+          "directeur_financier": {
+            "titre": "Directeur Financier",
+            "niveaux": {
+              "confirme": {
+                "experience": "5-10 ans",
+                "salaire_bas": 1000000,
+                "salaire_moyen": 1500000,
+                "salaire_haut": 2000000
+              },
+              "senior": {
+                "experience": "> 10 ans",
+                "salaire_bas": 1500000,
+                "salaire_moyen": 2500000,
+                "salaire_haut": 3500000
+              }
+            }
+          }
+        }
+      },
+      "ressources_humaines": {
+        "nom": "Ressources Humaines",
+        "metiers": {
+          "charge_recrutement": {
+            "titre": "Chargé de Recrutement",
+            "niveaux": {
+              "junior": {
+                "experience": "< 3 ans",
+                "salaire_bas": 180000,
+                "salaire_moyen": 300000,
+                "salaire_haut": 450000
+              },
+              "confirme": {
+                "experience": "3-7 ans",
+                "salaire_bas": 400000,
+                "salaire_moyen": 600000,
+                "salaire_haut": 800000
+              },
+              "senior": {
+                "experience": "> 7 ans",
+                "salaire_bas": 700000,
+                "salaire_moyen": 1000000,
+                "salaire_haut": 1300000
+              }
+            }
+          },
+          "responsable_rh": {
+            "titre": "Responsable RH",
+            "niveaux": {
+              "confirme": {
+                "experience": "5-10 ans",
+                "salaire_bas": 600000,
+                "salaire_moyen": 900000,
+                "salaire_haut": 1200000
+              },
+              "senior": {
+                "experience": "> 10 ans",
+                "salaire_bas": 1000000,
+                "salaire_moyen": 1500000,
+                "salaire_haut": 2000000
+              }
+            }
+          },
+          "drh": {
+            "titre": "Directeur des Ressources Humaines",
+            "niveaux": {
+              "confirme": {
+                "experience": "7-12 ans",
+                "salaire_bas": 1200000,
+                "salaire_moyen": 1800000,
+                "salaire_haut": 2500000
+              },
+              "senior": {
+                "experience": "> 12 ans",
+                "salaire_bas": 2000000,
+                "salaire_moyen": 3000000,
+                "salaire_haut": 4000000
+              }
+            }
+          }
+        }
+      },
+      "commercial_marketing": {
+        "nom": "Commercial & Marketing",
+        "metiers": {
+          "commercial": {
+            "titre": "Commercial / Chargé d'Affaires",
+            "niveaux": {
+              "junior": {
+                "experience": "< 3 ans",
+                "salaire_bas": 200000,
+                "salaire_moyen": 350000,
+                "salaire_haut": 500000,
+                "note": "Hors commissions"
+              },
+              "confirme": {
+                "experience": "3-7 ans",
+                "salaire_bas": 400000,
+                "salaire_moyen": 650000,
+                "salaire_haut": 900000,
+                "note": "Hors commissions"
+              },
+              "senior": {
+                "experience": "> 7 ans",
+                "salaire_bas": 800000,
+                "salaire_moyen": 1200000,
+                "salaire_haut": 1800000,
+                "note": "Hors commissions"
+              }
+            }
+          },
+          "charge_marketing": {
+            "titre": "Chargé de Marketing",
+            "niveaux": {
+              "junior": {
+                "experience": "< 3 ans",
+                "salaire_bas": 220000,
+                "salaire_moyen": 350000,
+                "salaire_haut": 500000
+              },
+              "confirme": {
+                "experience": "3-7 ans",
+                "salaire_bas": 450000,
+                "salaire_moyen": 700000,
+                "salaire_haut": 950000
+              },
+              "senior": {
+                "experience": "> 7 ans",
+                "salaire_bas": 850000,
+                "salaire_moyen": 1200000,
+                "salaire_haut": 1600000
+              }
+            }
+          }
+        }
+      },
+      "sante": {
+        "nom": "Santé",
+        "metiers": {
+          "infirmier": {
+            "titre": "Infirmier",
+            "niveaux": {
+              "junior": {
+                "experience": "< 3 ans",
+                "salaire_bas": 180000,
+                "salaire_moyen": 250000,
+                "salaire_haut": 350000
+              },
+              "confirme": {
+                "experience": "3-7 ans",
+                "salaire_bas": 300000,
+                "salaire_moyen": 400000,
+                "salaire_haut": 550000
+              },
+              "senior": {
+                "experience": "> 7 ans",
+                "salaire_bas": 450000,
+                "salaire_moyen": 600000,
+                "salaire_haut": 800000
+              }
+            }
+          },
+          "medecin_generaliste": {
+            "titre": "Médecin Généraliste",
+            "niveaux": {
+              "junior": {
+                "experience": "< 5 ans",
+                "salaire_bas": 500000,
+                "salaire_moyen": 800000,
+                "salaire_haut": 1200000
+              },
+              "confirme": {
+                "experience": "5-15 ans",
+                "salaire_bas": 1000000,
+                "salaire_moyen": 1500000,
+                "salaire_haut": 2200000
+              },
+              "senior": {
+                "experience": "> 15 ans",
+                "salaire_bas": 1800000,
+                "salaire_moyen": 2500000,
+                "salaire_haut": 3500000
+              }
+            }
+          },
+          "medecin_specialiste": {
+            "titre": "Médecin Spécialiste",
+            "niveaux": {
+              "confirme": {
+                "experience": "5-15 ans",
+                "salaire_bas": 1500000,
+                "salaire_moyen": 2500000,
+                "salaire_haut": 3500000
+              },
+              "senior": {
+                "experience": "> 15 ans",
+                "salaire_bas": 2500000,
+                "salaire_moyen": 4000000,
+                "salaire_haut": 6000000
+              }
+            }
+          }
+        }
+      },
+      "banque_assurance": {
+        "nom": "Banque & Assurance",
+        "metiers": {
+          "conseiller_clientele": {
+            "titre": "Conseiller Clientèle",
+            "niveaux": {
+              "junior": {
+                "experience": "< 3 ans",
+                "salaire_bas": 200000,
+                "salaire_moyen": 350000,
+                "salaire_haut": 500000
+              },
+              "confirme": {
+                "experience": "3-7 ans",
+                "salaire_bas": 450000,
+                "salaire_moyen": 650000,
+                "salaire_haut": 900000
+              },
+              "senior": {
+                "experience": "> 7 ans",
+                "salaire_bas": 800000,
+                "salaire_moyen": 1100000,
+                "salaire_haut": 1500000
+              }
+            }
+          },
+          "charge_affaires": {
+            "titre": "Chargé d'Affaires Entreprises",
+            "niveaux": {
+              "confirme": {
+                "experience": "3-10 ans",
+                "salaire_bas": 700000,
+                "salaire_moyen": 1200000,
+                "salaire_haut": 1800000
+              },
+              "senior": {
+                "experience": "> 10 ans",
+                "salaire_bas": 1500000,
+                "salaire_moyen": 2200000,
+                "salaire_haut": 3000000
+              }
+            }
+          }
+        }
+      },
+      "enseignement_prive": {
+        "nom": "Enseignement Privé",
+        "metiers": {
+          "enseignant_primaire": {
+            "titre": "Enseignant Primaire",
+            "niveaux": {
+              "junior": {
+                "experience": "< 3 ans",
+                "salaire_bas": 150000,
+                "salaire_moyen": 220000,
+                "salaire_haut": 300000
+              },
+              "confirme": {
+                "experience": "3-10 ans",
+                "salaire_bas": 250000,
+                "salaire_moyen": 350000,
+                "salaire_haut": 500000
+              },
+              "senior": {
+                "experience": "> 10 ans",
+                "salaire_bas": 400000,
+                "salaire_moyen": 550000,
+                "salaire_haut": 750000
+              }
+            }
+          },
+          "enseignant_secondaire": {
+            "titre": "Enseignant Secondaire",
+            "niveaux": {
+              "junior": {
+                "experience": "< 3 ans",
+                "salaire_bas": 180000,
+                "salaire_moyen": 280000,
+                "salaire_haut": 400000
+              },
+              "confirme": {
+                "experience": "3-10 ans",
+                "salaire_bas": 350000,
+                "salaire_moyen": 500000,
+                "salaire_haut": 700000
+              },
+              "senior": {
+                "experience": "> 10 ans",
+                "salaire_bas": 550000,
+                "salaire_moyen": 750000,
+                "salaire_haut": 1000000
+              }
+            }
+          },
+          "enseignant_superieur": {
+            "titre": "Enseignant Supérieur",
+            "niveaux": {
+              "confirme": {
+                "experience": "5-15 ans",
+                "salaire_bas": 500000,
+                "salaire_moyen": 800000,
+                "salaire_haut": 1200000
+              },
+              "senior": {
+                "experience": "> 15 ans",
+                "salaire_bas": 1000000,
+                "salaire_moyen": 1500000,
+                "salaire_haut": 2200000
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

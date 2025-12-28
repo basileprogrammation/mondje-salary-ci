@@ -100,8 +100,6 @@ Tous les fichiers sont en JSON pur et peuvent être lus directement par :
 ## 📞 Contact
 
 Pour toute question ou mise à jour :
-- **Email :** contact@bahn.ci
-- **Site :** https://bahn.app
 - **Numéro vert (Concours) :** 1364
 
 ## ⚠️ Avertissement
@@ -112,7 +110,7 @@ Ministère de la Fonction Publique de Côte d'Ivoire.
 
 ## 📜 Licence
 
-© 2025 BAHN - Better African Higher Network
+© 2025 Mondjè - Estimation de slaire en CI
 Ces données sont destinées à un usage personnel et éducatif.
 
 ---

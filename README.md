@@ -1,4 +1,4 @@
-# BAHN Salary Estimator - Côte d'Ivoire 🇨🇮
+# Mondjè Salary Estimator - Côte d'Ivoire 🇨🇮
 
 Plateforme d'estimation de salaire pour la Côte d'Ivoire avec recommandations de concours et formations.
 
@@ -38,7 +38,7 @@ npm run build
 ### Option 3: GitHub Pages
 1. Ajouter dans package.json:
    ```json
-   "homepage": "https://votre-username.github.io/bahn-salary-estimator"
+   "homepage": "https://votre-username.github.io/
    ```
 2. Installer gh-pages:
    ```bash
@@ -108,7 +108,7 @@ bahn-salary-estimator/
    - Estimation de salaire animée
    - 6 concours/opportunités (cliquables)
    - 6 formations (cliquables avec détails)
-   - CTA vers BAHN
+   - CTA vers Mondjè
 
 ## 💡 Personnalisation
 
@@ -138,8 +138,8 @@ const formations = [ ... ]
 
 ## 🤝 Support
 
-Pour toute question: contact@bahn.ci
+
 
 ## 📄 Licence
 
-© 2025 BAHN - Better African Higher Network
+© 2025 Mondje - Estimation de slaire en CI

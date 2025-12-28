@@ -479,7 +479,7 @@ export default function ResultsPage() {
     <div className="absolute inset-0  from-emerald-500 to-amber-500 rounded-3xl blur-xl opacity-75 animate-pulse"></div>
     <div className="relative  rounded-3xl flex items-center justify-center  overflow-hidden px-16 py-10">
       <img 
-        src="/monlogo.png" 
+        src="/monlogo.PNG" 
         alt="Mondje Logo" 
         className="h-24 w-auto object-contain"
       />
@@ -572,7 +572,7 @@ export default function ResultsPage() {
             {/* Logo + Brand */}
             <div className="flex items-center gap-3 sm:gap-4 min-w-0">
                <img 
-                src="/monlogo.png" 
+                src="/monlogo.PNG" 
                 alt="Mondje - Estimation Salariale"
                 className="h-12 sm:h-10 w-auto cursor-pointer hover:opacity-90 transition"
                 onClick={() => navigate("/")}

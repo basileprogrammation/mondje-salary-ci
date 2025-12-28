@@ -522,7 +522,7 @@ export default function EstimatorPage() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3 sm:gap-4">
               <img 
-                src="/monlogo.png" 
+                src="/monlogo.PNG" 
                 alt="Mondje - Estimation Salariale"
                 className="h-12 sm:h-10 w-auto cursor-pointer hover:opacity-90 transition"
                 onClick={() => navigate("/")}

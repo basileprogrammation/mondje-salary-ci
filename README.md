@@ -142,4 +142,4 @@ const formations = [ ... ]
 
 ## 📄 Licence
 
-© 2025 Mondje - Estimation de slaire en CI
+© 2025 Bahn - Estimation de slaire en CI

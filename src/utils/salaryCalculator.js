@@ -1,5 +1,5 @@
 /**
- * MONDJE Salary Calculator - Version Robuste (2025)
+ * Bahn Salary Calculator - Version Robuste (2025)
  * Compatible JSON:
  * - grillesPubliques.grilles_salariales[categorie].grades[grade]
  * - salairesPrives.secteur_prive.secteurs[secteurActivite].sous_domaines[sousDomaine].metiers[metier].niveaux[niveau]

@@ -16,11 +16,28 @@ export default function ViralCardModal({
 
   return (
     <div className="fixed inset-0 z-[100] bg-black/60 flex items-end sm:items-center justify-center p-4">
-      <div className="bg-gradient-to-br from-green-600 to-orange-500 w-full max-w-sm rounded-2xl shadow-2xl text-white p-4 animate-fade-in">
-        
+      <div 
+        className="w-full max-w-sm rounded-2xl shadow-2xl text-white p-4 animate-fade-in"
+        style={{
+          background: 'linear-gradient(135deg, #3D9B9B 0%, #2D7A7A 60%, #F4C430 100%)'
+        }}
+      >
         {/* Header */}
         <div className="flex justify-between items-center mb-2">
-          <div className="text-sm font-bold">Carte Mondje 🇨🇮</div>
+          <div className="flex items-center gap-2">
+            <div 
+              className="w-6 h-6 rounded-lg flex items-center justify-center"
+              style={{ backgroundColor: '#F4C430' }}
+            >
+              <span 
+                className="font-black text-sm"
+                style={{ color: '#2D7A7A' }}
+              >
+                B
+              </span>
+            </div>
+            <div className="text-sm font-bold">Carte BAHN 🇨🇮</div>
+          </div>
           <button onClick={onClose}>
             <X size={18} />
           </button>
@@ -38,7 +55,7 @@ export default function ViralCardModal({
             <p className="text-xs">FCFA / mois</p>
           </div>
 
-          <p className="italic text-sm">“{message}”</p>
+          <p className="italic text-sm">"{message}"</p>
         </div>
 
         {/* Actions */}

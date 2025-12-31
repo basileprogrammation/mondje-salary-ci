@@ -1,5 +1,3 @@
-// src/components/BAHNPromoSection.jsx
-
 import React, { useState } from 'react';
 
 // ========== CONSTANTES ==========
@@ -144,25 +142,26 @@ const BAHNPromoSection = () => {
       {/* ========== SECTION FEATURES ========== */}
       <section className="py-12 sm:py-16 md:py-20 px-4">
         <div className="max-w-6xl mx-auto">
-          {/* Header */}
+          {/* Header - VERSION 6 */}
           <div className="text-center mb-8 sm:mb-10 md:mb-12">
             <span 
               className="inline-block px-4 py-2 rounded-full text-xs sm:text-sm font-bold mb-3 sm:mb-4"
               style={{ 
-                backgroundColor: `${COLORS.teal.primary}1A`,
-                color: COLORS.teal.primary 
+                backgroundColor: `${COLORS.gold.primary}33`,
+                color: COLORS.gold.dark
               }}
             >
-              💡 LE SAVIEZ-VOUS ?
+              ⚡ FINI LA GALÈRE
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900 mb-3 sm:mb-4 px-4">
-              BAHN, c'est bien plus qu'un simulateur de salaire
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900 mb-3 sm:mb-4 px-4 leading-tight">
+              Plus besoin de fouiller 50 sites pour trouver une opportunité
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl mx-auto px-4 font-medium">
-              Ton conseiller IA pour{' '}
+            <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl mx-auto px-4 font-medium leading-relaxed">
+              L'IA BAHN{' '}
               <span className="font-black" style={{ color: COLORS.teal.primary }}>
-                TOUTE ta carrière
+                centralise tout
               </span>
+              {' '}: bourses, formations, jobs, concours
             </p>
           </div>
 

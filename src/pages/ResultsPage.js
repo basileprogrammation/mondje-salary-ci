@@ -3,6 +3,8 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { incrementStat, getStats } from "../utils/mondjeStats";
+import { getSalairesPublic, getSalairesPrive } from '../services/salaryService';
+import { calculateSalary } from "../utils/salaryCalculator";
 import BAHNPromoSection from '../components/BAHNPromoSection';           
 import GradeExplanationModal from '../components/GradeExplanationModal';
 import {
@@ -11,19 +13,14 @@ import {
   Landmark,
   CheckCircle2,
   Star,
-  Sparkles,
-  MessageCircle,
   Home,
   Share2,
 } from "lucide-react";
 
-import { calculerSalaire, getAvantagesSecteur } from "../utils/salaryCalculator";
 import concours from "../data/concours.json";
-import salairesPrives from "../data/salaires-secteur-prive.json";
-
 import ViralCardModal from "../components/ViralCard";
 
-// ========== PALETTE DE COULEURS BAHN ==========
+// ========== PALETTE BAHN ==========
 const COLORS = {
   teal: {
     primary: '#3D9B9B',
@@ -60,17 +57,6 @@ function getRandomMessageBySalary(avg) {
     "Je vais négocier avec la foi seulement 🙏",
     "Même mon chargeur coûte plus cher 😭🔌",
     "Le transport va finir ça en 2 jours 🚶‍♂️💨",
-    "On appelle ça salaire ou bien c'est mon argent de poche ? 🤔",
-    "C'est pour mon loyer ou bien c'est pour acheter pain ? 🥖",
-    "Seigneur, multiplie ça comme les pains et les poissons 🐟",
-    "Mon banquier a supprimé mon numéro 📵😭",
-    "Je vais manger à la maison jusqu'en 2028 🏠🍚",
-    "Le riz gras sans viande est mon meilleur ami 🥘",
-    "À ce prix-là, je travaille en mode avion ✈️",
-    "Mon CV vaut mieux que ça, mais le ventre a faim 😫",
-    "C'est un salaire de stagiaire qui a duré 😭",
-    "Je vais demander crédit avant même de commencer 💳",
-    "Même le mendiant va me donner jeton 🪙"
   ];
 
   const mid = [
@@ -78,39 +64,13 @@ function getRandomMessageBySalary(avg) {
     "Là ça commence à respirer 😌",
     "Garba + jus… on tient le mois 😄",
     "Je peux au moins dire 'ça va' sans mentir 😅",
-    "Le proprio ne va plus me chasser ce mois-ci 🏠🔑",
-    "On quitte dans le bas de gamme, on arrive au milieu 📈",
-    "Je peux enfin commander Alloco avec poisson 🐟",
-    "Mon compte en banque a retrouvé le sourire 😊",
-    "On n'est pas riche, mais on n'est plus maudit 🙏",
-    "Je peux sortir au moins un samedi soir sans stresser 🕺",
-    "C'est le début de la gloire, on continue de bosser 💼",
-    "Le banquier a commencé à répondre à mes messages 📱",
-    "Ça paye les factures et il reste un peu pour le 'au cas où' 💸",
-    "On peut enfin parler de 'projets' 🏗️",
-    "Je vais changer ma photo de profil, je brille un peu ✨",
-    "C'est propre, mais on vise le sommet 🏔️",
-    "On est dans le game maintenant 🎮"
   ];
 
   const high = [
     "Mon banquier me respecte maintenant 😭🔥",
     "À ce niveau, même le DG dit bonjour 😎",
     "C'est moi qui vais recruter maintenant 😂",
-    "Je vais mettre 'Disponible' en mode 'Cher' 😤💼",
-    "Le virement fait un bruit de moteur de Ferrari 🏎️💨",
     "Ma carte bancaire est devenue lourde dans ma poche 💳💎",
-    "Je ne regarde plus le prix à gauche sur le menu 🥩🍷",
-    "C'est le salaire de quelqu'un qui a déjà fini de souffrir 🥂",
-    "Même mes ex reviennent me demander pardon 😭",
-    "On appelle ça 'Argent de retraités heureux' 🏝️",
-    "Le fisc commence à me surveiller, c'est bon signe 👮‍♂️",
-    "Je vais acheter le quartier, restez là 🏗️🏢",
-    "Mon nom est devenu doux dans l'oreille des gens 🎶",
-    "Je ne marche plus, je plane ☁️🚀",
-    "C'est le niveau où on paye la dot sans réfléchir 💍",
-    "Le succès ne fait plus de bruit, il fait des virements 💰",
-    "Si je travaille encore, c'est par passion hein ! 👑"
   ];
 
   if ((Number(avg) || 0) < 300000) return low[Math.floor(Math.random() * low.length)];
@@ -118,24 +78,69 @@ function getRandomMessageBySalary(avg) {
   return high[Math.floor(Math.random() * high.length)];
 }
 
+/** Avantages selon secteur */
+function getAvantagesSecteur(sector) {
+  if (sector === 'public') {
+    return [
+      'Sécurité de l\'emploi',
+      'Avancement automatique',
+      'Retraite garantie',
+      'Mutuelle santé',
+      'Congés réglementés',
+      'Formation continue'
+    ];
+  }
+  return [
+    'Primes variables',
+    'Formation continue',
+    'Évolution rapide',
+    'Avantages sociaux',
+    'Bonus performance',
+    'Mobilité interne'
+  ];
+}
+
+const AnimatedNumber = ({ value, duration = 1500, shouldAnimate }) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!shouldAnimate) {
+      setCount(0);
+      return;
+    }
+
+    let start = 0;
+    const end = Number(value) || 0;
+    const increment = end / (duration / 16);
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= end) {
+        setCount(end);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, 16);
+
+    return () => clearInterval(timer);
+  }, [value, duration, shouldAnimate]);
+
+  return <span>{Number(count).toLocaleString("fr-FR")}</span>;
+};
+
 export default function ResultsPage() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const state = location.state || {};
-  const sector = state.sector;
+  const formData = location.state || {};
 
-  // États SECTEUR PUBLIC
-  const metierPublic = state.metier;
-  const categoriePublic = state.categorie;
-  const gradePublic = state.grade;
+  // ✅ ÉTATS FIRESTORE
+  const [corpsMetiersData, setCorpsMetiersData] = useState(null);
+  const [salairesPriveData, setSalairesPriveData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [result, setResult] = useState(null);
 
-  // États SECTEUR PRIVÉ
-  const secteurActivite = state.secteur_activite;
-  const sousDomaine = state.sous_domaine;
-  const metierPriveKey = state.metier;
-  const niveau = state.niveau;
-
+  // États UI
   const [animateStats, setAnimateStats] = useState(false);
   const [isAnalyzing, setIsAnalyzing] = useState(true);
   const [analysisProgress, setAnalysisProgress] = useState(0);
@@ -143,39 +148,56 @@ export default function ResultsPage() {
   const [viralOpen, setViralOpen] = useState(false);
   const [viralMessage, setViralMessage] = useState("😄");
   const [showGradeModal, setShowGradeModal] = useState(false);
-  const isPublic = sector === "public";
   const [globalStats, setGlobalStats] = useState({ visits: 0, estimations: 0, viralCards: 0 });
+
+  const isPublic = formData.sector === "public";
+
+  // ✅ CHARGER LES DONNÉES FIRESTORE
+  useEffect(() => {
+    async function loadData() {
+      try {
+        setLoading(true);
+        
+        const [publicData, priveData, stats] = await Promise.all([
+          getSalairesPublic(),
+          getSalairesPrive(),
+          getStats()
+        ]);
+        
+        setCorpsMetiersData(publicData);
+        setSalairesPriveData(priveData);
+        setGlobalStats(stats);
+        
+        console.log('✅ Données chargées pour calcul');
+      } catch (err) {
+        console.error('❌ Erreur chargement données:', err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    
+    loadData();
+  }, []);
+
+  // ✅ CALCULER LE SALAIRE UNE FOIS LES DONNÉES CHARGÉES
+  useEffect(() => {
+    if (!loading && corpsMetiersData && salairesPriveData && formData) {
+      const calculatedResult = calculateSalary(formData, corpsMetiersData, salairesPriveData);
+      setResult(calculatedResult);
+      setViralMessage(getRandomMessageBySalary(calculatedResult.salaireBrut || 0));
+    }
+  }, [loading, corpsMetiersData, salairesPriveData, formData]);
 
   // Validation et redirection
   useEffect(() => {
-    if (!sector) return navigate("/", { replace: true });
-
-    if (sector === "public" && (!categoriePublic || !gradePublic)) {
-      return navigate("/", { replace: true });
+    if (!formData.sector) {
+      navigate("/", { replace: true });
     }
+  }, [formData, navigate]);
 
-    if (sector === "private" && (!secteurActivite || !sousDomaine || !metierPriveKey || !niveau)) {
-      console.warn('❌ Données manquantes pour le secteur privé:', {
-        secteurActivite,
-        sousDomaine,
-        metierPriveKey,
-        niveau
-      });
-      return navigate("/", { replace: true });
-    }
-  }, [sector, categoriePublic, gradePublic, secteurActivite, sousDomaine, metierPriveKey, niveau, navigate]);
-
+  // Animation stats
   useEffect(() => {
     const t = setTimeout(() => setAnimateStats(true), 300);
-    
-    incrementStat('visits').catch((error) => {
-      console.error('❌ Impossible d\'incrémenter les visites:', error);
-    });
-    
-    getStats().then(setGlobalStats).catch((error) => {
-      console.error('❌ Impossible de récupérer les stats:', error);
-    });
-    
     return () => clearTimeout(t);
   }, []);
 
@@ -183,143 +205,81 @@ export default function ResultsPage() {
   useEffect(() => {
     if (!isAnalyzing) return;
 
-    const steps = [
-      { duration: 600, message: "Analyse du secteur..." },
-      { duration: 800, message: "Calcul des grilles salariales..." },
-      { duration: 700, message: "Comparaison avec le marché..." },
-      { duration: 600, message: "Génération des recommandations..." },
-    ];
-
-    let currentStep = 0;
-    let progress = 0;
-
-    const interval = setInterval(() => {
-      progress += 2;
-      setAnalysisProgress(progress);
-
-      const stepIndex = Math.floor((progress / 100) * steps.length);
-      if (stepIndex !== currentStep && stepIndex < steps.length) {
-        currentStep = stepIndex;
-        setAnalysisStep(stepIndex);
-      }
-
-      if (progress >= 100) {
-        clearInterval(interval);
-        setTimeout(() => {
-          setIsAnalyzing(false);
-        }, 300);
-      }
+    const progressInterval = setInterval(() => {
+      setAnalysisProgress(prev => {
+        if (prev >= 100) {
+          clearInterval(progressInterval);
+          setTimeout(() => {
+            setIsAnalyzing(false);
+            setAnimateStats(true);
+          }, 300);
+          return 100;
+        }
+        return prev + 2;
+      });
     }, 30);
 
-    return () => clearInterval(interval);
+    const stepInterval = setInterval(() => {
+      setAnalysisStep(prev => (prev < 3 ? prev + 1 : prev));
+    }, 800);
+
+    return () => {
+      clearInterval(progressInterval);
+      clearInterval(stepInterval);
+    };
   }, [isAnalyzing]);
 
-  // Récupération du label du métier privé
-  const metierPriveLabel = useMemo(() => {
-    if (sector !== 'private') return null;
-    const titre = salairesPrives?.secteur_prive?.secteurs?.[secteurActivite]?.sous_domaines?.[sousDomaine]?.metiers?.[metierPriveKey]?.titre;
-    return titre || "Métier";
-  }, [sector, secteurActivite, sousDomaine, metierPriveKey]);
+  // ✅ DÉPLACER useMemo AVANT LES RETURNS CONDITIONNELS
+  const jobLabel = useMemo(() => {
+    if (!result) return 'Métier';
+    return isPublic ? (result.metier || 'Métier') : (result.metierTitre || 'Métier');
+  }, [result, isPublic]);
 
-  // Récupération du label du secteur
   const secteurLabel = useMemo(() => {
-    if (sector !== 'private') return null;
-    return salairesPrives?.secteur_prive?.secteurs?.[secteurActivite]?.nom || "Secteur privé";
-  }, [sector, secteurActivite]);
+    if (!result || isPublic) return '';
+    return result.secteurNom || '';
+  }, [result, isPublic]);
 
-  const jobLabel = isPublic ? (metierPublic || "Métier") : metierPriveLabel;
+  const gradePublic = useMemo(() => result?.grade || '', [result]);
+  const niveau = useMemo(() => result?.niveau || '', [result]);
 
-  // Calcul du salaire
-  const salaryResult = useMemo(() => {
-    if (sector === "public") {
-      return calculerSalaire({
-        sector: "public",
-        metier: metierPublic || "",
-        categorie: categoriePublic,
-        grade: gradePublic,
-      });
-    }
+  const minSalary = useMemo(() => (result?.salaireBrut || 0) * 0.9, [result]);
+  const maxSalary = useMemo(() => (result?.salaireBrut || 0) * 1.1, [result]);
+  const avgSalary = useMemo(() => result?.salaireBrut || 0, [result]);
 
-    if (sector === "private") {
-      return calculerSalaire({
-        sector: "private",
-        secteur_activite: secteurActivite,
-        sous_domaine: sousDomaine,
-        metier: metierPriveKey,
-        niveau,
-      });
-    }
-
-    return { min: 200000, max: 600000, avg: 400000, categorie: "categorie_B", grade: "B1" };
-  }, [sector, metierPublic, categoriePublic, gradePublic, secteurActivite, sousDomaine, metierPriveKey, niveau]);
-
-  const minSalary = Number(salaryResult?.min) || 0;
-  const maxSalary = Number(salaryResult?.max) || 0;
-  const avgSalary = Number(salaryResult?.avg) || 0;
-
-  const categorieInfo = String(salaryResult?.categorie || "categorie_B");
-  const gradeInfo = String(salaryResult?.grade || (isPublic ? gradePublic : niveau));
+  const benefits = useMemo(() => getAvantagesSecteur(formData.sector), [formData.sector]);
 
   // Concours
   const competitions = useMemo(() => {
-    const cat = categorieInfo.replace("categorie_", "");
-    const key = `categorie_${cat.toUpperCase()}`;
-
+    if (!isPublic || !result) return [];
+    
+    const cat = result.categorieKey || 'categorie_B';
+    const key = cat.replace('categorie_', 'categorie_').toUpperCase();
+    
     let listeConcours = concours?.concours_par_categorie?.[key] || [];
     const jobLower = String(jobLabel || "").toLowerCase();
 
-    if (jobLower.includes("enseignant") || jobLower.includes("professeur") || jobLower.includes("instituteur")) {
+    if (jobLower.includes("enseignant") || jobLower.includes("professeur")) {
       const concoursEduc = concours?.concours_education?.concours || [];
       listeConcours = [...listeConcours, ...concoursEduc.slice(0, 2)];
     }
 
-    if (jobLower.includes("infirmier") || jobLower.includes("santé") || jobLower.includes("médecin")) {
+    if (jobLower.includes("infirmier") || jobLower.includes("santé")) {
       const concoursSante = concours?.concours_sante?.concours || [];
       listeConcours = [...listeConcours, ...concoursSante.slice(0, 2)];
     }
 
-    return (listeConcours || []).slice(0, 6).map((c) => ({
+    return listeConcours.slice(0, 6).map((c) => ({
       title: c.intitule || c.title || "Concours",
       deadline: c.deadline || "À venir",
-      type: c.type || (sector === "public" ? "Fonction Publique" : "Secteur Privé"),
-      positions: c.nombre_postes ? `${c.nombre_postes} postes` : (c.positions || "—"),
+      type: c.type || "Fonction Publique",
+      positions: c.nombre_postes ? `${c.nombre_postes} postes` : "—",
       level: c.diplome_requis || c.level || "Selon diplôme",
-      icon: sector === "public" ? Landmark : Building2,
-      description: c.description || `Concours ${c.intitule || c.title || ""}`,
+      description: c.description || `Concours ${c.intitule || ""}`,
       link: c.link || "#",
       status: c.status || "Inscriptions ouvertes",
     }));
-  }, [categorieInfo, jobLabel, sector]);
-
-  const benefits = useMemo(() => getAvantagesSecteur(sector), [sector]);
-
-  const AnimatedNumber = ({ value, duration = 1500, shouldAnimate }) => {
-    const [count, setCount] = useState(0);
-
-    useEffect(() => {
-      if (!shouldAnimate) {
-        setCount(0);
-        return;
-      }
-
-      let start = 0;
-      const end = Number(value) || 0;
-      const increment = end / (duration / 16);
-      const timer = setInterval(() => {
-        start += increment;
-        if (start >= end) {
-          setCount(end);
-          clearInterval(timer);
-        } else {
-          setCount(Math.floor(start));
-        }
-      }, 16);
-
-      return () => clearInterval(timer);
-    }, [value, duration, shouldAnimate]);
-
-    return <span>{Number(count).toLocaleString("fr-FR")}</span>;
-  };
+  }, [result, jobLabel, isPublic]);
 
   const openViral = () => {
     setViralMessage(getRandomMessageBySalary(avgSalary));
@@ -328,6 +288,25 @@ export default function ResultsPage() {
       console.error("❌ Impossible d'incrémenter viralCards:", error);
     });
   };
+
+  // ✅ ÉCRAN DE CHARGEMENT (APRÈS TOUS LES HOOKS)
+  if (loading || !result) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-teal-50 via-white to-amber-50 flex items-center justify-center">
+        <div className="text-center">
+          <div 
+            className="w-16 h-16 border-4 border-t-transparent rounded-full animate-spin mx-auto mb-4"
+            style={{ 
+              borderColor: COLORS.teal.primary,
+              borderTopColor: 'transparent'
+            }}
+          />
+          <p className="text-gray-700 font-semibold text-lg">Calcul de votre salaire...</p>
+          <p className="text-gray-500 text-sm mt-2">Analyse des données Firestore</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-teal-50 via-white to-amber-50 relative overflow-hidden">
@@ -493,7 +472,6 @@ export default function ResultsPage() {
               className="flex items-center gap-2 sm:gap-3 cursor-pointer group"
               onClick={() => window.location.href = 'https://bahn-edu.com'}
             >
-              {/* Badge B */}
               <div 
                 className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform"
                 style={{ backgroundColor: COLORS.gold.primary }}
@@ -506,7 +484,6 @@ export default function ResultsPage() {
                 </span>
               </div>
               
-              {/* Texte BAHN */}
               <div className="flex items-center gap-2">
                 <div 
                   className="text-xl sm:text-2xl md:text-3xl font-black"
@@ -544,7 +521,7 @@ export default function ResultsPage() {
                 }}
               >
                 <Share2 size={16} className="group-hover:rotate-12 transition-transform" />
-                <span className="hidden sm:inline">Ma carte </span>
+                <span className="hidden sm:inline">Ma carte</span>
               </button>
             </div>
           </div>
@@ -572,7 +549,7 @@ export default function ResultsPage() {
       <main className="relative max-w-6xl mx-auto px-4 py-8 sm:py-12 space-y-8">
         {/* Salary Card */}
         <div
-          className={`relative overflow-hidden rounded-3xl sm:rounded-[2rem] shadow-2xl p-6 sm:p-10 lg:p-12 text-white border-2 transform hover:shadow-3xl transition-shadow duration-500`}
+          className="relative overflow-hidden rounded-3xl sm:rounded-[2rem] shadow-2xl p-6 sm:p-10 lg:p-12 text-white border-2 transform hover:shadow-3xl transition-shadow duration-500"
           style={{
             background: isPublic
               ? `linear-gradient(135deg, ${COLORS.teal.primary}, ${COLORS.teal.dark})`
@@ -679,13 +656,13 @@ export default function ResultsPage() {
             <div className="bg-black/20 border border-white/20 rounded-2xl p-5 backdrop-blur-sm">
               <div className="text-xs text-white/90 mb-2 font-semibold">🎭 Phrase du jour</div>
               <div className="text-base sm:text-lg font-bold">
-                "{getRandomMessageBySalary(avgSalary)}"
+                "{viralMessage}"
               </div>
             </div>
           </div>
         </div>
 
-        {/* Bouton comprendre les grades (seulement si fonction publique) */}
+        {/* Bouton comprendre les grades */}
         {isPublic && (
           <div className="text-center">
             <button
@@ -701,20 +678,15 @@ export default function ResultsPage() {
             </button>
           </div>
         )}
-
-
       </main>
 
-      {/* Sections BAHN */}
       <BAHNPromoSection />
 
-      {/* Modal Grades */}
       <GradeExplanationModal 
         isOpen={showGradeModal}
         onClose={() => setShowGradeModal(false)}
       />
 
-      {/* Modal Viral */}
       <ViralCardModal
         open={viralOpen}
         onClose={() => setViralOpen(false)}
@@ -727,29 +699,10 @@ export default function ResultsPage() {
         onRandomizeMessage={() => setViralMessage(getRandomMessageBySalary(avgSalary))}
       />
 
-      {/* Animations CSS */}
       <style jsx>{`
         @keyframes fade-in {
           from { opacity: 0; }
           to { opacity: 1; }
-        }
-        @keyframes slide-up {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        @keyframes bounce-slow {
-          0%, 100% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(-10px);
-          }
         }
         .animate-bounce-slow {
           animation: bounce-slow 2s ease-in-out infinite;

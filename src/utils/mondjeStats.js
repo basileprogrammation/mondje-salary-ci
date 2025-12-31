@@ -1,5 +1,5 @@
 // src/utils/mondjeStats.js
-import { db } from "../firebase";
+import { db } from "../config/firebase";
 import { doc, getDoc, setDoc, updateDoc, increment } from "firebase/firestore";
 
 const statsRef = doc(db, "stats", "global");

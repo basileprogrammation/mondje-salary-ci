@@ -3,17 +3,17 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search, Briefcase, Building2, X, Sparkles, TrendingUp, ChevronDown } from 'lucide-react';
-import { incrementStat } from '../utils/mondjeStats';
 
 import CustomSelect from '../components/Customselect.js';
-import salairesPriveData from '../data/salaires-secteur-prive.json';
-import corpsMetiersData from '../data/corps-metiers.json';
 import BAHNPromoSection from '../components/BAHNPromoSection';
 import GradeExplanationModal from '../components/GradeExplanationModal';
 
-// ========== PALETTE DE COULEURS BAHN ==========
+// ✅ FIRESTORE
+import { getSalairesPublic, getSalairesPrive } from '../services/salaryService';
+import { incrementStat } from '../utils/mondjeStats';
+
+// ========== PALETTE BAHN ==========
 const COLORS = {
-  // Couleurs principales BAHN
   teal: {
     primary: '#3D9B9B',
     dark: '#2D7A7A',
@@ -26,7 +26,6 @@ const COLORS = {
     dark: '#C29D26',
     light: '#FEF9E6',
   },
-  // Couleurs d'état
   gray: {
     50: '#F9FAFB',
     100: '#F3F4F6',
@@ -40,7 +39,13 @@ const COLORS = {
 export default function EstimatorPage() {
   const navigate = useNavigate();
 
-  // ========== ÉTATS ==========
+  // ========== ÉTATS FIRESTORE ==========
+  const [corpsMetiersData, setCorpsMetiersData] = useState({ categories: {} });
+  const [salairesPriveData, setSalairesPriveData] = useState({ secteur_prive: { secteurs: {} } });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // États communs
   const [sector, setSector] = useState('');
   const [showGradeModal, setShowGradeModal] = useState(false);
   
@@ -56,7 +61,41 @@ export default function EstimatorPage() {
   const [selectedMetierPrive, setSelectedMetierPrive] = useState('');
   const [selectedNiveauPrive, setSelectedNiveauPrive] = useState('');
 
-  // ========== EFFECTS ==========
+  // ✅ CHARGER LES DONNÉES DEPUIS FIRESTORE
+  useEffect(() => {
+    async function loadData() {
+      try {
+        setLoading(true);
+        setError(null);
+        
+        const [publicData, priveData] = await Promise.all([
+          getSalairesPublic(),
+          getSalairesPrive()
+        ]);
+        
+        setCorpsMetiersData(publicData);
+        setSalairesPriveData(priveData);
+        
+        console.log('✅ Données chargées depuis Firestore');
+      } catch (err) {
+        console.error('❌ Erreur chargement données:', err);
+        setError('Impossible de charger les données. Veuillez rafraîchir la page.');
+      } finally {
+        setLoading(false);
+      }
+    }
+    
+    loadData();
+  }, []);
+
+  // ✅ COMPTER LES VISITES
+  useEffect(() => {
+    incrementStat('visits').catch(err => {
+      console.error('Erreur stats visite:', err);
+    });
+  }, []);
+
+  // Fermer suggestions au clic extérieur
   useEffect(() => {
     const onClick = () => setShowSuggestionsPublic(false);
     window.addEventListener('click', onClick);
@@ -65,87 +104,126 @@ export default function EstimatorPage() {
 
   // ========== DONNÉES SECTEUR PUBLIC ==========
   const metiersPublicList = useMemo(() => {
-    const metiers = [];
-    const categories = corpsMetiersData?.categories || {};
-    Object.entries(categories).forEach(([catKey, categorie]) => {
-      (categorie?.corps_metiers || []).forEach((domaine) => {
-        (domaine?.metiers || []).forEach((metier) => {
-          const nomMetier = typeof metier === 'string' ? metier : metier?.nom;
-          if (nomMetier) {
-            metiers.push({
-              nom: nomMetier,
-              domaine: domaine.domaine,
-              categorie: categorie.nom,
-              categorieKey: catKey,
-              grade_entree: metier?.grade_entree_estime,
-              salaire_brut_debut: metier?.salaire_brut_debut_estime,
-              mots_cles: metier?.mots_cles || []
+    const list = [];
+    Object.entries(corpsMetiersData.categories || {}).forEach(([catKey, catData]) => {
+      if (catData.corps_metiers) {
+        catData.corps_metiers.forEach(corps => {
+          if (corps.metiers) {
+            corps.metiers.forEach(metier => {
+              list.push({
+                nom: typeof metier === 'string' ? metier : metier.nom,
+                categorieKey: catKey,
+                categorie: catData.nom,
+                domaine: corps.domaine,
+                mots_cles: metier.mots_cles || []
+              });
             });
           }
         });
-      });
+      }
     });
-    return metiers;
-  }, []);
+    return list;
+  }, [corpsMetiersData]);
 
   const suggestionsMetiersPublic = useMemo(() => {
     if (!searchMetierPublic || searchMetierPublic.length < 2) return [];
     const search = searchMetierPublic.toLowerCase();
-    return metiersPublicList
-      .filter((m) => {
-        if (m.nom.toLowerCase().includes(search)) return true;
-        if (m.mots_cles && Array.isArray(m.mots_cles)) {
-          return m.mots_cles.some(mc => mc.toLowerCase().includes(search));
-        }
-        return false;
-      })
-      .slice(0, 8);
+    return metiersPublicList.filter(m => {
+      if (m.nom.toLowerCase().includes(search)) return true;
+      if (m.mots_cles && Array.isArray(m.mots_cles)) {
+        return m.mots_cles.some(mc => mc.toLowerCase().includes(search));
+      }
+      return false;
+    }).slice(0, 8);
   }, [searchMetierPublic, metiersPublicList]);
 
   const gradesPublic = useMemo(() => {
-    if (!categoriePublic) return [];
-    return corpsMetiersData?.categories?.[categoriePublic]?.grades || [];
-  }, [categoriePublic]);
+    if (!categoriePublic || !corpsMetiersData.categories) return [];
+    return corpsMetiersData.categories[categoriePublic]?.grades || [];
+  }, [categoriePublic, corpsMetiersData]);
 
   // ========== DONNÉES SECTEUR PRIVÉ ==========
-  const secteursPriveList = useMemo(() => {
-    const secteurs = salairesPriveData?.secteur_prive?.secteurs || {};
-    return Object.entries(secteurs)
-      .map(([key, data]) => ({ key, nom: data.nom }))
-      .sort((a, b) => a.nom.localeCompare(b.nom));
-  }, []);
+  const secteurs = useMemo(() => {
+    return Object.entries(salairesPriveData.secteur_prive?.secteurs || {}).map(([key, val]) => ({
+      value: key,
+      label: val.nom
+    }));
+  }, [salairesPriveData]);
 
-  const sousDomainesPriveList = useMemo(() => {
-    if (!selectedSecteurPrive) return [];
-    const secteur = salairesPriveData?.secteur_prive?.secteurs?.[selectedSecteurPrive];
+  const secteursOptions = secteurs; // ✅ Alias pour CustomSelect
+
+  const sousDomainesOptions = useMemo(() => {
+    if (!selectedSecteurPrive || !salairesPriveData.secteur_prive?.secteurs) return [];
+    const secteur = salairesPriveData.secteur_prive.secteurs[selectedSecteurPrive];
     if (!secteur?.sous_domaines) return [];
-    return Object.entries(secteur.sous_domaines)
-      .map(([key, data]) => ({ key, nom: data.nom }))
-      .sort((a, b) => a.nom.localeCompare(b.nom));
-  }, [selectedSecteurPrive]);
+    return Object.entries(secteur.sous_domaines).map(([key, val]) => ({
+      value: key,
+      label: val.nom
+    }));
+  }, [selectedSecteurPrive, salairesPriveData]);
 
-  const metiersPriveList = useMemo(() => {
-    if (!selectedSecteurPrive || !selectedSousDomaine) return [];
-    const sousDomaine = salairesPriveData?.secteur_prive?.secteurs?.[selectedSecteurPrive]?.sous_domaines?.[selectedSousDomaine];
+  const metiersOptions = useMemo(() => {
+    if (!selectedSecteurPrive || !selectedSousDomaine || !salairesPriveData.secteur_prive?.secteurs) return [];
+    const secteur = salairesPriveData.secteur_prive.secteurs[selectedSecteurPrive];
+    const sousDomaine = secteur?.sous_domaines?.[selectedSousDomaine];
     if (!sousDomaine?.metiers) return [];
-    return Object.entries(sousDomaine.metiers)
-      .map(([key, data]) => ({ key, titre: data.titre }))
-      .sort((a, b) => a.titre.localeCompare(b.titre));
-  }, [selectedSecteurPrive, selectedSousDomaine]);
+    return Object.entries(sousDomaine.metiers).map(([key, val]) => ({
+      value: key,
+      label: val.titre
+    }));
+  }, [selectedSecteurPrive, selectedSousDomaine, salairesPriveData]);
 
+  const niveauxOptions = useMemo(() => {
+    if (!selectedSecteurPrive || !selectedSousDomaine || !selectedMetierPrive || !salairesPriveData.secteur_prive?.secteurs) return [];
+    const secteur = salairesPriveData.secteur_prive.secteurs[selectedSecteurPrive];
+    const sousDomaine = secteur?.sous_domaines?.[selectedSousDomaine];
+    const metier = sousDomaine?.metiers?.[selectedMetierPrive];
+    if (!metier?.niveaux) return [];
+    return Object.keys(metier.niveaux).map(key => ({ value: key, label: key }));
+  }, [selectedSecteurPrive, selectedSousDomaine, selectedMetierPrive, salairesPriveData]);
+
+  // ✅ Liste des niveaux avec expérience pour le secteur privé
   const niveauxPriveList = useMemo(() => {
     if (!selectedSecteurPrive || !selectedSousDomaine || !selectedMetierPrive) return [];
-    const metier = salairesPriveData?.secteur_prive?.secteurs?.[selectedSecteurPrive]?.sous_domaines?.[selectedSousDomaine]?.metiers?.[selectedMetierPrive];
+    
+    const secteur = salairesPriveData.secteur_prive?.secteurs?.[selectedSecteurPrive];
+    const sousDomaine = secteur?.sous_domaines?.[selectedSousDomaine];
+    const metier = sousDomaine?.metiers?.[selectedMetierPrive];
+    
     if (!metier?.niveaux) return [];
-    return Object.entries(metier.niveaux).map(([key, data]) => ({ key, experience: data.experience }));
-  }, [selectedSecteurPrive, selectedSousDomaine, selectedMetierPrive]);
-
-  // Options pour CustomSelect
-  const secteursOptions = useMemo(() => secteursPriveList.map(s => ({ value: s.key, label: s.nom })), [secteursPriveList]);
-  const sousDomainesOptions = useMemo(() => sousDomainesPriveList.map(sd => ({ value: sd.key, label: sd.nom })), [sousDomainesPriveList]);
-  const metiersOptions = useMemo(() => metiersPriveList.map(m => ({ value: m.key, label: m.titre })), [metiersPriveList]);
+    
+    return Object.entries(metier.niveaux).map(([key, data]) => ({
+      key,
+      experience: data.experience_requise || 'Non spécifié',
+      salaire: data.salaire_brut || 0
+    }));
+  }, [selectedSecteurPrive, selectedSousDomaine, selectedMetierPrive, salairesPriveData]);
 
   // ========== HANDLERS ==========
+  
+  // ✅ Réinitialiser le secteur
+  const handleResetSector = () => {
+    setSector('');
+    // Reset public
+    setSearchMetierPublic('');
+    setCategoriePublic('');
+    setGradePublic('');
+    setShowSuggestionsPublic(false);
+    // Reset privé
+    setSelectedSecteurPrive('');
+    setSelectedSousDomaine('');
+    setSelectedMetierPrive('');
+    setSelectedNiveauPrive('');
+  };
+
+  // ✅ Sélectionner un métier public
+  const handleSelectMetierPublic = (metier) => {
+    setSearchMetierPublic(metier.nom);
+    setCategoriePublic(metier.categorieKey);
+    setShowSuggestionsPublic(false);
+  };
+
+  // ✅ Changement secteur privé
   const handleSecteurPriveChange = (value) => {
     setSelectedSecteurPrive(value);
     setSelectedSousDomaine('');
@@ -153,66 +231,107 @@ export default function EstimatorPage() {
     setSelectedNiveauPrive('');
   };
 
+  // ✅ Changement sous-domaine
   const handleSousDomaineChange = (value) => {
     setSelectedSousDomaine(value);
     setSelectedMetierPrive('');
     setSelectedNiveauPrive('');
   };
 
+  // ✅ Changement métier privé
   const handleMetierPriveChange = (value) => {
     setSelectedMetierPrive(value);
     setSelectedNiveauPrive('');
   };
 
-  const handleResetSector = () => {
-    setSector('');
-    setSearchMetierPublic('');
-    setCategoriePublic('');
-    setGradePublic('');
-    setShowSuggestionsPublic(false);
-    setSelectedSecteurPrive('');
-    setSelectedSousDomaine('');
-    setSelectedMetierPrive('');
-    setSelectedNiveauPrive('');
-  };
-
-  const handleSelectMetierPublic = (metier) => {
-    setSearchMetierPublic(metier.nom);
-    setCategoriePublic(metier.categorieKey);
-    setShowSuggestionsPublic(false);
-  };
-
-  const handleSubmit = (e) => {
+  // ✅ Soumission du formulaire
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    incrementStat('estimations').catch(console.error);
 
     if (sector === 'public') {
-      if (!categoriePublic || !gradePublic) return;
-      navigate('/results', {
-        state: {
-          sector: 'public',
-          metier: searchMetierPublic,
-          categorie: categoriePublic,
-          grade: gradePublic
-        }
-      });
-      return;
-    }
+      if (!categoriePublic || !gradePublic) {
+        alert('Veuillez sélectionner une catégorie et un grade');
+        return;
+      }
 
-    if (sector === 'private') {
-      if (!selectedSecteurPrive || !selectedSousDomaine || !selectedMetierPrive || !selectedNiveauPrive) return;
-      navigate('/results', {
-        state: {
-          sector: 'private',
-          secteur_activite: selectedSecteurPrive,
-          sous_domaine: selectedSousDomaine,
-          metier: selectedMetierPrive,
-          niveau: selectedNiveauPrive
-        }
-      });
+      try {
+        await incrementStat('estimations');
+      } catch (err) {
+        console.error('Erreur stats estimation:', err);
+      }
+
+      const dataToSend = {
+        sector: 'public',
+        categoriePublic,
+        gradePublic,
+        metierNom: searchMetierPublic || 'Non spécifié'
+      };
+
+      navigate('/results', { state: dataToSend });
+    } else if (sector === 'private') {
+      if (!selectedSecteurPrive || !selectedSousDomaine || !selectedMetierPrive || !selectedNiveauPrive) {
+        alert('Veuillez remplir tous les champs');
+        return;
+      }
+
+      try {
+        await incrementStat('estimations');
+      } catch (err) {
+        console.error('Erreur stats estimation:', err);
+      }
+
+      const dataToSend = {
+        sector: 'prive',
+        selectedSecteurPrive,
+        selectedSousDomaine,
+        selectedMetierPrive,
+        selectedNiveauPrive
+      };
+
+      navigate('/results', { state: dataToSend });
     }
   };
 
+  // ✅ ÉCRAN DE CHARGEMENT
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-teal-50 via-white to-amber-50 flex items-center justify-center">
+        <div className="text-center">
+          <div 
+            className="w-16 h-16 border-4 border-t-transparent rounded-full animate-spin mx-auto mb-4"
+            style={{ 
+              borderColor: COLORS.teal.primary,
+              borderTopColor: 'transparent'
+            }}
+          />
+          <p className="text-gray-700 font-semibold text-lg">Chargement des données...</p>
+          <p className="text-gray-500 text-sm mt-2">Connexion à Firestore</p>
+        </div>
+      </div>
+    );
+  }
+
+  // ✅ ÉCRAN D'ERREUR
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-teal-50 via-white to-amber-50 flex items-center justify-center p-4">
+        <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md text-center">
+          <div className="text-6xl mb-4">⚠️</div>
+          <h2 className="text-2xl font-black text-gray-900 mb-4">Oups !</h2>
+          <p className="text-gray-700 mb-6">{error}</p>
+          <button
+            onClick={() => window.location.reload()}
+            className="px-6 py-3 rounded-xl font-bold text-white transition-all hover:scale-105"
+            style={{ backgroundColor: COLORS.teal.primary }}
+          >
+            Réessayer
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // ========== RENDER ==========
   return (
     <div className="min-h-screen bg-gradient-to-br from-teal-50 via-white to-amber-50 relative overflow-hidden">
       {/* Blobs décoratifs */}
@@ -234,7 +353,6 @@ export default function EstimatorPage() {
               className="flex items-center gap-2 sm:gap-3 cursor-pointer group"
               onClick={() => window.location.href = 'https://bahn-edu.com'}
             >
-              {/* Badge B */}
               <div 
                 className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform"
                 style={{ backgroundColor: COLORS.gold.primary }}
@@ -247,7 +365,6 @@ export default function EstimatorPage() {
                 </span>
               </div>
               
-              {/* Texte BAHN */}
               <div className="flex items-center gap-2">
                 <div 
                   className="text-xl sm:text-2xl md:text-3xl font-black"
@@ -255,10 +372,7 @@ export default function EstimatorPage() {
                 >
                   BAHN
                 </div>
-                <div 
-                  className="w-1.5 h-1.5 rounded-full"
-                  style={{ backgroundColor: COLORS.gold.primary }}
-                />
+                <span className="text-base sm:text-lg">💰</span>
               </div>
             </div>
 
@@ -282,7 +396,6 @@ export default function EstimatorPage() {
           
           {/* Section Hero */}
           <div className="text-center mb-8 sm:mb-12 space-y-4 sm:space-y-6 animate-fade-in">
-            {/* Badge Nouveauté */}
             <div 
               className="inline-flex items-center gap-2 px-4 py-2 border-2 rounded-full"
               style={{ 
@@ -299,7 +412,6 @@ export default function EstimatorPage() {
               </span>
             </div>
 
-            {/* Titre principal */}
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 leading-tight">
               Es-tu bien{' '}
               <span className="relative inline-block">
@@ -320,12 +432,10 @@ export default function EstimatorPage() {
               </span>
             </h1>
             
-            {/* Sous-titre */}
             <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
               Découvre ton salaire estimé en Côte d'Ivoire 🇨🇮 en 2 minutes
             </p>
 
-            {/* Badges avantages */}
             <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 pt-2">
               <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full shadow-sm border border-gray-100">
                 <TrendingUp style={{ color: COLORS.teal.primary }} size={16} />
@@ -380,10 +490,7 @@ export default function EstimatorPage() {
                     type="button"
                     onClick={() => setSector('public')}
                     className="group relative overflow-hidden flex flex-col items-center gap-5 p-8 sm:p-10 border-2 rounded-3xl transition-all hover:shadow-2xl hover:scale-[1.02] bg-gradient-to-br from-white to-gray-50 active:scale-[0.98]"
-                    style={{ 
-                      borderColor: COLORS.teal.light,
-                      '--hover-border': COLORS.teal.primary 
-                    }}
+                    style={{ borderColor: COLORS.teal.light }}
                     onMouseEnter={(e) => e.currentTarget.style.borderColor = COLORS.teal.primary}
                     onMouseLeave={(e) => e.currentTarget.style.borderColor = COLORS.teal.light}
                   >
@@ -452,7 +559,6 @@ export default function EstimatorPage() {
             {/* ========== SECTEUR PUBLIC ========== */}
             {sector === 'public' && (
               <div className="space-y-6 sm:space-y-8 animate-slide-in" onClick={(e) => e.stopPropagation()}>
-                {/* Bouton reset */}
                 <div className="flex items-center justify-between">
                   <button
                     type="button"
@@ -470,7 +576,6 @@ export default function EstimatorPage() {
                   </button>
                 </div>
 
-                {/* Recherche métier */}
                 <div className="relative space-y-3">
                   <label className="block">
                     <span className="inline-flex items-center gap-3 text-gray-900 font-bold text-base sm:text-lg mb-3">
@@ -487,7 +592,6 @@ export default function EstimatorPage() {
                   <div className="relative group">
                     <Search 
                       className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:transition-colors z-10" 
-                      style={{ '--focus-color': COLORS.teal.primary }}
                       size={20} 
                     />
                     <input
@@ -500,10 +604,6 @@ export default function EstimatorPage() {
                       onFocus={() => setShowSuggestionsPublic(true)}
                       placeholder="Ex: Ingénieur, Professeur, Infirmier..."
                       className="w-full pl-14 pr-6 py-4 sm:py-5 border-2 border-gray-200 rounded-2xl focus:ring-4 transition-all text-base sm:text-lg bg-white/80 backdrop-blur-sm placeholder:text-gray-400"
-                      style={{ 
-                        '--focus-ring-color': `${COLORS.teal.primary}33`,
-                        '--focus-border-color': COLORS.teal.primary 
-                      }}
                       onFocusCapture={(e) => {
                         e.currentTarget.style.borderColor = COLORS.teal.primary;
                         e.currentTarget.style.boxShadow = `0 0 0 4px ${COLORS.teal.primary}33`;
@@ -514,7 +614,6 @@ export default function EstimatorPage() {
                       }}
                     />
 
-                    {/* Suggestions */}
                     {showSuggestionsPublic && suggestionsMetiersPublic.length > 0 && (
                       <div 
                         className="absolute z-20 w-full mt-2 bg-white/95 backdrop-blur-xl border-2 rounded-2xl shadow-2xl max-h-80 overflow-y-auto animate-slide-down"
@@ -526,14 +625,10 @@ export default function EstimatorPage() {
                             type="button"
                             onClick={() => handleSelectMetierPublic(metier)}
                             className="w-full px-5 py-4 text-left border-b border-gray-100 last:border-b-0 transition-all group"
-                            style={{ '--hover-bg': COLORS.teal.light }}
                             onMouseEnter={(e) => e.currentTarget.style.backgroundColor = COLORS.teal.light}
                             onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                           >
-                            <p 
-                              className="font-bold text-gray-900 group-hover:transition-colors"
-                              style={{ '--hover-color': COLORS.teal.primary }}
-                            >
+                            <p className="font-bold text-gray-900">
                               {metier.nom}
                             </p>
                             <p className="text-xs text-gray-500 mt-1">
@@ -545,7 +640,6 @@ export default function EstimatorPage() {
                     )}
                   </div>
 
-                  {/* Catégorie sélectionnée */}
                   {categoriePublic && (
                     <div 
                       className="flex items-center gap-2 px-4 py-2 border rounded-xl w-fit"
@@ -570,7 +664,6 @@ export default function EstimatorPage() {
                   )}
                 </div>
 
-                {/* Sélection grade */}
                 {categoriePublic && (
                   <div className="space-y-3 animate-slide-in">
                     <label className="block">
@@ -591,10 +684,6 @@ export default function EstimatorPage() {
                         onChange={(e) => setGradePublic(e.target.value)}
                         required
                         className="w-full px-6 py-4 sm:py-5 border-2 border-gray-200 rounded-2xl focus:ring-4 appearance-none bg-white/80 backdrop-blur-sm transition-all text-base sm:text-lg font-medium cursor-pointer"
-                        style={{
-                          '--focus-ring-color': `${COLORS.gold.primary}33`,
-                          '--focus-border-color': COLORS.gold.primary
-                        }}
                         onFocusCapture={(e) => {
                           e.currentTarget.style.borderColor = COLORS.gold.primary;
                           e.currentTarget.style.boxShadow = `0 0 0 4px ${COLORS.gold.primary}33`;
@@ -619,7 +708,6 @@ export default function EstimatorPage() {
             {/* ========== SECTEUR PRIVÉ ========== */}
             {sector === 'private' && (
               <div className="space-y-6 sm:space-y-8 animate-slide-in">
-                {/* Bouton reset */}
                 <div className="flex items-center justify-between">
                   <button
                     type="button"
@@ -637,7 +725,6 @@ export default function EstimatorPage() {
                   </button>
                 </div>
 
-                {/* CustomSelects */}
                 <CustomSelect
                   value={selectedSecteurPrive}
                   onChange={handleSecteurPriveChange}
@@ -672,7 +759,6 @@ export default function EstimatorPage() {
                   />
                 )}
 
-                {/* Niveaux d'expérience */}
                 {selectedMetierPrive && niveauxPriveList.length > 0 && (
                   <div className="space-y-4 animate-slide-in">
                     <label className="block">
@@ -740,7 +826,6 @@ export default function EstimatorPage() {
                   </div>
                 )}
 
-                {/* Message aucun sous-domaine */}
                 {selectedSecteurPrive && sousDomainesOptions.length === 0 && (
                   <div 
                     className="border rounded-xl sm:rounded-2xl p-3 sm:p-4 text-center animate-slide-in"
@@ -806,16 +891,13 @@ export default function EstimatorPage() {
         </div>
       </main>
 
-      {/* Sections BAHN */}
       <BAHNPromoSection />
 
-      {/* Modal Grades */}
       <GradeExplanationModal 
         isOpen={showGradeModal}
         onClose={() => setShowGradeModal(false)}
       />
 
-      {/* ========== FOOTER ========== */}
       <footer className="relative bg-white/80 backdrop-blur-xl border-t py-6 sm:py-8" style={{ borderColor: COLORS.teal.light }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-3">
@@ -829,7 +911,6 @@ export default function EstimatorPage() {
         </div>
       </footer>
 
-      {/* ========== ANIMATIONS CSS ========== */}
       <style jsx>{`
         @keyframes slide-in {
           from { opacity: 0; transform: translateY(10px); }

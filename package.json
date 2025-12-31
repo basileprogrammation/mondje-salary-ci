@@ -1,14 +1,15 @@
 {
-  "name": "mondje-salary-estimator",
+  "name": "bahn-salary-estimator",
   "version": "1.0.0",
   "private": true,
-  "description": "Mondje Salary Estimator - Côte d'Ivoire",
+  "description": "Bahn Salary Estimator - Côte d'Ivoire",
   "dependencies": {
     "firebase": "^12.7.0",
     "html-to-image": "^1.11.13",
     "html2canvas": "^1.4.1",
     "lucide-react": "^0.294.0",
     "react": "^18.2.0",
+    "react-confetti": "^6.4.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.20.0",
     "react-scripts": "5.0.1"
@@ -17,7 +18,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "migrate": "node scripts/migrateToFirestore.js"
   },
   "eslintConfig": {
     "extends": [

@@ -1,233 +1,339 @@
-// src/utils/salaryCalculator.js
+/**
+ * Bahn Salary Calculator - Version Robuste (2025)
+ * Compatible JSON:
+ * - grillesPubliques.grilles_salariales[categorie].grades[grade]
+ * - salairesPrives.secteur_prive.secteurs[secteurActivite].sous_domaines[sousDomaine].metiers[metier].niveaux[niveau]
+ */
+
+import grillesPubliques from '../data/grilles-salaires.json';
+import salairesPrives from '../data/salaires-secteur-prive.json';
+import corpsMetiers from '../data/corps-metiers.json';
 
 /**
- * Calcule le salaire basé sur les données du formulaire et les données Firestore
- * @param {Object} formData - Données du formulaire
- * @param {Object} corpsMetiersData - Données publiques depuis Firestore
- * @param {Object} salairesPriveData - Données privées depuis Firestore
- * @returns {Object} Résultat du calcul avec salaire, grade, etc.
+ * Calcule le salaire pour le SECTEUR PUBLIC
+ * @param {string} categorie - 'categorie_A', 'categorie_B', ...
+ * @param {string} grade - 'A1', 'A2', ...
+ * @param {string} metier - optionnel
  */
-export function calculateSalary(formData, corpsMetiersData, salairesPriveData) {
-  console.log('🧮 Calcul du salaire avec données Firestore');
-  console.log('📝 FormData reçu:', formData);
+export function calculerSalairePublic(categorie, grade, metier = '') {
+  const categorieData = grillesPubliques?.grilles_salariales_par_categorie?.[categorie];
+  
+  // ✅ Gestion spéciale pour hauts_responsables
+  let grille;
+  if (categorie === 'hauts_responsables') {
+    grille = categorieData?.grilles_par_grade?.[grade];
+  } else {
+    grille = categorieData?.grades?.[grade];
+  }
 
-  // ========== SECTEUR PUBLIC ==========
-  if (formData.sector === 'public') {
-    const { categoriePublic, gradePublic, metierNom } = formData;
-    
-    console.log('📊 Recherche catégorie:', categoriePublic);
-    console.log('📊 Recherche grade:', gradePublic);
-    
-    if (!corpsMetiersData?.categories?.[categoriePublic]) {
-      console.error('❌ Catégorie non trouvée:', categoriePublic);
-      console.log('Catégories disponibles:', Object.keys(corpsMetiersData?.categories || {}));
-      return {
-        sector: 'public',
-        error: 'Catégorie introuvable',
-        salaireBrut: 300000,
-        salaireNet: 234000,
-        metier: metierNom || 'Métier',
-        grade: gradePublic,
-        categorieKey: categoriePublic
-      };
-    }
-
-    const categorieData = corpsMetiersData.categories[categoriePublic];
-    console.log('✅ Catégorie trouvée:', categorieData.nom);
-    
-    // ✅ CORRECTION: grille_salariale est un objet avec les grades comme clés
-    const grilleSalariale = categorieData.grille_salariale || {};
-    const salaireGrade = grilleSalariale[gradePublic];
-    
-    if (!salaireGrade) {
-      console.error('❌ Grade non trouvé dans grille salariale:', gradePublic);
-      console.log('Grades disponibles:', Object.keys(grilleSalariale));
-      return {
-        sector: 'public',
-        error: 'Grade introuvable',
-        salaireBrut: 300000,
-        salaireNet: 234000,
-        metier: metierNom || 'Métier',
-        grade: gradePublic,
-        categorieKey: categoriePublic,
-        categorie: categorieData.nom
-      };
-    }
-
-    // ✅ Récupérer le salaire de l'échelon 1
-    const salaireBrut = salaireGrade.echelon_1 || salaireGrade.min || 300000;
-    const salaireNet = Math.round(salaireBrut * 0.78); // 22% de charges
-
-    console.log('✅ Salaire calculé (Public):', { salaireBrut, salaireNet });
-
+  if (!grille) {
+    console.warn(`Grille non trouvée pour ${categorie} - ${grade}`);
     return {
+      min: 200000,
+      max: 500000,
+      avg: 350000,
+      min_avec_primes: 240000,
+      max_avec_primes: 650000,
+      avg_avec_primes: 445000,
+      categorie: categorie || 'categorie_B',
+      grade: grade || 'B1',
       sector: 'public',
-      categorie: categorieData.nom,
-      categorieKey: categoriePublic,
-      grade: gradePublic,
-      metier: metierNom || 'Métier',
-      salaireBrut: Number(salaireBrut),
-      salaireNet: Number(salaireNet),
-      echelons: salaireGrade,
-      diplomeRequis: categorieData.diplome_requis || '',
-      evolutions: categorieData.grades || []
+      grille: null,
+      categorieData: categorieData || null,
+      metier,
+      secteur: 'public',
+      source: 'fallback'
     };
   }
 
-  // ========== SECTEUR PRIVÉ ==========
-  if (formData.sector === 'prive') {
-    const { selectedSecteurPrive, selectedSousDomaine, selectedMetierPrive, selectedNiveauPrive } = formData;
+  const minSalaire = Number(grille.salaire_base_min ?? 0);
+  const maxSalaire = Number(grille.salaire_base_max ?? 0);
+  const avgSalaire = Math.round((minSalaire + maxSalaire) / 2);
 
-    console.log('📊 Secteur PRIVÉ:', { 
-      selectedSecteurPrive, 
-      selectedSousDomaine, 
-      selectedMetierPrive, 
-      selectedNiveauPrive 
-    });
+  const minAvecPrimes = Number(grille.salaire_avec_primes_min ?? Math.round(minSalaire * 1.2));
+  const maxAvecPrimes = Number(grille.salaire_avec_primes_max ?? Math.round(maxSalaire * 1.3));
 
-    // ✅ Vérifier secteur
-    if (!salairesPriveData?.secteur_prive?.secteurs?.[selectedSecteurPrive]) {
-      console.error('❌ Secteur non trouvé:', selectedSecteurPrive);
-      console.log('Secteurs disponibles:', Object.keys(salairesPriveData?.secteur_prive?.secteurs || {}));
-      return {
-        sector: 'prive',
-        error: 'Secteur introuvable',
-        salaireBrut: 400000,
-        salaireNet: 312000,
-        metierTitre: 'Métier',
-        niveau: selectedNiveauPrive,
-        secteurNom: 'Secteur privé'
-      };
-    }
-
-    const secteur = salairesPriveData.secteur_prive.secteurs[selectedSecteurPrive];
-    console.log('✅ Secteur trouvé:', secteur.nom);
-
-    // ✅ Vérifier sous-domaine
-    const sousDomaine = secteur.sous_domaines?.[selectedSousDomaine];
-    
-    if (!sousDomaine) {
-      console.error('❌ Sous-domaine non trouvé:', selectedSousDomaine);
-      console.log('Sous-domaines disponibles:', Object.keys(secteur.sous_domaines || {}));
-      return {
-        sector: 'prive',
-        error: 'Sous-domaine introuvable',
-        salaireBrut: 400000,
-        salaireNet: 312000,
-        secteurNom: secteur.nom,
-        metierTitre: 'Métier',
-        niveau: selectedNiveauPrive
-      };
-    }
-
-    console.log('✅ Sous-domaine trouvé:', sousDomaine.nom);
-
-    // ✅ Vérifier métier
-    const metier = sousDomaine.metiers?.[selectedMetierPrive];
-    
-    if (!metier) {
-      console.error('❌ Métier non trouvé:', selectedMetierPrive);
-      console.log('Métiers disponibles:', Object.keys(sousDomaine.metiers || {}));
-      return {
-        sector: 'prive',
-        error: 'Métier introuvable',
-        salaireBrut: 400000,
-        salaireNet: 312000,
-        secteurNom: secteur.nom,
-        sousDomaineNom: sousDomaine.nom,
-        metierTitre: 'Métier',
-        niveau: selectedNiveauPrive
-      };
-    }
-
-    console.log('✅ Métier trouvé:', metier.titre);
-
-    // ✅ Vérifier niveau
-    const niveauData = metier.niveaux?.[selectedNiveauPrive];
-    
-    if (!niveauData) {
-      console.error('❌ Niveau non trouvé:', selectedNiveauPrive);
-      console.log('Niveaux disponibles:', Object.keys(metier.niveaux || {}));
-      return {
-        sector: 'prive',
-        error: 'Niveau introuvable',
-        salaireBrut: 400000,
-        salaireNet: 312000,
-        secteurNom: secteur.nom,
-        sousDomaineNom: sousDomaine.nom,
-        metierTitre: metier.titre,
-        niveau: selectedNiveauPrive
-      };
-    }
-
-    console.log('✅ Niveau trouvé:', niveauData);
-
-    // ✅ Calcul du salaire
-    const salaireBrut = niveauData.salaire_brut || 400000;
-    const salaireNet = Math.round(salaireBrut * 0.78);
-
-    console.log('✅ Salaire calculé (Privé):', { salaireBrut, salaireNet });
-
-    return {
-      sector: 'prive',
-      secteurNom: secteur.nom,
-      sousDomaineNom: sousDomaine.nom,
-      metierTitre: metier.titre,
-      metierDescription: metier.description || '',
-      niveau: selectedNiveauPrive,
-      salaireBrut: Number(salaireBrut),
-      salaireNet: Number(salaireNet),
-      primes: niveauData.primes || [],
-      avantages: niveauData.avantages || [],
-      experience: niveauData.experience_requise || '',
-      perspectives: metier.perspectives_evolution || []
-    };
-  }
-
-  console.error('❌ Secteur invalide:', formData.sector);
   return {
-    error: 'Secteur invalide',
-    salaireBrut: 300000,
-    salaireNet: 234000,
-    sector: formData.sector
+    min: minSalaire,
+    max: maxSalaire,
+    avg: avgSalaire,
+    min_avec_primes: minAvecPrimes,
+    max_avec_primes: maxAvecPrimes,
+    avg_avec_primes: Math.round((minAvecPrimes + maxAvecPrimes) / 2),
+    categorie,
+    grade,
+    sector: 'public',
+    grille,
+    categorieData,
+    metier,
+    secteur: 'public',
+    source: 'grilles_officielles'
   };
 }
 
 /**
- * Formatte un nombre en tant que salaire (avec espaces)
- * @param {number} amount - Montant
- * @returns {string} Montant formatté
+ * Calcule le salaire pour le SECTEUR PRIVÉ (STRUCTURE À 4 NIVEAUX)
+ * @param {string} secteurActivite - 'accueil_services', 'achats_supply_chain', ...
+ * @param {string} sousDomaine - 'fonctions_de_services', 'buying_procurement', ...
+ * @param {string} metier - 'operateur_de_saisie', 'acheteur_btp', ...
+ * @param {string} niveau - 'junior'|'confirme'|'senior'
  */
-export function formatSalary(amount) {
-  if (!amount) return '0';
-  return Number(amount).toLocaleString('fr-FR');
+export function calculerSalairePrive(secteurActivite, sousDomaine, metier, niveau) {
+  console.log('🔍 calculerSalairePrive appelée avec:', {
+    secteurActivite,
+    sousDomaine,
+    metier,
+    niveau
+  });
+
+  const secteur = salairesPrives?.secteur_prive?.secteurs?.[secteurActivite];
+  
+  if (!secteur) {
+    console.warn(`❌ Secteur non trouvé: ${secteurActivite}`);
+    return getFallbackSalairePrive(secteurActivite, sousDomaine, metier, niveau);
+  }
+
+  // ✅ Navigation à 4 niveaux
+  const sousDomainData = secteur?.sous_domaines?.[sousDomaine];
+  
+  if (!sousDomainData) {
+    console.warn(`❌ Sous-domaine non trouvé: ${sousDomaine} dans ${secteurActivite}`);
+    console.log('🔑 Sous-domaines disponibles:', Object.keys(secteur?.sous_domaines || {}));
+    return getFallbackSalairePrive(secteurActivite, sousDomaine, metier, niveau, secteur);
+  }
+
+  const metierData = sousDomainData?.metiers?.[metier];
+  
+  if (!metierData) {
+    console.warn(`❌ Métier non trouvé: ${metier} dans ${sousDomaine}`);
+    console.log('🔑 Métiers disponibles:', Object.keys(sousDomainData?.metiers || {}));
+    return getFallbackSalairePrive(secteurActivite, sousDomaine, metier, niveau, secteur, sousDomainData);
+  }
+
+  const niveauData = metierData?.niveaux?.[niveau];
+
+  if (!niveauData) {
+    console.warn(`❌ Niveau non trouvé: ${niveau} pour le métier ${metier}`);
+    console.log('🔑 Niveaux disponibles:', Object.keys(metierData?.niveaux || {}));
+    return getFallbackSalairePrive(secteurActivite, sousDomaine, metier, niveau, secteur, sousDomainData, metierData);
+  }
+
+  console.log('✅ Données trouvées:', niveauData);
+
+  return {
+    min: Number(niveauData.salaire_bas ?? 0),
+    max: Number(niveauData.salaire_haut ?? 0),
+    avg: Number(niveauData.salaire_moyen ?? Math.round((niveauData.salaire_bas + niveauData.salaire_haut) / 2)),
+
+    // ✅ champs standards (IMPORTANT)
+    categorie: 'categorie_B',     // fallback pour usages "concours"
+    grade: niveau,                // on met le niveau ici pour affichage
+    sector: 'private',
+
+    secteur_activite: secteurActivite,
+    secteur_nom: secteur?.nom || 'Secteur privé',
+    sous_domaine: sousDomaine,
+    sous_domaine_nom: sousDomainData?.nom || 'Sous-domaine',
+    metier,
+    metier_titre: metierData?.titre || 'Métier',
+    niveau,
+    niveau_titre: getNiveauTitre(niveau),
+    experience: niveauData.experience,
+    note: niveauData.note || null,
+    secteur: 'private',
+    source: 'grilles_marche'
+  };
 }
 
 /**
- * Calcule le grade équivalent entre secteurs
- * @param {string} grade - Grade actuel
- * @param {string} fromSector - Secteur d'origine
- * @param {string} toSector - Secteur de destination
- * @returns {string} Grade équivalent
+ * Fallback en cas de données manquantes
  */
-export function calculateEquivalentGrade(grade, fromSector, toSector) {
-  const gradeMapping = {
-    'public_to_prive': {
-      'A1': 'senior',
-      'A2': 'confirme',
-      'B1': 'confirme',
-      'B2': 'junior',
-      'C1': 'junior',
-      'C2': 'junior',
-      'D1': 'junior'
-    },
-    'prive_to_public': {
-      'senior': 'A1',
-      'confirme': 'B1',
-      'junior': 'C1'
+function getFallbackSalairePrive(secteurActivite, sousDomaine, metier, niveau, secteur = null, sousDomainData = null, metierData = null) {
+  console.warn('⚠️ Utilisation des données fallback');
+  
+  return {
+    min: 300000,
+    max: 700000,
+    avg: 500000,
+
+    // ✅ champs standards (pour éviter les undefined dans Results)
+    categorie: 'categorie_B', // fallback utile
+    grade: niveau || 'confirme',
+    sector: 'private',
+
+    secteur_activite: secteurActivite,
+    secteur_nom: secteur?.nom || 'Secteur privé',
+    sous_domaine: sousDomaine,
+    sous_domaine_nom: sousDomainData?.nom || 'Sous-domaine',
+    metier,
+    metier_titre: metierData?.titre || 'Métier',
+    niveau,
+    niveau_titre: getNiveauTitre(niveau),
+    experience: null,
+    note: null,
+    secteur: 'private',
+    source: 'fallback'
+  };
+}
+
+/**
+ * Point d'entrée unique
+ * - public: {sector:'public', categorie, grade, metier}
+ * - private:{sector:'private', secteur_activite, sous_domaine, metier, niveau}
+ * - ancien: {job, experience, sector}
+ */
+export function calculerSalaire(params) {
+  if (!params || typeof params !== 'object') {
+    console.error('❌ Params manquants:', params);
+    return { 
+      min: 200000, 
+      max: 600000, 
+      avg: 400000, 
+      source: 'error_params_missing', 
+      categorie: 'categorie_B', 
+      grade: 'B1', 
+      sector: 'public' 
+    };
+  }
+
+  // ✅ SECTEUR PUBLIC
+  if (params.sector === 'public' && params.categorie && params.grade) {
+    console.log('✅ Calcul secteur public');
+    return calculerSalairePublic(params.categorie, params.grade, params.metier || '');
+  }
+
+  // ✅ SECTEUR PRIVÉ (4 NIVEAUX)
+  if (params.sector === 'private' && params.secteur_activite && params.sous_domaine && params.metier && params.niveau) {
+    console.log('✅ Calcul secteur privé (4 niveaux)');
+    return calculerSalairePrive(params.secteur_activite, params.sous_domaine, params.metier, params.niveau);
+  }
+
+  // ⚠️ ANCIEN FORMAT (compatibilité)
+  if (params.job && params.experience && params.sector) {
+    console.warn('⚠️ Utilisation de l\'ancien format');
+    return calculerSalaireAncienFormat(params.job, params.experience, params.sector);
+  }
+
+  console.error('❌ Format invalide:', params);
+  return { 
+    min: 200000, 
+    max: 600000, 
+    avg: 400000, 
+    source: 'error_invalid_format', 
+    categorie: 'categorie_B', 
+    grade: 'B1', 
+    sector: 'public' 
+  };
+}
+
+/**
+ * Ancien format
+ */
+function calculerSalaireAncienFormat(metier, experience, secteur) {
+  const categorie = trouverCategorie(metier);
+  const grade = determinerGrade(experience, categorie);
+
+  const result = calculerSalairePublic(categorie, grade, metier);
+
+  if (secteur === 'private') {
+    const facteur = 1.3;
+    return {
+      ...result,
+      min: Math.round(result.min * facteur),
+      max: Math.round(result.max * facteur),
+      avg: Math.round(result.avg * facteur),
+      sector: 'private',
+      secteur: 'private',
+      categorie: 'categorie_B',
+      grade: 'confirme',
+      source: 'estimation'
+    };
+  }
+
+  return result;
+}
+
+/**
+ * Trouve catégorie public par métier
+ */
+function trouverCategorie(metier) {
+  const metierLower = String(metier || '').toLowerCase();
+
+  for (const [catKey, categorie] of Object.entries(corpsMetiers?.categories || {})) {
+    for (const domaine of categorie?.corps_metiers || []) {
+      for (const m of domaine?.metiers || []) {
+        if (m.toLowerCase().includes(metierLower) || metierLower.includes(m.toLowerCase())) {
+          return catKey;
+        }
+      }
     }
+  }
+
+  const keywordsCategories = {
+    categorie_A: ['ingénieur', 'professeur', 'médecin', 'administrateur', 'inspecteur'],
+    categorie_B: ['technicien', 'infirmier', 'contrôleur', 'secrétaire', 'instituteur'],
+    categorie_C: ['agent', 'aide', 'surveillant', 'gardien'],
+    categorie_D: ['garde', 'chauffeur', 'planton', 'ouvrier']
   };
 
-  const mappingKey = `${fromSector}_to_${toSector}`;
-  return gradeMapping[mappingKey]?.[grade] || grade;
+  for (const [cat, keywords] of Object.entries(keywordsCategories)) {
+    for (const keyword of keywords) {
+      if (metierLower.includes(keyword)) return cat;
+    }
+  }
+
+  return 'categorie_B';
 }
+
+/**
+ * Grade selon expérience (ancien format)
+ * experience: '0-2','3-5','6-10','10+'
+ */
+function determinerGrade(experience, categorie) {
+  const mappingGrades = {
+    '0-2': { categorie_A: 'A3', categorie_B: 'B1', categorie_C: 'C1', categorie_D: 'D1' },
+    '3-5': { categorie_A: 'A3', categorie_B: 'B2', categorie_C: 'C2', categorie_D: 'D2' },
+    '6-10': { categorie_A: 'A2', categorie_B: 'B3', categorie_C: 'C3', categorie_D: 'D3' },
+    '10+': { categorie_A: 'A1', categorie_B: 'B3', categorie_C: 'C3', categorie_D: 'D3' }
+  };
+  return mappingGrades?.[experience]?.[categorie] || 'B1';
+}
+
+/**
+ * Titre du niveau
+ */
+function getNiveauTitre(niveau) {
+  const titres = { junior: 'Junior', confirme: 'Confirmé', senior: 'Senior / Expert' };
+  return titres[niveau] || niveau;
+}
+
+/**
+ * Avantages secteur
+ */
+export function getAvantagesSecteur(secteur) {
+  if (secteur === 'public') {
+    return [
+      "Stabilité de l'emploi",
+      "Retraite garantie",
+      "Couverture santé complète",
+      "Congés réglementaires",
+      "Évolution par ancienneté"
+    ];
+  }
+  return [
+    "Salaires plus élevés",
+    "Primes de performance",
+    "Évolution rapide",
+    "Formation continue",
+    "Environnement dynamique"
+  ];
+}
+
+const salaryCalculator = {
+  calculerSalaire,
+  calculerSalairePublic,
+  calculerSalairePrive,
+  getAvantagesSecteur
+};
+
+export default salaryCalculator;

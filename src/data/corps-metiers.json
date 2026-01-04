@@ -688,7 +688,58 @@
           ]
         }
       ]
+    },
+"hauts_responsables": {
+  "nom": "Élus et Hauts Responsables de l'État",
+  "description": "Postes électifs et nominations politiques - Gouvernement et Assemblée Nationale",
+  "diplome_requis": "Selon fonction et élection",
+  "grades": ["Ministre", "Député"],
+  "corps_metiers": [
+    {
+      "domaine": "Gouvernement",
+      "metiers": [
+        {
+          "nom": "Ministre",
+          "grade_entree_estime": "ministre",
+          "salaire_brut_debut_estime": 3830000,
+          "note": "Membre du gouvernement. Nomination par décret présidentiel. Sources : ABIDJANAIS (2015), Connectionivoirienne (2016).",
+          "mots_cles": [
+            "ministre",
+            "ministere",
+            "gouvernement",
+            "cabinet",
+            "politique",
+            "executif",
+            "secretaire d'etat",
+            "membre du gouvernement"
+          ]
+        }
+      ]
+    },
+    {
+      "domaine": "Assemblée Nationale",
+      "metiers": [
+        {
+          "nom": "Député",
+          "grade_entree_estime": "depute",
+          "salaire_brut_debut_estime": 2650000,
+          "note": "Élu à l'Assemblée Nationale. Mandat de 5 ans renouvelable. Prime trimestrielle de 2,2M FCFA. Prime d'installation de 10M FCFA. Sources : Jeune Afrique (2018), Informateur.ci (2025).",
+          "mots_cles": [
+            "depute",
+            "parlementaire",
+            "assemblee nationale",
+            "elu",
+            "legislatif",
+            "parlement",
+            "politique",
+            "representant du peuple",
+            "honorable"
+          ]
+        }
+      ]
     }
+  ]
+}
   },
   "specialites": {
     "education_formation": { "nom": "Education et Formation", "description": "Enseignants, formateurs et spécialistes de l'éducation" },

@@ -44,39 +44,39 @@ const TESTIMONIALS = [
   {
     name: 'Aminata D.',
     role: 'Étudiante',
-    text: 'J\'ai trouvé ma bourse Erasmus grâce à BAHN. Je n\'aurais jamais su qu\'elle existait sans la plateforme !',
+    text: 'J\'ai eu de bonnes infos sur mon orientation et trouvé une bourse qui cadre avec mon profil.',
     gradient: 'from-blue-400 to-blue-600'
   },
   {
     name: 'Kouassi M.',
     role: 'Développeur',
-    text: 'Le CV généré par BAHN m\'a permis de décrocher 3 entretiens en 1 semaine. C\'est révolutionnaire !',
+    text: 'Grâce à l\'estimation de salaire, j\'ai négocié et obtenu 200K de plus par mois.',
     gradient: 'from-green-400 to-green-600'
   },
   {
     name: 'Sarah K.',
     role: 'Lycéenne',
-    text: 'L\'IA m\'a aidée à choisir ma filière universitaire. Meilleure décision de ma vie. Merci BAHN !',
+    text: 'BAHN m\'a aidée à choisir la bonne filière. Simple, rapide, efficace.',
     gradient: 'from-purple-400 to-purple-600'
   }
 ];
 
 const FAQS = [
   {
-    question: "C'est vraiment gratuit ?",
-    answer: "Oui, 100% gratuit. Pas de frais cachés, pas de carte requise. Notre mission est de démocratiser l'accès aux opportunités en Afrique."
+    question: "C'est vraiment 100% gratuit ? (Pas de piège caché ?)",
+    answer: "Zéro FCFA. Zéro carte bancaire. Zéro arnaque. Notre mission est de démocratiser l'orientation et l'insertion professionnelle pour TOUS les jeunes. Point final. 💪"
   },
   {
-    question: "Comment BAHN obtient les données de salaires ?",
-    answer: "Nous compilons des données de sites d'emploi, d'enquêtes sectorielles et de contributions anonymes d'utilisateurs. Les estimations sont mises à jour régulièrement."
+    question: "Comment vous êtes SÛR que les salaires sont justes ?",
+    answer: "On travaille avec de vraies sources ! Fonction Publique : grilles officielles du gouvernement ivoirien. Secteur Privé : données GreySearchAfrica (référence africaine en recrutement), enquêtes de terrain, contributions anonymes vérifiées. Pas de fake news ici. 📊✅"
   },
   {
-    question: "BAHN fonctionne dans quels pays ?",
-    answer: "BAHN couvre toute l'Afrique francophone : Côte d'Ivoire, Sénégal, Cameroun, Bénin, Mali, Burkina Faso, et plus encore."
+    question: "Je suis au Sénégal/Cameroun/Bénin, ça marche chez moi ?",
+    answer: "Pas encore ! Pour l'instant, BAHN couvre la Côte d'Ivoire 🇨🇮. Mais on prépare notre arrivée chez toi en 2025 (Sénégal, Cameroun, Bénin...). Suis-nous pour ne rien rater ! 🚀"
   },
   {
-    question: "Puis-je utiliser BAHN sur mobile ?",
-    answer: "Oui ! BAHN est disponible en version web responsive et applications mobiles iOS et Android."
+    question: "Y a-t-il une application mobile ?",
+    answer: "OUI ! BAHN est disponible sur App Store (iOS) et Play Store (Android). Télécharge maintenant ! Version web complète en développement, arrive très bientôt. 📱💻"
   }
 ];
 

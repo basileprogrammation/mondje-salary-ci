@@ -1138,7 +1138,75 @@
           ]
         }
       }
+    },
+"hauts_responsables": {
+  "nom": "Élus et Hauts Responsables de l'État",
+  "description": "Postes électifs et nominations politiques - Gouvernement et Assemblée Nationale",
+  "diplome_requis": "Selon fonction et élection",
+  "grades_disponibles": ["Ministre", "Député"],
+  
+  "grilles_par_grade": {
+    "ministre": {
+      "grade": "Ministre",
+      "designation": "Membre du gouvernement",
+      "salaire_base_min": 3830000,
+      "salaire_base_max": 5750000,
+      "salaire_avec_primes_min": 4500000,
+      "salaire_avec_primes_max": 7000000,
+      "echelons": [
+        {"echelon": 1, "salaire_base": 3830000, "anciennete_requise_mois": 0},
+        {"echelon": 2, "salaire_base": 4500000, "anciennete_requise_mois": 12},
+        {"echelon": 3, "salaire_base": 5750000, "anciennete_requise_mois": 24}
+      ],
+      "exemples_metiers": ["Ministre"]
+    },
+    "depute": {
+      "grade": "Député",
+      "designation": "Élu à l'Assemblée Nationale",
+      "salaire_base_min": 2650000,
+      "salaire_base_max": 3200000,
+      "salaire_avec_primes_min": 3000000,
+      "salaire_avec_primes_max": 3900000,
+      "echelons": [
+        {"echelon": 1, "salaire_base": 2650000, "anciennete_requise_mois": 0},
+        {"echelon": 2, "salaire_base": 2900000, "anciennete_requise_mois": 12},
+        {"echelon": 3, "salaire_base": 3200000, "anciennete_requise_mois": 24}
+      ],
+      "exemples_metiers": ["Député"]
     }
+  },
+
+  "corps_metiers_detailles": {
+    "gouvernement": {
+      "domaine": "Gouvernement",
+      "metiers": [
+        {
+          "nom": "Ministre",
+          "grade_entree": "ministre",
+          "salaire_brut_debut": 3830000,
+          "salaire_avec_primes_debut": 4500000,
+          "salaire_brut_max": 5750000,
+          "salaire_avec_primes_max": 7000000,
+          "progression_carriere": "Nomination par décret présidentiel"
+        }
+      ]
+    },
+    "assemblee_nationale": {
+      "domaine": "Assemblée Nationale",
+      "metiers": [
+        {
+          "nom": "Député",
+          "grade_entree": "depute",
+          "salaire_brut_debut": 2650000,
+          "salaire_avec_primes_debut": 3000000,
+          "salaire_brut_max": 3200000,
+          "salaire_avec_primes_max": 3900000,
+          "progression_carriere": "Élection - Mandat de 5 ans"
+        }
+      ]
+    }
+  }
+}
   },
 
   "composantes_remuneration": {

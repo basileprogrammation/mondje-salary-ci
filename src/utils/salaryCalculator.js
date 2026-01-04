@@ -1,7 +1,7 @@
 /**
- * Bahn Salary Calculator - Version Robuste (2025)
+ * Bahn Salary Calculator - Version CORRIGÉE (2025)
  * Compatible JSON:
- * - grillesPubliques.grilles_salariales[categorie].grades[grade]
+ * - grillesPubliques.grilles_salariales_par_categorie[categorie].grilles_par_grade[grade]
  * - salairesPrives.secteur_prive.secteurs[secteurActivite].sous_domaines[sousDomaine].metiers[metier].niveaux[niveau]
  */
 
@@ -11,23 +11,18 @@ import corpsMetiers from '../data/corps-metiers.json';
 
 /**
  * Calcule le salaire pour le SECTEUR PUBLIC
- * @param {string} categorie - 'categorie_A', 'categorie_B', ...
- * @param {string} grade - 'A1', 'A2', ...
+ * @param {string} categorie - 'categorie_A', 'categorie_B', 'categorie_C', 'categorie_D', 'hauts_responsables'
+ * @param {string} grade - 'A1', 'A2', 'B1', 'ministre', 'depute', ...
  * @param {string} metier - optionnel
  */
 export function calculerSalairePublic(categorie, grade, metier = '') {
   const categorieData = grillesPubliques?.grilles_salariales_par_categorie?.[categorie];
   
-  // ✅ Gestion spéciale pour hauts_responsables
-  let grille;
-  if (categorie === 'hauts_responsables') {
-    grille = categorieData?.grilles_par_grade?.[grade];
-  } else {
-    grille = categorieData?.grades?.[grade];
-  }
+  // ✅ CORRECTION : Toutes les catégories utilisent "grilles_par_grade" dans le JSON
+  const grille = categorieData?.grilles_par_grade?.[grade];
 
   if (!grille) {
-    console.warn(`Grille non trouvée pour ${categorie} - ${grade}`);
+    console.warn(`⚠️ Grille non trouvée pour ${categorie} - ${grade}`);
     return {
       min: 200000,
       max: 500000,
@@ -291,10 +286,10 @@ function trouverCategorie(metier) {
  */
 function determinerGrade(experience, categorie) {
   const mappingGrades = {
-    '0-2': { categorie_A: 'A3', categorie_B: 'B1', categorie_C: 'C1', categorie_D: 'D1' },
-    '3-5': { categorie_A: 'A3', categorie_B: 'B2', categorie_C: 'C2', categorie_D: 'D2' },
-    '6-10': { categorie_A: 'A2', categorie_B: 'B3', categorie_C: 'C3', categorie_D: 'D3' },
-    '10+': { categorie_A: 'A1', categorie_B: 'B3', categorie_C: 'C3', categorie_D: 'D3' }
+    '0-2': { categorie_A: 'A3', categorie_B: 'B1', categorie_C: 'C1', categorie_D: 'D1', hauts_responsables: 'depute' },
+    '3-5': { categorie_A: 'A3', categorie_B: 'B2', categorie_C: 'C2', categorie_D: 'D2', hauts_responsables: 'depute' },
+    '6-10': { categorie_A: 'A2', categorie_B: 'B3', categorie_C: 'C3', categorie_D: 'D3', hauts_responsables: 'ministre' },
+    '10+': { categorie_A: 'A1', categorie_B: 'B3', categorie_C: 'C3', categorie_D: 'D3', hauts_responsables: 'ministre' }
   };
   return mappingGrades?.[experience]?.[categorie] || 'B1';
 }

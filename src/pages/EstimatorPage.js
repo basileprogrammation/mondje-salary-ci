@@ -224,33 +224,33 @@ const handleSelectMetierPublic = (metier) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-teal-50 via-white to-amber-50 relative overflow-hidden">
+    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-teal-50 via-white to-amber-50">
       {/* Blobs décoratifs */}
       <div 
-        className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"
+        className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 rounded-full w-96 h-96 blur-3xl"
         style={{ background: `linear-gradient(135deg, ${COLORS.teal.primary}20, ${COLORS.teal.medium}20)` }}
       />
       <div 
-        className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"
+        className="absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2 rounded-full w-96 h-96 blur-3xl"
         style={{ background: `linear-gradient(135deg, ${COLORS.gold.primary}20, ${COLORS.gold.dark}20)` }}
       />
       
       {/* ========== HEADER BAHN ========== */}
-      <header className="relative bg-white shadow-sm border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
+      <header className="relative bg-white border-b border-gray-200 shadow-sm">
+        <div className="px-4 py-4 mx-auto max-w-7xl sm:px-6 lg:px-8 sm:py-5">
           <div className="flex items-center justify-between">
             {/* Logo BAHN */}
             <div 
-              className="flex items-center gap-2 sm:gap-3 cursor-pointer group"
+              className="flex items-center gap-2 cursor-pointer sm:gap-3 group"
               onClick={() => window.location.href = 'https://www.mondje.bahn-edu.com'}
             >
               {/* Badge B */}
               <div 
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform"
+                className="flex items-center justify-center w-10 h-10 transition-transform shadow-lg sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl group-hover:scale-110"
                 style={{ backgroundColor: COLORS.gold.primary }}
               >
                 <span 
-                  className="font-black text-xl sm:text-2xl"
+                  className="text-xl font-black sm:text-2xl"
                   style={{ color: COLORS.teal.dark }}
                 >
                   B
@@ -260,7 +260,7 @@ const handleSelectMetierPublic = (metier) => {
               {/* Texte BAHN */}
               <div className="flex items-center gap-2">
   <div 
-    className="text-xl sm:text-2xl md:text-3xl font-black"
+    className="text-xl font-black sm:text-2xl md:text-3xl"
     style={{ color: COLORS.teal.dark }}
   >
     BAHN
@@ -274,7 +274,7 @@ const handleSelectMetierPublic = (metier) => {
               href="https://bahn-edu.com" 
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs sm:text-sm font-semibold transition hidden sm:block hover:opacity-80"
+              className="hidden text-xs font-semibold transition sm:text-sm sm:block hover:opacity-80"
               style={{ color: COLORS.teal.dark }}
             >
               Découvrir BAHN →
@@ -284,11 +284,11 @@ const handleSelectMetierPublic = (metier) => {
       </header>
 
       {/* ========== CONTENU PRINCIPAL ========== */}
-      <main className="relative flex-1 flex items-center justify-center px-4 py-8 sm:py-12 lg:py-16">
+      <main className="relative flex items-center justify-center flex-1 px-4 py-8 sm:py-12 lg:py-16">
         <div className="w-full max-w-4xl">
           
           {/* Section Hero */}
-          <div className="text-center mb-8 sm:mb-12 space-y-4 sm:space-y-6 animate-fade-in">
+          <div className="mb-8 space-y-4 text-center sm:mb-12 sm:space-y-6 animate-fade-in">
             {/* Badge Nouveauté */}
             <div 
               className="inline-flex items-center gap-2 px-4 py-2 border-2 rounded-full"
@@ -307,11 +307,11 @@ const handleSelectMetierPublic = (metier) => {
             </div>
 
             {/* Titre principal */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 leading-tight">
+            <h1 className="text-3xl font-black leading-tight text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl">
               Es-tu bien{' '}
               <span className="relative inline-block">
                 <span 
-                  className="relative z-10 bg-clip-text text-transparent"
+                  className="relative z-10 text-transparent bg-clip-text"
                   style={{ 
                     backgroundImage: `linear-gradient(to right, ${COLORS.teal.primary}, ${COLORS.gold.primary})` 
                   }}
@@ -319,7 +319,7 @@ const handleSelectMetierPublic = (metier) => {
                   payé ?
                 </span>
                 <span 
-                  className="absolute bottom-1 left-0 right-0 h-3 -z-0 transform -rotate-1"
+                  className="absolute left-0 right-0 h-3 transform bottom-1 -z-0 -rotate-1"
                   style={{ 
                     background: `linear-gradient(to right, ${COLORS.teal.light}, ${COLORS.gold.light})` 
                   }}
@@ -328,34 +328,34 @@ const handleSelectMetierPublic = (metier) => {
             </h1>
             
             {/* Sous-titre */}
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            <p className="max-w-2xl mx-auto text-base leading-relaxed text-gray-600 sm:text-lg md:text-xl">
               Découvre ton salaire estimé en Côte d'Ivoire 🇨🇮 en 2 minutes
             </p>
 
             {/* Badges avantages */}
-            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 pt-2">
-              <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full shadow-sm border border-gray-100">
+            <div className="flex flex-wrap items-center justify-center gap-3 pt-2 sm:gap-4">
+              <div className="flex items-center gap-2 px-4 py-2 border border-gray-100 rounded-full shadow-sm bg-white/80 backdrop-blur-sm">
                 <TrendingUp style={{ color: COLORS.teal.primary }} size={16} />
-                <span className="text-xs sm:text-sm font-semibold text-gray-700">Gratuit</span>
+                <span className="text-xs font-semibold text-gray-700 sm:text-sm">Gratuit</span>
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full shadow-sm border border-gray-100">
-                <span className="text-xs sm:text-sm font-semibold text-gray-700">🔒 100% Anonyme</span>
+              <div className="flex items-center gap-2 px-4 py-2 border border-gray-100 rounded-full shadow-sm bg-white/80 backdrop-blur-sm">
+                <span className="text-xs font-semibold text-gray-700 sm:text-sm">🔒 100% Anonyme</span>
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full shadow-sm border border-gray-100">
-                <span className="text-xs sm:text-sm font-semibold text-gray-700">⚡ Instantané</span>
+              <div className="flex items-center gap-2 px-4 py-2 border border-gray-100 rounded-full shadow-sm bg-white/80 backdrop-blur-sm">
+                <span className="text-xs font-semibold text-gray-700 sm:text-sm">⚡ Instantané</span>
               </div>
-               <div className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full shadow-sm border border-gray-100">
-    <span className="text-xs sm:text-sm font-semibold text-gray-700">✓ + 80 Sources fiables</span>
+               <div className="flex items-center gap-2 px-4 py-2 border border-gray-100 rounded-full shadow-sm bg-white/80 backdrop-blur-sm">
+    <span className="text-xs font-semibold text-gray-700 sm:text-sm">✓ + 80 Sources fiables</span>
   </div>
             </div>
           </div>
 
           {/* Bouton comprendre les grades */}
-          <div className="text-center mb-6 animate-fade-in">
+          <div className="mb-6 text-center animate-fade-in">
             <button
               type="button"
               onClick={() => setShowGradeModal(true)}
-              className="inline-flex items-center space-x-2 bg-white/90 backdrop-blur-xl hover:bg-white px-6 py-3 rounded-2xl font-bold transition-all shadow-lg hover:shadow-xl hover:scale-105 border-2"
+              className="inline-flex items-center px-6 py-3 space-x-2 font-bold transition-all border-2 shadow-lg bg-white/90 backdrop-blur-xl hover:bg-white rounded-2xl hover:shadow-xl hover:scale-105"
               style={{ 
                 color: COLORS.teal.dark,
                 borderColor: COLORS.teal.light 
@@ -375,16 +375,16 @@ const handleSelectMetierPublic = (metier) => {
             {/* Choix du secteur */}
             {!sector && (
               <div className="space-y-6">
-                <div className="text-center space-y-2">
-                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900">
+                <div className="space-y-2 text-center">
+                  <h2 className="text-xl font-bold text-gray-900 sm:text-2xl">
                     Choisissez votre secteur
                   </h2>
-                  <p className="text-sm sm:text-base text-gray-600">
+                  <p className="text-sm text-gray-600 sm:text-base">
                     Public ou privé ? Commencez par là
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 sm:gap-6">
                   {/* Fonction Publique */}
                   <button
                     type="button"
@@ -398,23 +398,23 @@ const handleSelectMetierPublic = (metier) => {
                     onMouseLeave={(e) => e.currentTarget.style.borderColor = COLORS.teal.light}
                   >
                     <div 
-                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
+                      className="absolute inset-0 transition-opacity opacity-0 group-hover:opacity-100"
                       style={{ background: `linear-gradient(135deg, ${COLORS.teal.primary}05, transparent)` }}
                     />
-                    <div className="relative text-6xl sm:text-7xl transform group-hover:scale-110 transition-transform">
+                    <div className="relative text-6xl transition-transform transform sm:text-7xl group-hover:scale-110">
                       🏛️
                     </div>
-                    <div className="relative text-center space-y-2">
-                      <p className="font-black text-xl sm:text-2xl text-gray-900">
+                    <div className="relative space-y-2 text-center">
+                      <p className="text-xl font-black text-gray-900 sm:text-2xl">
                         Fonction Publique
                       </p>
-                      <p className="text-sm text-gray-600 leading-relaxed">
+                      <p className="text-sm leading-relaxed text-gray-600">
                         État, Collectivités,<br/>Établissements publics
                       </p>
                     </div>
-                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute transition-opacity opacity-0 top-4 right-4 group-hover:opacity-100">
                       <div 
-                        className="w-8 h-8 rounded-full flex items-center justify-center"
+                        className="flex items-center justify-center w-8 h-8 rounded-full"
                         style={{ backgroundColor: COLORS.teal.primary }}
                       >
                         <ChevronDown className="text-white rotate-[-90deg]" size={16} />
@@ -432,23 +432,23 @@ const handleSelectMetierPublic = (metier) => {
                     onMouseLeave={(e) => e.currentTarget.style.borderColor = COLORS.gold.light}
                   >
                     <div 
-                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
+                      className="absolute inset-0 transition-opacity opacity-0 group-hover:opacity-100"
                       style={{ background: `linear-gradient(135deg, ${COLORS.gold.primary}05, transparent)` }}
                     />
-                    <div className="relative text-6xl sm:text-7xl transform group-hover:scale-110 transition-transform">
+                    <div className="relative text-6xl transition-transform transform sm:text-7xl group-hover:scale-110">
                       🏢
                     </div>
-                    <div className="relative text-center space-y-2">
-                      <p className="font-black text-xl sm:text-2xl text-gray-900">
+                    <div className="relative space-y-2 text-center">
+                      <p className="text-xl font-black text-gray-900 sm:text-2xl">
                         Secteur Privé
                       </p>
-                      <p className="text-sm text-gray-600 leading-relaxed">
+                      <p className="text-sm leading-relaxed text-gray-600">
                         Entreprises, ONG,<br/>Organisations
                       </p>
                     </div>
-                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute transition-opacity opacity-0 top-4 right-4 group-hover:opacity-100">
                       <div 
-                        className="w-8 h-8 rounded-full flex items-center justify-center"
+                        className="flex items-center justify-center w-8 h-8 rounded-full"
                         style={{ backgroundColor: COLORS.gold.primary }}
                       >
                         <ChevronDown className="text-white rotate-[-90deg]" size={16} />
@@ -474,8 +474,8 @@ const handleSelectMetierPublic = (metier) => {
                       borderColor: COLORS.teal.medium 
                     }}
                   >
-                    <Building2 size={18} className="group-hover:rotate-12 transition-transform" />
-                    <span className="font-bold text-sm">Fonction Publique</span>
+                    <Building2 size={18} className="transition-transform group-hover:rotate-12" />
+                    <span className="text-sm font-bold">Fonction Publique</span>
                     <X size={16} className="opacity-60 group-hover:opacity-100" />
                   </button>
                 </div>
@@ -483,9 +483,9 @@ const handleSelectMetierPublic = (metier) => {
                 {/* Recherche métier */}
                 <div className="relative space-y-3">
                   <label className="block">
-                    <span className="inline-flex items-center gap-3 text-gray-900 font-bold text-base sm:text-lg mb-3">
+                    <span className="inline-flex items-center gap-3 mb-3 text-base font-bold text-gray-900 sm:text-lg">
                       <span 
-                        className="flex items-center justify-center w-8 h-8 text-white rounded-xl text-sm font-black shadow-lg"
+                        className="flex items-center justify-center w-8 h-8 text-sm font-black text-white shadow-lg rounded-xl"
                         style={{ background: `linear-gradient(135deg, ${COLORS.teal.primary}, ${COLORS.teal.dark})` }}
                       >
                         1
@@ -496,7 +496,7 @@ const handleSelectMetierPublic = (metier) => {
 
                   <div className="relative group">
                     <Search 
-                      className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:transition-colors z-10" 
+                      className="absolute z-10 text-gray-400 -translate-y-1/2 left-5 top-1/2 group-focus-within:transition-colors" 
                       style={{ '--focus-color': COLORS.teal.primary }}
                       size={20} 
                     />
@@ -509,7 +509,7 @@ const handleSelectMetierPublic = (metier) => {
                       }}
                       onFocus={() => setShowSuggestionsPublic(true)}
                       placeholder="Ex: Ingénieur, Professeur, Infirmier..."
-                      className="w-full pl-14 pr-6 py-4 sm:py-5 border-2 border-gray-200 rounded-2xl focus:ring-4 transition-all text-base sm:text-lg bg-white/80 backdrop-blur-sm placeholder:text-gray-400"
+                      className="w-full py-4 pr-6 text-base transition-all border-2 border-gray-200 pl-14 sm:py-5 rounded-2xl focus:ring-4 sm:text-lg bg-white/80 backdrop-blur-sm placeholder:text-gray-400"
                       style={{ 
                         '--focus-ring-color': `${COLORS.teal.primary}33`,
                         '--focus-border-color': COLORS.teal.primary 
@@ -527,7 +527,7 @@ const handleSelectMetierPublic = (metier) => {
                     {/* Suggestions */}
                     {showSuggestionsPublic && suggestionsMetiersPublic.length > 0 && (
                       <div 
-                        className="absolute z-20 w-full mt-2 bg-white/95 backdrop-blur-xl border-2 rounded-2xl shadow-2xl max-h-80 overflow-y-auto animate-slide-down"
+                        className="absolute z-20 w-full mt-2 overflow-y-auto border-2 shadow-2xl bg-white/95 backdrop-blur-xl rounded-2xl max-h-80 animate-slide-down"
                         style={{ borderColor: COLORS.teal.light }}
                       >
                         {suggestionsMetiersPublic.map((metier, index) => (
@@ -535,7 +535,7 @@ const handleSelectMetierPublic = (metier) => {
                             key={index}
                             type="button"
                             onClick={() => handleSelectMetierPublic(metier)}
-                            className="w-full px-5 py-4 text-left border-b border-gray-100 last:border-b-0 transition-all group"
+                            className="w-full px-5 py-4 text-left transition-all border-b border-gray-100 last:border-b-0 group"
                             style={{ '--hover-bg': COLORS.teal.light }}
                             onMouseEnter={(e) => e.currentTarget.style.backgroundColor = COLORS.teal.light}
                             onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
@@ -546,7 +546,7 @@ const handleSelectMetierPublic = (metier) => {
                             >
                               {metier.nom}
                             </p>
-                            <p className="text-xs text-gray-500 mt-1">
+                            <p className="mt-1 text-xs text-gray-500">
                               {metier.domaine} • {metier.categorie}
                             </p>
                           </button>
@@ -565,7 +565,7 @@ const handleSelectMetierPublic = (metier) => {
                       }}
                     >
                       <span 
-                        className="font-black text-sm"
+                        className="text-sm font-black"
                         style={{ color: COLORS.teal.primary }}
                       >
                         ✓
@@ -585,9 +585,9 @@ const handleSelectMetierPublic = (metier) => {
 {categoriePublic && categoriePublic !== 'hauts_responsables' && (
   <div className="space-y-3 animate-slide-in">
     <label className="block">
-      <span className="inline-flex items-center gap-3 text-gray-900 font-bold text-base sm:text-lg mb-3">
+      <span className="inline-flex items-center gap-3 mb-3 text-base font-bold text-gray-900 sm:text-lg">
         <span 
-          className="flex items-center justify-center w-8 h-8 text-white rounded-xl text-sm font-black shadow-lg"
+          className="flex items-center justify-center w-8 h-8 text-sm font-black text-white shadow-lg rounded-xl"
           style={{ background: `linear-gradient(135deg, ${COLORS.gold.primary}, ${COLORS.gold.dark})` }}
         >
           2
@@ -601,7 +601,7 @@ const handleSelectMetierPublic = (metier) => {
         value={gradePublic}
         onChange={(e) => setGradePublic(e.target.value)}
         required
-        className="w-full px-6 py-4 sm:py-5 border-2 border-gray-200 rounded-2xl focus:ring-4 appearance-none bg-white/80 backdrop-blur-sm transition-all text-base sm:text-lg font-medium cursor-pointer"
+        className="w-full px-6 py-4 text-base font-medium transition-all border-2 border-gray-200 appearance-none cursor-pointer sm:py-5 rounded-2xl focus:ring-4 bg-white/80 backdrop-blur-sm sm:text-lg"
         style={{
           '--focus-ring-color': `${COLORS.gold.primary}33`,
           '--focus-border-color': COLORS.gold.primary
@@ -620,7 +620,7 @@ const handleSelectMetierPublic = (metier) => {
           <option key={g} value={g}>Grade {g}</option>
         ))}
       </select>
-      <ChevronDown className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" size={20} />
+      <ChevronDown className="absolute text-gray-400 -translate-y-1/2 pointer-events-none right-5 top-1/2" size={20} />
     </div>
   </div>
 )}
@@ -639,20 +639,20 @@ const handleSelectMetierPublic = (metier) => {
       <span className="text-3xl">✓</span>
       <div>
         <p 
-          className="font-bold text-lg"
+          className="text-lg font-bold"
           style={{ color: COLORS.teal.dark }}
         >
           Poste sélectionné : {searchMetierPublic}
         </p>
-        <p className="text-sm text-gray-600 mt-1">
+        <p className="mt-1 text-sm text-gray-600">
           Gouvernement et Assemblée Nationale
         </p>
       </div>
     </div>
 
     {/* Disclaimer avec sources */}
-    <div className="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-lg">
-      <p className="text-xs text-blue-800 leading-relaxed">
+    <div className="p-4 border-l-4 border-blue-400 rounded-lg bg-blue-50">
+      <p className="text-xs leading-relaxed text-blue-800">
         ℹ️ <strong>Sources vérifiées :</strong> Les salaires sont basés sur des publications officielles et médias ivoiriens (Jeune Afrique 2018, Informateur.ci 2025, ABIDJANAIS 2015). Les avantages en nature (véhicules, logements, personnel) ne sont pas inclus dans ces montants.
       </p>
     </div>
@@ -676,8 +676,8 @@ const handleSelectMetierPublic = (metier) => {
                       borderColor: COLORS.gold.primary
                     }}
                   >
-                    <Briefcase size={18} className="group-hover:rotate-12 transition-transform" />
-                    <span className="font-bold text-sm">Secteur Privé</span>
+                    <Briefcase size={18} className="transition-transform group-hover:rotate-12" />
+                    <span className="text-sm font-bold">Secteur Privé</span>
                     <X size={16} className="opacity-60 group-hover:opacity-100" />
                   </button>
                 </div>
@@ -721,9 +721,9 @@ const handleSelectMetierPublic = (metier) => {
                 {selectedMetierPrive && niveauxPriveList.length > 0 && (
                   <div className="space-y-4 animate-slide-in">
                     <label className="block">
-                      <span className="inline-flex items-center gap-2 sm:gap-3 text-gray-900 font-bold text-sm sm:text-base lg:text-lg mb-4">
+                      <span className="inline-flex items-center gap-2 mb-4 text-sm font-bold text-gray-900 sm:gap-3 sm:text-base lg:text-lg">
                         <span 
-                          className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 text-white rounded-xl text-xs sm:text-sm font-black shadow-lg flex-shrink-0"
+                          className="flex items-center justify-center flex-shrink-0 text-xs font-black text-white shadow-lg w-7 h-7 sm:w-8 sm:h-8 rounded-xl sm:text-sm"
                           style={{ background: `linear-gradient(135deg, ${COLORS.teal.dark}, ${COLORS.teal.darker})` }}
                         >
                           4
@@ -732,7 +732,7 @@ const handleSelectMetierPublic = (metier) => {
                       </span>
                     </label>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
+                    <div className="grid grid-cols-1 gap-3 md:grid-cols-3 sm:gap-4">
                       {niveauxPriveList.map((niv) => {
                         const isSelected = selectedNiveauPrive === niv.key;
                         return (
@@ -758,21 +758,21 @@ const handleSelectMetierPublic = (metier) => {
                               {niv.key === 'junior' ? '🌱' : niv.key === 'confirme' ? '💼' : '⭐'}
                             </div>
                             <p 
-                              className="font-black text-sm sm:text-base lg:text-lg capitalize mb-1"
+                              className="mb-1 text-sm font-black capitalize sm:text-base lg:text-lg"
                               style={{ color: isSelected ? COLORS.teal.dark : COLORS.gray[900] }}
                             >
                               {niv.key}
                             </p>
-                            <p className="text-xs sm:text-sm text-gray-600 text-center leading-relaxed">
+                            <p className="text-xs leading-relaxed text-center text-gray-600 sm:text-sm">
                               {niv.experience}
                             </p>
                             {isSelected && (
                               <div className="absolute top-2 right-2 sm:top-3 sm:right-3">
                                 <div 
-                                  className="w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center"
+                                  className="flex items-center justify-center w-5 h-5 rounded-full sm:w-6 sm:h-6"
                                   style={{ backgroundColor: COLORS.teal.primary }}
                                 >
-                                  <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" viewBox="0 0 24 24" stroke="currentColor">
+                                  <svg className="w-3 h-3 text-white sm:w-4 sm:h-4" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" viewBox="0 0 24 24" stroke="currentColor">
                                     <path d="M5 13l4 4L19 7"></path>
                                   </svg>
                                 </div>
@@ -788,14 +788,14 @@ const handleSelectMetierPublic = (metier) => {
                 {/* Message aucun sous-domaine */}
                 {selectedSecteurPrive && sousDomainesOptions.length === 0 && (
                   <div 
-                    className="border rounded-xl sm:rounded-2xl p-3 sm:p-4 text-center animate-slide-in"
+                    className="p-3 text-center border rounded-xl sm:rounded-2xl sm:p-4 animate-slide-in"
                     style={{ 
                       backgroundColor: COLORS.gold.light,
                       borderColor: COLORS.gold.primary 
                     }}
                   >
                     <p 
-                      className="font-semibold text-sm sm:text-base"
+                      className="text-sm font-semibold sm:text-base"
                       style={{ color: COLORS.gold.dark }}
                     >
                       ⚠️ Aucun sous-domaine disponible
@@ -807,7 +807,7 @@ const handleSelectMetierPublic = (metier) => {
 
             {/* ========== BOUTON SUBMIT ========== */}
             {sector && (
-              <div className="space-y-4 pt-4 animate-slide-in">
+              <div className="pt-4 space-y-4 animate-slide-in">
                 <button
                   type="submit"
                   disabled={
@@ -820,7 +820,7 @@ const handleSelectMetierPublic = (metier) => {
                   }}
                 >
                   <div 
-                    className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity"
+                    className="absolute inset-0 transition-opacity opacity-0 group-hover:opacity-20"
                     style={{ background: `linear-gradient(to right, ${COLORS.teal.light}, ${COLORS.gold.light})` }}
                   />
                   <span className="relative flex items-center justify-center gap-2 sm:gap-3">
@@ -830,7 +830,7 @@ const handleSelectMetierPublic = (metier) => {
                       <span className="text-center">⏳ Complétez tous les champs</span>
                     ) : (
                       <>
-                        <Sparkles size={18} className="animate-pulse flex-shrink-0" />
+                        <Sparkles size={18} className="flex-shrink-0 animate-pulse" />
                         <span className="truncate">Découvrir mon salaire</span>
                         <ChevronDown className="rotate-[-90deg] group-hover:translate-x-1 transition-transform flex-shrink-0" size={18} />
                       </>
@@ -838,7 +838,7 @@ const handleSelectMetierPublic = (metier) => {
                   </span>
                 </button>
 
-                <p className="text-xs sm:text-sm text-center text-gray-500 flex flex-wrap items-center justify-center gap-1 sm:gap-2">
+                <p className="flex flex-wrap items-center justify-center gap-1 text-xs text-center text-gray-500 sm:text-sm sm:gap-2">
                   <span 
                     className="w-1.5 h-1.5 rounded-full animate-pulse flex-shrink-0"
                     style={{ backgroundColor: COLORS.teal.primary }}
@@ -861,10 +861,10 @@ const handleSelectMetierPublic = (metier) => {
       />
 
       {/* ========== FOOTER ========== */}
-      <footer className="relative bg-white/80 backdrop-blur-xl border-t py-6 sm:py-8" style={{ borderColor: COLORS.teal.light }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-3">
-            <p className="text-sm sm:text-base text-gray-600 font-medium">
+      <footer className="relative py-6 border-t bg-white/80 backdrop-blur-xl sm:py-8" style={{ borderColor: COLORS.teal.light }}>
+        <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+          <div className="space-y-3 text-center">
+            <p className="text-sm font-medium text-gray-600 sm:text-base">
               © 2025 BAHN • Côte d'Ivoire 🇨🇮
             </p>
             <p className="text-xs text-gray-500">

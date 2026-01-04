@@ -16,8 +16,9 @@ import corpsMetiers from '../data/corps-metiers.json';
  * @param {string} metier - optionnel
  */
 export function calculerSalairePublic(categorie, grade, metier = '') {
-  const categorieData = grillesPubliques?.grilles_salariales?.[categorie];
-  const grille = categorieData?.grades?.[grade];
+  // ✅ CORRECTION : Bon chemin JSON
+  const categorieData = grillesPubliques?.grilles_salariales_par_categorie?.[categorie];
+  const grille = categorieData?.grilles_par_grade?.[grade];
 
   if (!grille) {
     console.warn(`Grille non trouvée pour ${categorie} - ${grade}`);

@@ -301,7 +301,9 @@ useEffect(() => {
     }));
   }, [categorieInfo, jobLabel, sector]);
 
-  const benefits = useMemo(() => getAvantagesSecteur(sector), [sector]);
+  const benefits = useMemo(() => {
+  return getAvantagesSecteur(sector, jobLabel, gradeInfo);
+}, [sector, jobLabel, gradeInfo]);
 
   const AnimatedNumber = ({ value, duration = 1500, shouldAnimate }) => {
     const [count, setCount] = useState(0);
@@ -340,14 +342,14 @@ useEffect(() => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-teal-50 via-white to-amber-50 relative overflow-hidden">
+    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-teal-50 via-white to-amber-50">
       {/* Blobs décoratifs */}
       <div 
-        className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"
+        className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 rounded-full w-96 h-96 blur-3xl"
         style={{ background: `linear-gradient(135deg, ${COLORS.teal.primary}20, ${COLORS.teal.medium}20)` }}
       />
       <div 
-        className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"
+        className="absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2 rounded-full w-96 h-96 blur-3xl"
         style={{ background: `linear-gradient(135deg, ${COLORS.gold.primary}20, ${COLORS.gold.dark}20)` }}
       />
 
@@ -357,22 +359,22 @@ useEffect(() => {
           className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-xl"
           style={{ background: 'linear-gradient(135deg, #E6F5F5 0%, #FFFFFF 50%, #FEF9E6 100%)' }}
         >
-          <div className="max-w-md w-full px-6">
+          <div className="w-full max-w-md px-6">
             {/* Logo BAHN animé */}
             <div className="flex justify-center mb-8">
               <div className="relative group">
                 <div 
-                  className="absolute inset-0 rounded-3xl blur-xl opacity-75 animate-pulse"
+                  className="absolute inset-0 opacity-75 rounded-3xl blur-xl animate-pulse"
                   style={{ background: `linear-gradient(135deg, ${COLORS.teal.primary}, ${COLORS.gold.primary})` }}
                 />
-                <div className="relative rounded-3xl flex items-center justify-center overflow-hidden px-16 py-10">
+                <div className="relative flex items-center justify-center px-16 py-10 overflow-hidden rounded-3xl">
                   <div className="flex items-center gap-3">
                     <div 
-                      className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-2xl"
+                      className="flex items-center justify-center w-16 h-16 shadow-2xl rounded-2xl"
                       style={{ backgroundColor: COLORS.gold.primary }}
                     >
                       <span 
-                        className="font-black text-3xl"
+                        className="text-3xl font-black"
                         style={{ color: COLORS.teal.dark }}
                       >
                         B
@@ -391,7 +393,7 @@ useEffect(() => {
 
             {/* Titre */}
             <h2 
-              className="text-3xl font-black text-center mb-3"
+              className="mb-3 text-3xl font-black text-center"
               style={{ 
                 background: `linear-gradient(to right, ${COLORS.teal.primary}, ${COLORS.gold.primary})`,
                 WebkitBackgroundClip: 'text',
@@ -401,13 +403,13 @@ useEffect(() => {
             >
               Analyse en cours
             </h2>
-            <p className="text-center text-gray-600 mb-8 font-medium">
+            <p className="mb-8 font-medium text-center text-gray-600">
               {jobLabel} • {isPublic ? "Fonction Publique" : secteurLabel}
             </p>
 
             {/* Messages d'étapes */}
             <div 
-              className="bg-white/90 backdrop-blur-xl rounded-3xl p-6 shadow-2xl mb-6 border"
+              className="p-6 mb-6 border shadow-2xl bg-white/90 backdrop-blur-xl rounded-3xl"
               style={{ borderColor: COLORS.teal.light }}
             >
               <div className="space-y-3">
@@ -471,9 +473,9 @@ useEffect(() => {
 
             {/* Barre de progression */}
             <div className="relative">
-              <div className="h-3 bg-gray-200/80 rounded-full overflow-hidden backdrop-blur-sm">
+              <div className="h-3 overflow-hidden rounded-full bg-gray-200/80 backdrop-blur-sm">
                 <div
-                  className="h-full transition-all duration-300 ease-out rounded-full relative"
+                  className="relative h-full transition-all duration-300 ease-out rounded-full"
                   style={{ 
                     width: `${analysisProgress}%`,
                     background: `linear-gradient(to right, ${COLORS.teal.primary}, ${COLORS.gold.primary})`
@@ -482,12 +484,12 @@ useEffect(() => {
                   <div className="absolute inset-0 bg-white/30 animate-pulse"></div>
                 </div>
               </div>
-              <p className="text-center text-sm text-gray-600 mt-3 font-bold">
+              <p className="mt-3 text-sm font-bold text-center text-gray-600">
                 {analysisProgress}%
               </p>
             </div>
 
-            <p className="text-center text-xs text-gray-500 mt-6">
+            <p className="mt-6 text-xs text-center text-gray-500">
               Préparation de ton estimation personnalisée...
             </p>
           </div>
@@ -495,21 +497,21 @@ useEffect(() => {
       )}
 
       {/* ========== HEADER BAHN ========== */}
-      <header className="relative bg-white shadow-sm sticky top-0 z-40 border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
+      <header className="relative sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm">
+        <div className="px-4 py-4 mx-auto max-w-7xl sm:px-6 lg:px-8 sm:py-5">
           <div className="flex items-center justify-between gap-4">
             {/* Logo BAHN */}
             <div 
-              className="flex items-center gap-2 sm:gap-3 cursor-pointer group"
+              className="flex items-center gap-2 cursor-pointer sm:gap-3 group"
               onClick={() => window.location.href = 'https://www.mondje.bahn-edu.com'}
             >
               {/* Badge B */}
               <div 
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform"
+                className="flex items-center justify-center w-10 h-10 transition-transform shadow-lg sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl group-hover:scale-110"
                 style={{ backgroundColor: COLORS.gold.primary }}
               >
                 <span 
-                  className="font-black text-xl sm:text-2xl"
+                  className="text-xl font-black sm:text-2xl"
                   style={{ color: COLORS.teal.dark }}
                 >
                   B
@@ -519,7 +521,7 @@ useEffect(() => {
               {/* Texte BAHN */}
               <div className="flex items-center gap-2">
                 <div 
-                  className="text-xl sm:text-2xl md:text-3xl font-black"
+                  className="text-xl font-black sm:text-2xl md:text-3xl"
                   style={{ color: COLORS.teal.dark }}
                 >
                   BAHN
@@ -532,24 +534,24 @@ useEffect(() => {
             </div>
 
             {/* Actions */}
-            <div className="flex items-center gap-2 flex-shrink-0">
+            <div className="flex items-center flex-shrink-0 gap-2">
               <button
                 onClick={() => navigate("/", { replace: true })}
-                className="group flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl hover:shadow-md transition-all font-bold text-xs sm:text-sm border"
+                className="flex items-center gap-2 px-3 py-2 text-xs font-bold transition-all border group sm:px-4 rounded-xl hover:shadow-md sm:text-sm"
                 style={{
                   background: `linear-gradient(to right, ${COLORS.teal.light}, ${COLORS.teal.light})`,
                   color: COLORS.teal.dark,
                   borderColor: COLORS.teal.medium
                 }}
               >
-                <Home size={16} className="group-hover:scale-110 transition-transform" />
+                <Home size={16} className="transition-transform group-hover:scale-110" />
                 <span className="hidden sm:inline">Nouvelle</span>
               </button>
 
 <div className="relative">
   <button
     onClick={openViral}
-    className="group relative flex items-center gap-2 px-4 sm:px-5 py-3 text-white rounded-xl hover:scale-105 transition-all font-bold text-sm shadow-xl overflow-hidden"
+    className="relative flex items-center gap-2 px-4 py-3 overflow-hidden text-sm font-bold text-white transition-all shadow-xl group sm:px-5 rounded-xl hover:scale-105"
     style={{
       background: `linear-gradient(135deg, ${COLORS.teal.primary}, ${COLORS.gold.primary})`,
       animation: 'gentle-pulse 3s ease-in-out infinite'
@@ -564,7 +566,7 @@ useEffect(() => {
       }}
     ></div>
 
-    <Share2 size={18} className="group-hover:rotate-12 transition-transform relative z-10" />
+    <Share2 size={18} className="relative z-10 transition-transform group-hover:rotate-12" />
     <span className="relative z-10 font-black">MA CARTE</span>
 
     {/* Badge NEW */}
@@ -577,7 +579,7 @@ useEffect(() => {
           </div>
 
           {/* Stats badges */}
-          <div className="flex items-center gap-2 mt-3 text-xs text-gray-600 flex-wrap">
+          <div className="flex flex-wrap items-center gap-2 mt-3 text-xs text-gray-600">
             <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/80 backdrop-blur-sm rounded-full border border-gray-200">
               <span 
                 className="w-1.5 h-1.5 rounded-full animate-pulse"
@@ -596,7 +598,7 @@ useEffect(() => {
       </header>
 
       {/* ========== CONTENU PRINCIPAL ========== */}
-      <main className="relative max-w-6xl mx-auto px-4 py-8 sm:py-12 space-y-8">
+      <main className="relative max-w-6xl px-4 py-8 mx-auto space-y-8 sm:py-12">
         {/* Salary Card */}
         <div
           className={`relative overflow-hidden rounded-3xl sm:rounded-[2rem] shadow-2xl p-6 sm:p-10 lg:p-12 text-white border-2 transform hover:shadow-3xl transition-shadow duration-500`}
@@ -608,61 +610,61 @@ useEffect(() => {
           }}
         >
           {/* Blobs décoratifs */}
-          <div className="absolute top-0 right-0 w-80 h-80 sm:w-96 sm:h-96 bg-white/10 rounded-full -mr-40 -mt-40 blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-56 h-56 sm:w-64 sm:h-64 bg-white/5 rounded-full -ml-28 -mb-28 blur-3xl"></div>
+          <div className="absolute top-0 right-0 -mt-40 -mr-40 rounded-full w-80 h-80 sm:w-96 sm:h-96 bg-white/10 blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-56 h-56 rounded-full sm:w-64 sm:h-64 bg-white/5 -ml-28 -mb-28 blur-3xl"></div>
 
           <div className="relative z-10 space-y-6 sm:space-y-8">
             {/* Header */}
             <div className="flex items-start justify-between gap-4">
               <div className="flex items-center gap-3 sm:gap-4">
                 <div 
-                  className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white/20"
+                  className="flex items-center justify-center border w-14 h-14 sm:w-16 sm:h-16 rounded-2xl backdrop-blur-sm border-white/20"
                   style={{ backgroundColor: isPublic ? `${COLORS.teal.primary}4D` : `${COLORS.gold.primary}4D` }}
                 >
                   {isPublic ? <Landmark size={32} /> : <Building2 size={32} />}
                 </div>
                 <div>
-                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black">
+                  <h2 className="text-2xl font-black sm:text-3xl lg:text-4xl">
                     Ton estimation
                   </h2>
-                  <p className="text-white/90 text-xs sm:text-sm font-medium mt-1">
+                  <p className="mt-1 text-xs font-medium text-white/90 sm:text-sm">
                     {isPublic ? "🏛️ Fonction Publique" : `🏢 ${secteurLabel}`} • Côte d'Ivoire 🇨🇮
                   </p>
                 </div>
               </div>
 
-              <div className="hidden sm:flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
+              <div className="items-center hidden gap-2 px-4 py-2 border rounded-full sm:flex bg-white/20 backdrop-blur-sm border-white/30">
                 <Star className="text-yellow-300 fill-yellow-300" size={16} />
                 <span className="text-sm font-bold">Vérifié</span>
               </div>
             </div>
 
             {/* Main content */}
-            <div className="grid lg:grid-cols-2 gap-5 sm:gap-6">
+            <div className="grid gap-5 lg:grid-cols-2 sm:gap-6">
               {/* Salary info */}
-              <div className="bg-white/20 backdrop-blur-md rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-white/30">
+              <div className="p-5 border bg-white/20 backdrop-blur-md rounded-2xl sm:rounded-3xl sm:p-8 border-white/30">
                 <div className="mb-5">
-                  <p className="text-sm text-white/90 mb-2 font-medium">
+                  <p className="mb-2 text-sm font-medium text-white/90">
                     💼 <span className="font-bold text-white">{jobLabel}</span>
                   </p>
-                  <p className="text-sm text-white/90 font-medium">
+                  <p className="text-sm font-medium text-white/90">
                     📌 {isPublic ? `Grade ${gradePublic}` : `Niveau ${niveau}`}
                   </p>
                 </div>
 
-                <div className="border-t border-white/30 pt-5">
-                  <p className="text-sm text-white/95 mb-4 font-semibold">💰 Salaire mensuel estimé</p>
+                <div className="pt-5 border-t border-white/30">
+                  <p className="mb-4 text-sm font-semibold text-white/95">💰 Salaire mensuel estimé</p>
                   <div className="flex items-baseline gap-3 mb-2">
-                    <p className="text-4xl sm:text-5xl lg:text-6xl font-black">
+                    <p className="text-4xl font-black sm:text-5xl lg:text-6xl">
                       <AnimatedNumber value={Math.round(minSalary / 1000)} shouldAnimate={animateStats} />K
                     </p>
-                    <span className="text-2xl sm:text-3xl font-black">-</span>
-                    <p className="text-4xl sm:text-5xl lg:text-6xl font-black">
+                    <span className="text-2xl font-black sm:text-3xl">-</span>
+                    <p className="text-4xl font-black sm:text-5xl lg:text-6xl">
                       <AnimatedNumber value={Math.round(maxSalary / 1000)} shouldAnimate={animateStats} />K
                     </p>
                   </div>
-                  <p className="text-white/90 text-base sm:text-lg font-medium">FCFA / mois</p>
-                  <p className="text-white/80 text-xs sm:text-sm mt-3 font-medium">
+                  <p className="text-base font-medium text-white/90 sm:text-lg">FCFA / mois</p>
+                  <p className="mt-3 text-xs font-medium text-white/80 sm:text-sm">
                     Moyenne: <span className="font-bold text-white">{formatFCFA(avgSalary)}</span>
                   </p>
                 </div>
@@ -670,15 +672,15 @@ useEffect(() => {
 
               {/* Stats cards */}
               <div className="space-y-4">
-                <div className="bg-white/15 backdrop-blur-md rounded-2xl p-5 border border-white/30 hover:bg-white/20 transition-all">
-                  <p className="text-xs text-white/80 mb-2 font-medium">Salaire moyen</p>
-                  <p className="text-3xl sm:text-4xl font-black">
+                <div className="p-5 transition-all border bg-white/15 backdrop-blur-md rounded-2xl border-white/30 hover:bg-white/20">
+                  <p className="mb-2 text-xs font-medium text-white/80">Salaire moyen</p>
+                  <p className="text-3xl font-black sm:text-4xl">
                     <AnimatedNumber value={Math.round(avgSalary / 1000)} shouldAnimate={animateStats} />K FCFA
                   </p>
                 </div>
-                <div className="bg-white/15 backdrop-blur-md rounded-2xl p-5 border border-white/30 hover:bg-white/20 transition-all">
-                  <p className="text-xs text-white/80 mb-2 font-medium">Salaire annuel brut</p>
-                  <p className="text-3xl sm:text-4xl font-black">
+                <div className="p-5 transition-all border bg-white/15 backdrop-blur-md rounded-2xl border-white/30 hover:bg-white/20">
+                  <p className="mb-2 text-xs font-medium text-white/80">Salaire annuel brut</p>
+                  <p className="text-3xl font-black sm:text-4xl">
                     <AnimatedNumber value={Math.round((avgSalary * 12) / 1000)} shouldAnimate={animateStats} />K FCFA
                   </p>
                 </div>
@@ -686,16 +688,16 @@ useEffect(() => {
             </div>
 
             {/* Benefits */}
-            <div className="bg-white/15 backdrop-blur-md rounded-2xl sm:rounded-3xl p-5 sm:p-6 border border-white/30">
-              <h3 className="font-black mb-4 flex items-center gap-2 text-lg">
+            <div className="p-5 border bg-white/15 backdrop-blur-md rounded-2xl sm:rounded-3xl sm:p-6 border-white/30">
+              <h3 className="flex items-center gap-2 mb-4 text-lg font-black">
                 <TrendingUp size={20} />
                 Avantages du {isPublic ? "secteur public" : "secteur privé"}
               </h3>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {benefits.map((benefit, i) => (
-                  <div key={i} className="flex items-center gap-2 text-sm text-white/95 bg-white/10 rounded-xl p-3 backdrop-blur-sm">
-                    <CheckCircle2 size={16} className="text-white flex-shrink-0" />
+                  <div key={i} className="flex items-center gap-2 p-3 text-sm text-white/95 bg-white/10 rounded-xl backdrop-blur-sm">
+                    <CheckCircle2 size={16} className="flex-shrink-0 text-white" />
                     <span className="font-medium">{benefit}</span>
                   </div>
                 ))}
@@ -703,9 +705,9 @@ useEffect(() => {
             </div>
 
             {/* Phrase du jour */}
-            <div className="bg-black/20 border border-white/20 rounded-2xl p-5 backdrop-blur-sm">
-              <div className="text-xs text-white/90 mb-2 font-semibold">🎭 Phrase du jour</div>
-              <div className="text-base sm:text-lg font-bold">
+            <div className="p-5 border bg-black/20 border-white/20 rounded-2xl backdrop-blur-sm">
+              <div className="mb-2 text-xs font-semibold text-white/90">🎭 Phrase du jour</div>
+              <div className="text-base font-bold sm:text-lg">
                 "{getRandomMessageBySalary(avgSalary)}"
               </div>
             </div>
@@ -717,7 +719,7 @@ useEffect(() => {
           <div className="text-center">
             <button
               onClick={() => setShowGradeModal(true)}
-              className="inline-flex items-center space-x-2 bg-white/90 backdrop-blur-sm hover:bg-white px-6 py-4 rounded-2xl font-bold transition-all shadow-lg hover:shadow-xl hover:scale-105 border-2"
+              className="inline-flex items-center px-6 py-4 space-x-2 font-bold transition-all border-2 shadow-lg bg-white/90 backdrop-blur-sm hover:bg-white rounded-2xl hover:shadow-xl hover:scale-105"
               style={{
                 color: COLORS.teal.dark,
                 borderColor: COLORS.teal.light
@@ -733,24 +735,24 @@ useEffect(() => {
       </main>
 {showToast && (
         <div 
-          className="fixed bottom-24 sm:bottom-8 right-4 left-4 sm:left-auto sm:max-w-sm bg-white rounded-2xl shadow-2xl animate-slide-up z-50 border-2"
+          className="fixed z-50 bg-white border-2 shadow-2xl bottom-24 sm:bottom-8 right-4 left-4 sm:left-auto sm:max-w-sm rounded-2xl animate-slide-up"
           style={{ borderColor: COLORS.teal.primary }}
           onClick={() => {
             setShowToast(false);
             openViral();
           }}
         >
-          <div className="p-4 cursor-pointer hover:bg-gray-50 transition-colors rounded-2xl">
+          <div className="p-4 transition-colors cursor-pointer hover:bg-gray-50 rounded-2xl">
             <div className="flex items-start gap-3">
               <div 
-                className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 animate-bounce-slow"
+                className="flex items-center justify-center flex-shrink-0 w-12 h-12 rounded-xl animate-bounce-slow"
                 style={{ background: `linear-gradient(135deg, ${COLORS.teal.primary}, ${COLORS.gold.primary})` }}
               >
                 <span className="text-2xl">📸</span>
               </div>
 
               <div className="flex-1">
-                <p className="font-black text-gray-900 mb-1">
+                <p className="mb-1 font-black text-gray-900">
                   N'oublie pas ta carte ! 🎉
                 </p>
                 <p className="text-sm text-gray-600">
@@ -763,13 +765,13 @@ useEffect(() => {
                   e.stopPropagation();
                   setShowToast(false);
                 }}
-                className="text-gray-400 hover:text-gray-600 transition-colors"
+                className="text-gray-400 transition-colors hover:text-gray-600"
               >
                 <X size={20} />
               </button>
             </div>
 
-            <div className="mt-3 h-1 bg-gray-200 rounded-full overflow-hidden">
+            <div className="h-1 mt-3 overflow-hidden bg-gray-200 rounded-full">
               <div 
                 className="h-full rounded-full"
                 style={{ 

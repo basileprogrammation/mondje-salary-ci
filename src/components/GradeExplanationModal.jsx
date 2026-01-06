@@ -119,8 +119,15 @@ const GradeExplanationModal = ({ isOpen, onClose }) => {
                   <span className="font-black text-gray-900">💼 Exemples :</span> Administrateur Civil, Médecin, 
                   Ingénieur, Professeur de Lycée, Inspecteur
                 </div>
+                <div className="p-4 mt-4 border-l-4 border-blue-400 rounded-lg bg-blue-50">
+                <p className="text-xs leading-relaxed text-blue-800">
+                  ℹ️ <strong>Note importante :</strong> Les grades A1 et A2 existent officiellement 
+                  mais sont accessibles uniquement par avancement après 20+ ans de carrière. 
+                  Les concours de la fonction publique portent sur les grades A3 à A7.
+                </p>
               </div>
-
+              </div>
+              
               {/* Catégorie B */}
               <div 
                 className="p-5 border-l-4 rounded-2xl"

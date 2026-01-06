@@ -49,7 +49,7 @@ export default function EstimatorPage() {
   const [categoriePublic, setCategoriePublic] = useState('');
   const [gradePublic, setGradePublic] = useState('');
   const [showSuggestionsPublic, setShowSuggestionsPublic] = useState(false);
-
+  const [gradeEntreeMetier, setGradeEntreeMetier] = useState('');
   // États PRIVÉ
   const [selectedSecteurPrive, setSelectedSecteurPrive] = useState('');
   const [selectedSousDomaine, setSelectedSousDomaine] = useState('');
@@ -102,10 +102,47 @@ export default function EstimatorPage() {
       .slice(0, 8);
   }, [searchMetierPublic, metiersPublicList]);
 
-  const gradesPublic = useMemo(() => {
-    if (!categoriePublic) return [];
-    return corpsMetiersData?.categories?.[categoriePublic]?.grades || [];
-  }, [categoriePublic]);
+const gradesPublic = useMemo(() => {
+  if (!categoriePublic) return [];
+  
+  const grades = corpsMetiersData?.categories?.[categoriePublic]?.grades || [];
+  
+  // ✅ Masquer les grades non accessibles par concours
+  const gradesAccessiblesConcours = {
+    'categorie_A': ['A7', 'A6', 'A5', 'A4', 'A3'], // Sans A1, A2
+    'categorie_B': ['B3', 'B2', 'B1'],
+    'categorie_C': ['C3', 'C2', 'C1'],
+    'categorie_D': ['D2', 'D1'], // Sans D3
+    'hauts_responsables': ['ministre', 'depute']
+  };
+  
+  const gradesAutorises = gradesAccessiblesConcours[categoriePublic];
+  let gradesFiltres = gradesAutorises ? grades.filter(g => gradesAutorises.includes(g)) : grades;
+  
+  // ✅ NOUVEAU : Filtrer selon grade_entree (progression A3→A7)
+  if (gradeEntreeMetier && categoriePublic !== 'hauts_responsables') {
+    // Ordre de progression : du plus BAS (A3) au plus HAUT (A7)
+    const ordreProgression = {
+      'categorie_A': ['A3', 'A4', 'A5', 'A6', 'A7', 'A2', 'A1'],
+      'categorie_B': ['B1', 'B2', 'B3'],
+      'categorie_C': ['C1', 'C2', 'C3'],
+      'categorie_D': ['D1', 'D2']
+    };
+    
+    const ordre = ordreProgression[categoriePublic] || [];
+    const indexGradeEntree = ordre.indexOf(gradeEntreeMetier);
+    
+    if (indexGradeEntree !== -1) {
+      // Garder seulement les grades >= grade_entree (progression ascendante)
+      gradesFiltres = gradesFiltres.filter(g => {
+        const indexG = ordre.indexOf(g);
+        return indexG >= indexGradeEntree;
+      });
+    }
+  }
+  
+  return gradesFiltres;
+}, [categoriePublic, gradeEntreeMetier]); 
 
   // ========== DONNÉES SECTEUR PRIVÉ ==========
   const secteursPriveList = useMemo(() => {
@@ -169,6 +206,7 @@ export default function EstimatorPage() {
     setSearchMetierPublic('');
     setCategoriePublic('');
     setGradePublic('');
+    setGradeEntreeMetier('');
     setShowSuggestionsPublic(false);
     setSelectedSecteurPrive('');
     setSelectedSousDomaine('');
@@ -179,16 +217,15 @@ export default function EstimatorPage() {
 const handleSelectMetierPublic = (metier) => {
   setSearchMetierPublic(metier.nom);
   setCategoriePublic(metier.categorieKey);
+  setGradeEntreeMetier(metier.grade_entree || ''); // ✅ NOUVEAU : Sauvegarder grade d'entrée
   setShowSuggestionsPublic(false);
   
   // ✅ Si c'est un haut responsable, mettre le grade automatiquement
   if (metier.categorieKey === 'hauts_responsables') {
-    // Convertir "Ministre" → "ministre", "Député" → "depute"
     const gradeAuto = metier.nom.toLowerCase() === 'ministre' ? 'ministre' : 'depute';
     setGradePublic(gradeAuto);
   } else {
-    // Réinitialiser le grade pour les autres catégories
-    setGradePublic('');
+    setGradePublic(''); // Réinitialiser le grade
   }
 };
 
@@ -622,6 +659,32 @@ const handleSelectMetierPublic = (metier) => {
       </select>
       <ChevronDown className="absolute text-gray-400 -translate-y-1/2 pointer-events-none right-5 top-1/2" size={20} />
     </div>
+    {gradeEntreeMetier && (
+      <div 
+        className="flex items-start gap-3 p-4 border-l-4 rounded-lg animate-slide-in"
+        style={{ 
+          backgroundColor: COLORS.teal.light,
+          borderColor: COLORS.teal.primary 
+        }}
+      >
+        <span className="text-xl">ℹ️</span>
+        <div className="space-y-1">
+          <p 
+            className="text-sm font-bold"
+            style={{ color: COLORS.teal.dark }}
+          >
+            Grade d'entrée par concours : {gradeEntreeMetier}
+          </p>
+          <p className="text-xs leading-relaxed text-gray-600">
+            Vous entrez comme <strong>{gradeEntreeMetier}</strong> et pouvez progresser par avancement jusqu'à{' '}
+            {categoriePublic === 'categorie_A' ? 'A1' : 
+             categoriePublic === 'categorie_B' ? 'B1' : 
+             categoriePublic === 'categorie_C' ? 'C1' : 'D1'}.
+            {' '}La descente de grade n'existe pas dans la fonction publique.
+          </p>
+        </div>
+      </div>
+    )}
   </div>
 )}
 

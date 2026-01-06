@@ -60,7 +60,7 @@
             {"echelon": 3, "salaire_base": 400000, "anciennete_requise_mois": 24},
             {"echelon": 4, "salaire_base": 420000, "anciennete_requise_mois": 36}
           ],
-          "exemples_metiers": ["Administrateur Civil", "Magistrat"]
+          "exemples_metiers": ["Administrateur Civil", "Magistrat", "Préfet", "Contrôleur Général d'Etat"]
         },
         "A4": {
           "grade": "A4",
@@ -81,15 +81,14 @@
           "grade": "A3",
           "designation": "Attaché d'administration - Débutant",
           "salaire_base_min": 247539,
-          "salaire_base_max": 380000,
+          "salaire_base_max": 280000,
           "salaire_avec_primes_min": 320000,
-          "salaire_avec_primes_max": 480000,
+          "salaire_avec_primes_max": 380000,
           "echelons": [
             {"echelon": 1, "salaire_base": 247539, "anciennete_requise_mois": 0},
-            {"echelon": 2, "salaire_base": 280000, "anciennete_requise_mois": 12},
-            {"echelon": 3, "salaire_base": 320000, "anciennete_requise_mois": 24},
-            {"echelon": 4, "salaire_base": 350000, "anciennete_requise_mois": 36},
-            {"echelon": 5, "salaire_base": 380000, "anciennete_requise_mois": 48}
+            {"echelon": 2, "salaire_base": 260000, "anciennete_requise_mois": 12},
+            {"echelon": 3, "salaire_base": 270000, "anciennete_requise_mois": 24},
+            {"echelon": 4, "salaire_base": 280000, "anciennete_requise_mois": 36}
           ],
           "exemples_metiers": ["Attaché d'Administration", "Ingénieur débutant", "Professeur de Lycée", "Professeur de Collège"]
         },
@@ -106,7 +105,7 @@
             {"echelon": 3, "salaire_base": 440000, "anciennete_requise_mois": 24},
             {"echelon": 4, "salaire_base": 480000, "anciennete_requise_mois": 36}
           ],
-          "exemples_metiers": ["Sous-Directeur", "Chef de Service", "Préfet", "Contrôleur Général d'Etat"]
+          "exemples_metiers": ["Sous-Directeur", "Chef de Service Central"]
         },
         "A1": {
           "grade": "A1",
@@ -144,8 +143,8 @@
               "grade_entree": "A3",
               "salaire_brut_debut": 247539,
               "salaire_avec_primes_debut": 320000,
-              "salaire_brut_max": 380000,
-              "salaire_avec_primes_max": 480000,
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 380000,
               "progression_carriere": "A3 → A2 → A1"
             },
             {
@@ -153,8 +152,8 @@
               "grade_entree": "A3",
               "salaire_brut_debut": 247539,
               "salaire_avec_primes_debut": 320000,
-              "salaire_brut_max": 380000,
-              "salaire_avec_primes_max": 480000,
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 380000,
               "progression_carriere": "A3 → A2 → A1"
             },
             {
@@ -162,8 +161,8 @@
               "grade_entree": "A3",
               "salaire_brut_debut": 247539,
               "salaire_avec_primes_debut": 320000,
-              "salaire_brut_max": 380000,
-              "salaire_avec_primes_max": 480000,
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 380000,
               "progression_carriere": "A3 → A2 → A1"
             },
             {
@@ -171,65 +170,65 @@
               "grade_entree": "A3",
               "salaire_brut_debut": 247539,
               "salaire_avec_primes_debut": 320000,
-              "salaire_brut_max": 380000,
-              "salaire_avec_primes_max": 480000,
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 380000,
               "progression_carriere": "A3 → A2 → A1"
             },
             {
               "nom": "Contrôleur Général d'Etat",
-              "grade_entree": "A2",
-              "salaire_brut_debut": 380000,
-              "salaire_avec_primes_debut": 470000,
-              "salaire_brut_max": 480000,
-              "salaire_avec_primes_max": 620000,
-              "note": "Fonction généralement de haut niveau (nomination/avancement)."
+              "grade_entree": "A5",
+              "salaire_brut_debut": 350000,
+              "salaire_avec_primes_debut": 430000,
+              "salaire_brut_max": 420000,
+              "salaire_avec_primes_max": 550000,
+              "note": "Fonction de très haut niveau (nomination/avancement après concours interne). Statut particulier."
             },
             {
               "nom": "Préfet",
-              "grade_entree": "A2",
-              "salaire_brut_debut": 380000,
-              "salaire_avec_primes_debut": 470000,
-              "salaire_brut_max": 480000,
-              "salaire_avec_primes_max": 620000,
-              "note": "Fonction généralement de haut niveau (nomination)."
+              "grade_entree": "A5",
+              "salaire_brut_debut": 350000,
+              "salaire_avec_primes_debut": 430000,
+              "salaire_brut_max": 420000,
+              "salaire_avec_primes_max": 550000,
+              "note": "Statut particulier du corps préfectoral (nomination par décret). Loi n° 2002-43 du 21 janvier 2002."
             },
             {
               "nom": "Sous-Préfet",
               "grade_entree": "A3",
               "salaire_brut_debut": 247539,
               "salaire_avec_primes_debut": 320000,
-              "salaire_brut_max": 380000,
-              "salaire_avec_primes_max": 480000
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 380000
             },
             {
               "nom": "Secrétaire Général de Préfecture",
               "grade_entree": "A3",
               "salaire_brut_debut": 247539,
               "salaire_avec_primes_debut": 320000,
-              "salaire_brut_max": 380000,
-              "salaire_avec_primes_max": 480000
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 380000
             }
           ]
         },
         "education_formation": {
           "domaine": "Education et Formation",
           "metiers": [
-            {
+              {
               "nom": "Professeur de Lycée",
               "grade_entree": "A3",
-              "salaire_brut_debut": 407720,
-              "salaire_avec_primes_debut": 480000,
-              "salaire_brut_max": 380000,
-              "salaire_avec_primes_max": 580000,
-              "note": "Avec primes pédagogiques et indemnités. Salaire de départ plus élevé que le grade de base."
+              "salaire_brut_debut": 247539,
+              "salaire_avec_primes_debut": 407720,
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 380000,
+              "note": "Avec primes pédagogiques (20-30% du salaire de base). Le salaire avec primes peut atteindre 407K dès le début grâce aux primes."
             },
             {
               "nom": "Professeur de Collège",
               "grade_entree": "A3",
               "salaire_brut_debut": 247539,
               "salaire_avec_primes_debut": 320000,
-              "salaire_brut_max": 380000,
-              "salaire_avec_primes_max": 480000,
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 380000,
               "note": "Primes pédagogiques possibles selon textes."
             },
             {
@@ -237,8 +236,8 @@
               "grade_entree": "A3",
               "salaire_brut_debut": 247539,
               "salaire_avec_primes_debut": 320000,
-              "salaire_brut_max": 380000,
-              "salaire_avec_primes_max": 480000
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 380000
             },
             {
               "nom": "Inspecteur de l'Enseignement",
@@ -254,8 +253,8 @@
               "grade_entree": "A3",
               "salaire_brut_debut": 247539,
               "salaire_avec_primes_debut": 320000,
-              "salaire_brut_max": 380000,
-              "salaire_avec_primes_max": 480000
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 380000
             }
           ]
         },
@@ -265,11 +264,11 @@
             {
               "nom": "Médecin",
               "grade_entree": "A6",
-              "salaire_brut_debut": 577404,
-              "salaire_avec_primes_debut": 750000,
+              "salaire_brut_debut": 420000,
+              "salaire_avec_primes_debut": 577404,
               "salaire_brut_max": 520000,
-              "salaire_avec_primes_max": 680000,
-              "note": "Avec indemnités de sujétion et gardes. Régime indemnitaire santé possible."
+              "salaire_avec_primes_max": 728000,
+              "note": "Avec indemnités de sujétion et gardes (30-40% du salaire de base). Le salaire avec primes peut atteindre 577K dès le début."
             },
             {
               "nom": "Pharmacien",
@@ -300,8 +299,8 @@
               "grade_entree": "A3",
               "salaire_brut_debut": 247539,
               "salaire_avec_primes_debut": 320000,
-              "salaire_brut_max": 380000,
-              "salaire_avec_primes_max": 480000
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 380000
             }
           ]
         },
@@ -313,65 +312,65 @@
               "grade_entree": "A3",
               "salaire_brut_debut": 247539,
               "salaire_avec_primes_debut": 320000,
-              "salaire_brut_max": 380000,
-              "salaire_avec_primes_max": 480000
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 380000
             },
             {
               "nom": "Ingénieur Informaticien",
               "grade_entree": "A3",
-              "salaire_brut_debut": 350000,
-              "salaire_avec_primes_debut": 450000,
-              "salaire_brut_max": 380000,
-              "salaire_avec_primes_max": 580000,
-              "note": "Augmentation de 40 000 FCFA minimum prévue. Salaire plus élevé que le grade de base."
+              "salaire_brut_debut": 247539,
+              "salaire_avec_primes_debut": 350000,
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 380000,
+              "note": "Avec primes techniques (10-15%) et revalorisation pour attractivité vs secteur privé. Le salaire avec primes peut atteindre 350K dès le début."
             },
             {
               "nom": "Ingénieur Agronome",
               "grade_entree": "A3",
               "salaire_brut_debut": 247539,
               "salaire_avec_primes_debut": 320000,
-              "salaire_brut_max": 380000,
-              "salaire_avec_primes_max": 480000
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 380000
             },
             {
               "nom": "Ingénieur Statisticien",
               "grade_entree": "A3",
               "salaire_brut_debut": 247539,
               "salaire_avec_primes_debut": 320000,
-              "salaire_brut_max": 380000,
-              "salaire_avec_primes_max": 480000
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 380000
             },
             {
               "nom": "Ingénieur des Mines",
               "grade_entree": "A3",
               "salaire_brut_debut": 247539,
               "salaire_avec_primes_debut": 320000,
-              "salaire_brut_max": 380000,
-              "salaire_avec_primes_max": 480000
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 380000
             },
             {
               "nom": "Ingénieur Télécommunications",
               "grade_entree": "A3",
               "salaire_brut_debut": 247539,
               "salaire_avec_primes_debut": 320000,
-              "salaire_brut_max": 380000,
-              "salaire_avec_primes_max": 480000
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 380000
             },
             {
               "nom": "Architecte",
               "grade_entree": "A3",
               "salaire_brut_debut": 247539,
               "salaire_avec_primes_debut": 320000,
-              "salaire_brut_max": 380000,
-              "salaire_avec_primes_max": 480000
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 380000
             },
             {
               "nom": "Urbaniste",
               "grade_entree": "A3",
               "salaire_brut_debut": 247539,
               "salaire_avec_primes_debut": 320000,
-              "salaire_brut_max": 380000,
-              "salaire_avec_primes_max": 480000
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 380000
             }
           ]
         },
@@ -383,32 +382,32 @@
               "grade_entree": "A3",
               "salaire_brut_debut": 247539,
               "salaire_avec_primes_debut": 320000,
-              "salaire_brut_max": 380000,
-              "salaire_avec_primes_max": 480000
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 380000
             },
             {
               "nom": "Administrateur des Services Financiers",
               "grade_entree": "A3",
               "salaire_brut_debut": 247539,
               "salaire_avec_primes_debut": 320000,
-              "salaire_brut_max": 380000,
-              "salaire_avec_primes_max": 480000
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 380000
             },
             {
               "nom": "Contrôleur des Finances",
               "grade_entree": "A3",
               "salaire_brut_debut": 247539,
               "salaire_avec_primes_debut": 320000,
-              "salaire_brut_max": 380000,
-              "salaire_avec_primes_max": 480000
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 380000
             },
             {
               "nom": "Comptable Principal",
               "grade_entree": "A3",
               "salaire_brut_debut": 247539,
               "salaire_avec_primes_debut": 320000,
-              "salaire_brut_max": 380000,
-              "salaire_avec_primes_max": 480000
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 380000
             }
           ]
         },
@@ -429,16 +428,16 @@
               "grade_entree": "A3",
               "salaire_brut_debut": 247539,
               "salaire_avec_primes_debut": 320000,
-              "salaire_brut_max": 380000,
-              "salaire_avec_primes_max": 480000
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 380000
             },
             {
               "nom": "Administrateur des Services Judiciaires",
               "grade_entree": "A3",
               "salaire_brut_debut": 247539,
               "salaire_avec_primes_debut": 320000,
-              "salaire_brut_max": 380000,
-              "salaire_avec_primes_max": 480000
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 380000
             }
           ]
         },
@@ -450,24 +449,24 @@
               "grade_entree": "A3",
               "salaire_brut_debut": 247539,
               "salaire_avec_primes_debut": 320000,
-              "salaire_brut_max": 380000,
-              "salaire_avec_primes_max": 480000
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 380000
             },
             {
               "nom": "Archiviste-Paléographe",
               "grade_entree": "A3",
               "salaire_brut_debut": 247539,
               "salaire_avec_primes_debut": 320000,
-              "salaire_brut_max": 380000,
-              "salaire_avec_primes_max": 480000
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 380000
             },
             {
               "nom": "Attaché de Presse",
               "grade_entree": "A3",
               "salaire_brut_debut": 247539,
               "salaire_avec_primes_debut": 320000,
-              "salaire_brut_max": 380000,
-              "salaire_avec_primes_max": 480000
+              "salaire_brut_max": 280000,
+              "salaire_avec_primes_max": 380000
             }
           ]
         }
@@ -482,20 +481,20 @@
       
       "grilles_par_grade": {
         "B3": {
-          "grade": "B3",
-          "designation": "Cadre intermédiaire confirmé",
-          "salaire_base_min": 350000,
-          "salaire_base_max": 420000,
-          "salaire_avec_primes_min": 430000,
-          "salaire_avec_primes_max": 530000,
-          "echelons": [
-            {"echelon": 1, "salaire_base": 350000, "anciennete_requise_mois": 0},
-            {"echelon": 2, "salaire_base": 375000, "anciennete_requise_mois": 12},
-            {"echelon": 3, "salaire_base": 400000, "anciennete_requise_mois": 24},
-            {"echelon": 4, "salaire_base": 420000, "anciennete_requise_mois": 36}
-          ],
-          "exemples_metiers": ["Chef de Service Technique", "Officier de Police", "Commandant de Police"]
-        },
+            "grade": "B3",
+            "designation": "Agent principal confirmé",
+            "salaire_base_min": 156498,
+            "salaire_base_max": 324446,
+            "salaire_avec_primes_min": 250000,
+            "salaire_avec_primes_max": 420000,
+            "echelons": [
+              {"echelon": 1, "salaire_base": 156498, "anciennete_requise_mois": 0},
+              {"echelon": 2, "salaire_base": 215000, "anciennete_requise_mois": 12},
+              {"echelon": 3, "salaire_base": 270000, "anciennete_requise_mois": 24},
+              {"echelon": 4, "salaire_base": 324446, "anciennete_requise_mois": 36}
+            ],
+            "exemples_metiers": ["Chef de Service Technique", "Officier de Police", "Commandant de Police"]
+          },
         "B2": {
           "grade": "B2",
           "designation": "Agent principal",
@@ -580,11 +579,11 @@
             {
               "nom": "Professeur des Ecoles (CAFOP)",
               "grade_entree": "B1",
-              "salaire_brut_debut": 307000,
-              "salaire_avec_primes_debut": 380000,
+              "salaire_brut_debut": 200000,
+              "salaire_avec_primes_debut": 307000,
               "salaire_brut_max": 280000,
-              "salaire_avec_primes_max": 450000,
-              "note": "Avec revalorisation 2014 et primes pédagogiques. Salaire de départ plus élevé que le grade de base."
+              "salaire_avec_primes_max": 380000,
+              "note": "Avec revalorisation 2014 et primes pédagogiques (20-30%). Le salaire avec primes peut atteindre 307K dès le début."
             },
             {
               "nom": "Instituteur Principal",
@@ -701,27 +700,29 @@
             {
               "nom": "Officier de Police",
               "grade_entree": "B3",
-              "salaire_brut_debut": 350000,
-              "salaire_avec_primes_debut": 430000,
-              "salaire_brut_max": 420000,
-              "salaire_avec_primes_max": 530000,
-              "note": "Primes de risque possibles selon textes."
+              "salaire_brut_debut": 156498,
+              "salaire_avec_primes_debut": 250000,
+              "salaire_brut_max": 324446,
+              "salaire_avec_primes_max": 420000,
+              "note": "Primes de risque (50-100%) comprises dans salaire_avec_primes."
             },
             {
               "nom": "Commandant de Police",
               "grade_entree": "B3",
-              "salaire_brut_debut": 350000,
-              "salaire_avec_primes_debut": 430000,
-              "salaire_brut_max": 420000,
-              "salaire_avec_primes_max": 530000
+              "salaire_brut_debut": 156498,
+              "salaire_avec_primes_debut": 250000,
+              "salaire_brut_max": 324446,
+              "salaire_avec_primes_max": 420000,
+              "note": "Primes de risque et commandement comprises dans salaire_avec_primes."
             },
             {
               "nom": "Officier des Eaux et Forêts",
               "grade_entree": "B3",
-              "salaire_brut_debut": 350000,
-              "salaire_avec_primes_debut": 430000,
-              "salaire_brut_max": 420000,
-              "salaire_avec_primes_max": 530000
+              "salaire_brut_debut": 156498,
+              "salaire_avec_primes_debut": 250000,
+              "salaire_brut_max": 324446,
+              "salaire_avec_primes_max": 420000,
+              "note": "Primes de risque terrain comprises dans salaire_avec_primes."
             }
           ]
         }
@@ -967,38 +968,23 @@
       "nom": "Catégorie D",
       "description": "Fonctions d'exécution",
       "diplome_requis": "CEP ou sans diplôme",
-      "grades_disponibles": ["D3", "D2", "D1"],
+      "grades_disponibles": ["D2", "D1"],
       
       "grilles_par_grade": {
-        "D3": {
-          "grade": "D3",
-          "designation": "Agent principal",
-          "salaire_base_min": 240000,
-          "salaire_base_max": 280000,
-          "salaire_avec_primes_min": 290000,
-          "salaire_avec_primes_max": 340000,
-          "echelons": [
-            {"echelon": 1, "salaire_base": 240000, "anciennete_requise_mois": 0},
-            {"echelon": 2, "salaire_base": 255000, "anciennete_requise_mois": 12},
-            {"echelon": 3, "salaire_base": 270000, "anciennete_requise_mois": 24},
-            {"echelon": 4, "salaire_base": 280000, "anciennete_requise_mois": 36}
-          ],
-          "exemples_metiers": ["Chef d'Equipe", "Agent Principal"]
-        },
         "D2": {
           "grade": "D2",
-          "designation": "Agent qualifié",
+          "designation": "Agent qualifié / Agent principal",
           "salaire_base_min": 200000,
-          "salaire_base_max": 240000,
+          "salaire_base_max": 280000,
           "salaire_avec_primes_min": 240000,
-          "salaire_avec_primes_max": 290000,
+          "salaire_avec_primes_max": 340000,
           "echelons": [
             {"echelon": 1, "salaire_base": 200000, "anciennete_requise_mois": 0},
-            {"echelon": 2, "salaire_base": 215000, "anciennete_requise_mois": 12},
-            {"echelon": 3, "salaire_base": 230000, "anciennete_requise_mois": 24},
-            {"echelon": 4, "salaire_base": 240000, "anciennete_requise_mois": 36}
+            {"echelon": 2, "salaire_base": 220000, "anciennete_requise_mois": 12},
+            {"echelon": 3, "salaire_base": 250000, "anciennete_requise_mois": 24},
+            {"echelon": 4, "salaire_base": 280000, "anciennete_requise_mois": 36}
           ],
-          "exemples_metiers": ["Ouvrier Qualifié", "Chauffeur"]
+          "exemples_metiers": ["Ouvrier Qualifié", "Chauffeur", "Chef d'Equipe", "Agent Principal"]
         },
         "D1": {
           "grade": "D1",
@@ -1058,8 +1044,8 @@
               "grade_entree": "D2",
               "salaire_brut_debut": 200000,
               "salaire_avec_primes_debut": 240000,
-              "salaire_brut_max": 240000,
-              "salaire_avec_primes_max": 290000
+              "salaire_brut_max": 280000,  
+              "salaire_avec_primes_max": 340000  
             }
           ]
         },
@@ -1071,8 +1057,8 @@
               "grade_entree": "D2",
               "salaire_brut_debut": 200000,
               "salaire_avec_primes_debut": 240000,
-              "salaire_brut_max": 240000,
-              "salaire_avec_primes_max": 290000
+              "salaire_brut_max": 280000,  
+              "salaire_avec_primes_max": 340000  
             },
             {
               "nom": "Ouvrier Spécialisé",
@@ -1143,11 +1129,11 @@
   "nom": "Élus et Hauts Responsables de l'État",
   "description": "Postes électifs et nominations politiques - Gouvernement et Assemblée Nationale",
   "diplome_requis": "Selon fonction et élection",
-  "grades_disponibles": ["Ministre", "Député"],
+  "grades_disponibles": ["ministre", "depute"],
   
   "grilles_par_grade": {
     "ministre": {
-      "grade": "Ministre",
+      "grade": "ministre",
       "designation": "Membre du gouvernement",
       "salaire_base_min": 3830000,
       "salaire_base_max": 5750000,
@@ -1161,7 +1147,7 @@
       "exemples_metiers": ["Ministre"]
     },
     "depute": {
-      "grade": "Député",
+      "grade": "depute",
       "designation": "Élu à l'Assemblée Nationale",
       "salaire_base_min": 2650000,
       "salaire_base_max": 3200000,

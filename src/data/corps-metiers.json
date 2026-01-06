@@ -45,14 +45,14 @@
             },
             { 
               "nom": "Contrôleur Général d'Etat", 
-              "grade_entree_estime": "A2", 
+              "grade_entree_estime": "A5", 
               "salaire_brut_debut_estime": null, 
               "note": "Fonction généralement de haut niveau (nomination/avancement).",
               "mots_cles": ["controleur", "controle", "inspection", "audit", "cge"]
             },
             { 
               "nom": "Préfet", 
-              "grade_entree_estime": "A2", 
+              "grade_entree_estime": "A5", 
               "salaire_brut_debut_estime": null, 
               "note": "Fonction généralement de haut niveau (nomination).",
               "mots_cles": ["prefet", "prefecture", "autorite territoriale", "administration territoriale"]
@@ -592,7 +592,7 @@
       "nom": "Catégorie D",
       "description": "Fonctions d'exécution",
       "diplome_requis": "CEP ou sans diplôme",
-      "grades": ["D3", "D2", "D1"],
+      "grades": ["D2", "D1"],
       "corps_metiers": [
         {
           "domaine": "Services Généraux",
@@ -693,7 +693,7 @@
   "nom": "Élus et Hauts Responsables de l'État",
   "description": "Postes électifs et nominations politiques - Gouvernement et Assemblée Nationale",
   "diplome_requis": "Selon fonction et élection",
-  "grades": ["Ministre", "Député"],
+  "grades": ["ministre", "depute"],
   "corps_metiers": [
     {
       "domaine": "Gouvernement",

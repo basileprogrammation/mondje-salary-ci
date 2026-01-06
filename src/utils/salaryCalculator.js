@@ -303,25 +303,159 @@ function getNiveauTitre(niveau) {
 }
 
 /**
- * Avantages secteur
+ * Détermine le domaine d'activité selon le métier
  */
-export function getAvantagesSecteur(secteur) {
-  if (secteur === 'public') {
+function detecterDomaine(metier) {
+  const metierLower = (metier || '').toLowerCase();
+  
+  // HAUTS RESPONSABLES (EN PREMIER !)
+  if (metierLower.includes('ministre') || 
+      metierLower.includes('député') ||
+      metierLower.includes('depute')) {
+    return 'hauts_responsables';
+  }
+  
+  // ÉDUCATION
+  if (metierLower.includes('professeur') || 
+      metierLower.includes('instituteur') || 
+      metierLower.includes('enseignant') ||
+      metierLower.includes('cafop') ||
+      metierLower.includes('conseiller pédagogique') ||
+      metierLower.includes('inspecteur de l\'enseignement')) {
+    return 'education';
+  }
+  
+  // SANTÉ
+  if (metierLower.includes('médecin') || 
+      metierLower.includes('infirmier') || 
+      metierLower.includes('sage-femme') ||
+      metierLower.includes('pharmacien') ||
+      metierLower.includes('chirurgien') ||
+      metierLower.includes('vétérinaire') ||
+      metierLower.includes('aide-soignant')) {
+    return 'sante';
+  }
+  
+  // TECHNIQUE
+  if (metierLower.includes('ingénieur') || 
+      metierLower.includes('architecte') ||
+      metierLower.includes('informaticien') ||
+      metierLower.includes('technicien supérieur')) {
+    return 'technique';
+  }
+  
+  // SÉCURITÉ
+  if (metierLower.includes('police') || 
+      metierLower.includes('gendarme') ||
+      metierLower.includes('gardien de la paix') ||
+      metierLower.includes('officier')) {
+    return 'securite';
+  }
+  
+  // FINANCES
+  if (metierLower.includes('trésor') || 
+      metierLower.includes('impôts') ||
+      metierLower.includes('finances') ||
+      metierLower.includes('comptable')) {
+    return 'finances';
+  }
+  
+  // Par défaut : ADMINISTRATION
+  return 'administration';
+}
+
+/**
+ * Retourne les avantages selon le secteur, le métier et le domaine
+ */
+export function getAvantagesSecteur(sector, metier = '', grade = '') {
+  // ========== SECTEUR PRIVÉ ==========
+  if (sector === "private") {
     return [
-      "Stabilité de l'emploi",
-      "Retraite garantie",
-      "Couverture santé complète",
-      "Congés réglementaires",
-      "Évolution par ancienneté"
+      "Salaires compétitifs",
+      "Primes de performance",
+      "Assurance santé privée",
+      "Formation continue",
+      "Évolution rapide",
+      "Bonus annuels"
     ];
   }
-  return [
-    "Salaires plus élevés",
-    "Primes de performance",
-    "Évolution rapide",
-    "Formation continue",
-    "Environnement dynamique"
+  
+  // ========== SECTEUR PUBLIC ==========
+  const domaine = detecterDomaine(metier);
+  
+  // ✅ CAS SPÉCIAL : HAUTS RESPONSABLES (Ministres, Députés)
+  if (domaine === 'hauts_responsables') {
+    return [
+      "Salaire très élevé (top 1% CI)",
+      "Véhicule de fonction (haut de gamme)",
+      "Logement de fonction meublé",
+      "Personnel (chauffeur, garde, assistants)",
+      "Frais de représentation élevés",
+      "Passeport diplomatique"
+    ];
+  }
+  
+  // ========== AVANTAGES COMMUNS (autres métiers) ==========
+  const avantagesCommuns = [
+    "Stabilité de l'emploi (à vie)",
+    "Retraite garantie (CGRAE)",
+    "Couverture santé complète",
+    "30 jours de congés/an",
+    "Progression automatique",
+    "Allocations familiales (30K max/mois)"
   ];
+  
+  // Avantages spécifiques par domaine
+  const avantagesSpecifiques = {
+    'education': [
+      "Prime pédagogique (20-30%)",
+      "Congés scolaires (vacances)",
+      "Formation continue pédagogique",
+      "Indemnité de rentrée scolaire"
+    ],
+    
+    'sante': [
+      "Indemnités de sujétion (30-40%)",
+      "Prime de garde (nuit/weekend)",
+      "Équipements fournis",
+      "Formation médicale continue",
+      "Prime de risque biologique"
+    ],
+    
+    'technique': [
+      "Primes techniques (10-15%)",
+      "Équipements informatiques",
+      "Formations spécialisées",
+      "Revalorisation attractive"
+    ],
+    
+    'securite': [
+      "Prime de risque (15-25%)",
+      "Équipements fournis",
+      "Logement de fonction possible",
+      "Retraite anticipée (55 ans)"
+    ],
+    
+    'finances': [
+      "Primes de rendement",
+      "Indemnité de fonction",
+      "Formation fiscale continue",
+      "Mobilité géographique"
+    ],
+    
+    'administration': [
+      "Primes de fonction",
+      "Indemnité de logement (certains)",
+      "Mobilité géographique",
+      "Double vacation possible"
+    ]
+  };
+  
+  // Sélectionner les 3 avantages communs + 3 spécifiques
+  const commonSelected = avantagesCommuns.slice(0, 3);
+  const specificSelected = avantagesSpecifiques[domaine] || avantagesSpecifiques['administration'];
+  
+  return [...commonSelected, ...specificSelected.slice(0, 3)];
 }
 
 const salaryCalculator = {

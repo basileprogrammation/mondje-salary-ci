@@ -1,4 +1,5 @@
 // src/pages/ResultsPage.jsx
+// ✅ VERSION MODIFIÉE : Gère l'affichage BASE vs AVEC PRIMES
 
 import React, { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -16,6 +17,7 @@ import {
   Home,
   Share2,
   X,
+  Info,
 } from "lucide-react";
 
 import { calculerSalaire, getAvantagesSecteur } from "../utils/salaryCalculator";
@@ -130,6 +132,7 @@ export default function ResultsPage() {
   const metierPublic = state.metier;
   const categoriePublic = state.categorie;
   const gradePublic = state.grade;
+  const typeSalaire = state.typeSalaire || 'base'; // ✅ NOUVEAU : 'avec_primes' ou 'base'
 
   // États SECTEUR PRIVÉ
   const secteurActivite = state.secteur_activite;
@@ -146,7 +149,8 @@ export default function ResultsPage() {
   const [showGradeModal, setShowGradeModal] = useState(false);
   const isPublic = sector === "public";
   const [globalStats, setGlobalStats] = useState({ visits: 0, estimations: 0, uniqueVisitors: 0, viralCards: 0 });
- const [showToast, setShowToast] = useState(false); 
+  const [showToast, setShowToast] = useState(false); 
+  
   // Validation et redirection
   useEffect(() => {
     if (!sector) return navigate("/", { replace: true });
@@ -214,16 +218,18 @@ export default function ResultsPage() {
 
     return () => clearInterval(interval);
   }, [isAnalyzing]);
-useEffect(() => {
-  if (!isAnalyzing) {
-    const timer = setTimeout(() => {
-      setShowToast(true);
-      setTimeout(() => setShowToast(false), 6000);
-    }, 3000);
-    
-    return () => clearTimeout(timer);
-  }
-}, [isAnalyzing]);
+
+  useEffect(() => {
+    if (!isAnalyzing) {
+      const timer = setTimeout(() => {
+        setShowToast(true);
+        setTimeout(() => setShowToast(false), 6000);
+      }, 3000);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [isAnalyzing]);
+
   // Récupération du label du métier privé
   const metierPriveLabel = useMemo(() => {
     if (sector !== 'private') return null;
@@ -239,7 +245,7 @@ useEffect(() => {
 
   const jobLabel = isPublic ? (metierPublic || "Métier") : metierPriveLabel;
 
-  // Calcul du salaire
+  // ✅ NOUVEAU : Calcul du salaire avec typeSalaire
   const salaryResult = useMemo(() => {
     if (sector === "public") {
       return calculerSalaire({
@@ -247,6 +253,7 @@ useEffect(() => {
         metier: metierPublic || "",
         categorie: categoriePublic,
         grade: gradePublic,
+        typeSalaire: typeSalaire, // ✅ NOUVEAU : Passer le type de salaire
       });
     }
 
@@ -261,7 +268,7 @@ useEffect(() => {
     }
 
     return { min: 200000, max: 600000, avg: 400000, categorie: "categorie_B", grade: "B1" };
-  }, [sector, metierPublic, categoriePublic, gradePublic, secteurActivite, sousDomaine, metierPriveKey, niveau]);
+  }, [sector, metierPublic, categoriePublic, gradePublic, secteurActivite, sousDomaine, metierPriveKey, niveau, typeSalaire]);
 
   const minSalary = Number(salaryResult?.min) || 0;
   const maxSalary = Number(salaryResult?.max) || 0;
@@ -302,8 +309,8 @@ useEffect(() => {
   }, [categorieInfo, jobLabel, sector]);
 
   const benefits = useMemo(() => {
-  return getAvantagesSecteur(sector, jobLabel, gradeInfo);
-}, [sector, jobLabel, gradeInfo]);
+    return getAvantagesSecteur(sector, jobLabel, gradeInfo);
+  }, [sector, jobLabel, gradeInfo]);
 
   const AnimatedNumber = ({ value, duration = 1500, shouldAnimate }) => {
     const [count, setCount] = useState(0);
@@ -548,33 +555,33 @@ useEffect(() => {
                 <span className="hidden sm:inline">Nouvelle</span>
               </button>
 
-<div className="relative">
-  <button
-    onClick={openViral}
-    className="relative flex items-center gap-2 px-4 py-3 overflow-hidden text-sm font-bold text-white transition-all shadow-xl group sm:px-5 rounded-xl hover:scale-105"
-    style={{
-      background: `linear-gradient(135deg, ${COLORS.teal.primary}, ${COLORS.gold.primary})`,
-      animation: 'gentle-pulse 3s ease-in-out infinite'
-    }}
-  >
-    {/* Effet shimmer */}
-    <div 
-      className="absolute inset-0"
-      style={{
-        background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)',
-        animation: 'shimmer 4s ease-in-out infinite'
-      }}
-    ></div>
+              <div className="relative">
+                <button
+                  onClick={openViral}
+                  className="relative flex items-center gap-2 px-4 py-3 overflow-hidden text-sm font-bold text-white transition-all shadow-xl group sm:px-5 rounded-xl hover:scale-105"
+                  style={{
+                    background: `linear-gradient(135deg, ${COLORS.teal.primary}, ${COLORS.gold.primary})`,
+                    animation: 'gentle-pulse 3s ease-in-out infinite'
+                  }}
+                >
+                  {/* Effet shimmer */}
+                  <div 
+                    className="absolute inset-0"
+                    style={{
+                      background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)',
+                      animation: 'shimmer 4s ease-in-out infinite'
+                    }}
+                  ></div>
 
-    <Share2 size={18} className="relative z-10 transition-transform group-hover:rotate-12" />
-    <span className="relative z-10 font-black">MA CARTE</span>
+                  <Share2 size={18} className="relative z-10 transition-transform group-hover:rotate-12" />
+                  <span className="relative z-10 font-black">MA CARTE</span>
 
-    {/* Badge NEW */}
-    <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-xs font-black px-1.5 py-0.5 rounded-full animate-pulse">
-      NEW
-    </span>
-  </button>
-</div>
+                  {/* Badge NEW */}
+                  <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-xs font-black px-1.5 py-0.5 rounded-full animate-pulse">
+                    NEW
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
 
@@ -639,6 +646,27 @@ useEffect(() => {
               </div>
             </div>
 
+            {/* ✅ NOUVEAU : Badge Type de Salaire */}
+            {isPublic && (
+              <div className="flex flex-wrap items-center gap-3">
+                {typeSalaire === 'avec_primes' ? (
+                  <div 
+                    className="inline-flex items-center gap-2 px-4 py-2 border-2 rounded-xl bg-white/20 backdrop-blur-sm border-white/40"
+                  >
+                    <span className="text-xl">💰</span>
+                    <span className="text-sm font-bold">Salaire TOTAL (base + primes)</span>
+                  </div>
+                ) : (
+                  <div 
+                    className="inline-flex items-center gap-2 px-4 py-2 border-2 rounded-xl bg-white/20 backdrop-blur-sm border-white/40"
+                  >
+                    <span className="text-xl">📊</span>
+                    <span className="text-sm font-bold">Salaire de BASE</span>
+                  </div>
+                )}
+              </div>
+            )}
+
             {/* Main content */}
             <div className="grid gap-5 lg:grid-cols-2 sm:gap-6">
               {/* Salary info */}
@@ -687,6 +715,29 @@ useEffect(() => {
               </div>
             </div>
 
+            {/* ✅ NOUVEAU : Note explicative pour AVEC PRIMES */}
+            {isPublic && typeSalaire === 'avec_primes' && (
+              <div 
+                className="flex items-start gap-3 p-5 border rounded-2xl bg-white/15 backdrop-blur-md border-white/30"
+              >
+                <Info size={20} className="flex-shrink-0 mt-0.5" />
+                <div className="space-y-2 text-sm">
+                  <p className="font-bold">ℹ️ Important à savoir :</p>
+                  <p className="leading-relaxed text-white/95">
+                    Ce montant représente votre <strong>salaire réel mensuel</strong>, incluant :
+                  </p>
+                  <ul className="pl-5 space-y-1 list-disc text-white/90">
+                    <li>Salaire de base (traitement indiciaire)</li>
+                    <li>Primes et indemnités spécifiques à votre corps</li>
+                    <li>Indemnités de sujétion, risque, ou pédagogiques</li>
+                  </ul>
+                  <p className="text-xs italic text-white/80">
+                    Le salaire de base officiel est souvent faible mais compensé par d'importantes primes (100-400% selon le corps).
+                  </p>
+                </div>
+              </div>
+            )}
+
             {/* Benefits */}
             <div className="p-5 border bg-white/15 backdrop-blur-md rounded-2xl sm:rounded-3xl sm:p-6 border-white/30">
               <h3 className="flex items-center gap-2 mb-4 text-lg font-black">
@@ -730,10 +781,9 @@ useEffect(() => {
             </button>
           </div>
         )}
-
-
       </main>
-{showToast && (
+
+      {showToast && (
         <div 
           className="fixed z-50 bg-white border-2 shadow-2xl bottom-24 sm:bottom-8 right-4 left-4 sm:left-auto sm:max-w-sm rounded-2xl animate-slide-up"
           style={{ borderColor: COLORS.teal.primary }}
@@ -783,6 +833,7 @@ useEffect(() => {
           </div>
         </div>
       )}
+
       {/* Sections BAHN */}
       <BAHNPromoSection />
 
@@ -806,57 +857,56 @@ useEffect(() => {
       />
 
       {/* Animations CSS */}
-<style jsx>{`
-  @keyframes fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  @keyframes slide-up {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  @keyframes bounce-slow {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-  .animate-bounce-slow {
-    animation: bounce-slow 2s ease-in-out infinite;
-  }
-  
-  /* ✅ AJOUTER CES ANIMATIONS */
-  @keyframes gentle-pulse {
-    0%, 100% {
-      box-shadow: 0 4px 15px rgba(61, 155, 155, 0.3);
-    }
-    50% {
-      box-shadow: 0 6px 25px rgba(61, 155, 155, 0.5), 0 0 30px rgba(244, 196, 48, 0.3);
-    }
-  }
+      <style jsx>{`
+        @keyframes fade-in {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        @keyframes slide-up {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        @keyframes bounce-slow {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+        }
+        .animate-bounce-slow {
+          animation: bounce-slow 2s ease-in-out infinite;
+        }
+        
+        @keyframes gentle-pulse {
+          0%, 100% {
+            box-shadow: 0 4px 15px rgba(61, 155, 155, 0.3);
+          }
+          50% {
+            box-shadow: 0 6px 25px rgba(61, 155, 155, 0.5), 0 0 30px rgba(244, 196, 48, 0.3);
+          }
+        }
 
-  @keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(200%); }
-  }
+        @keyframes shimmer {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(200%); }
+        }
 
-  @keyframes progress {
-    from { width: 100%; }
-    to { width: 0%; }
-  }
+        @keyframes progress {
+          from { width: 100%; }
+          to { width: 0%; }
+        }
 
-  .animate-slide-up {
-    animation: slide-up 0.5s ease-out;
-  }
-`}</style>
+        .animate-slide-up {
+          animation: slide-up 0.5s ease-out;
+        }
+      `}</style>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 // src/pages/EstimatorPage.jsx
+// ✅ VERSION MODIFIÉE : Affiche intelligemment BASE ou AVEC PRIMES selon le corps
 
 import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -63,6 +64,45 @@ export default function EstimatorPage() {
     return () => window.removeEventListener('click', onClick);
   }, []);
 
+  // ========== FONCTION : DÉTERMINER TYPE DE SALAIRE À AFFICHER ==========
+  /**
+   * Détermine si on doit afficher le salaire de BASE ou AVEC PRIMES
+   * @param {string} metierNom - Nom du métier
+   * @param {string} categorieKey - Clé de la catégorie (categorie_A, categorie_B, etc.)
+   * @returns {string} 'avec_primes' ou 'base'
+   */
+  const determinerTypeSalaire = (metierNom, categorieKey) => {
+    const metierLower = metierNom.toLowerCase();
+    
+    // ✅ TOUJOURS AFFICHER "AVEC PRIMES" pour ces corps
+    // Car le salaire de BASE est très faible mais compensé par d'énormes primes
+    const corpsAvecPrimes = [
+      // Magistrats (tous niveaux) - Indemnités massives
+      'magistrat', 'auditeur de justice', 'juge', 'procureur',
+      
+      // Enseignants (tous niveaux) - Primes pédagogiques massives
+      'professeur', 'instituteur', 'enseignant', 'maitre', 'maitresse', 'cafop',
+      
+      // Santé Cat B et bas A - Indemnités garde + sujétion massives
+      'infirmier', 'infirmiere', 'sage-femme', 'aide-soignant',
+      'technicien de laboratoire', 'kinesitherapeute', 'assistant médical',
+      'assistant medical',
+      
+      // Police et sécurité (tous niveaux) - Primes de risque massives
+      'gardien de la paix', 'officier de police', 'commissaire', 
+      'lieutenant de police', 'commandant de police', 'sergent', 'adjudant',
+      'garde forestier', 'eaux et forets',
+      
+      // Médecins - Indemnités importantes
+      'medecin', 'docteur', 'specialiste'
+    ];
+    
+    // Vérifier si le métier contient un des termes
+    const afficherAvecPrimes = corpsAvecPrimes.some(terme => metierLower.includes(terme));
+    
+    return afficherAvecPrimes ? 'avec_primes' : 'base';
+  };
+
   // ========== DONNÉES SECTEUR PUBLIC ==========
   const metiersPublicList = useMemo(() => {
     const metiers = [];
@@ -119,7 +159,7 @@ const gradesPublic = useMemo(() => {
   const gradesAutorises = gradesAccessiblesConcours[categoriePublic];
   let gradesFiltres = gradesAutorises ? grades.filter(g => gradesAutorises.includes(g)) : grades;
   
-  // ✅ NOUVEAU : Filtrer selon grade_entree (progression A3→A7)
+  // ✅ Filtrer selon grade_entree (progression A3→A7)
   if (gradeEntreeMetier && categoriePublic !== 'hauts_responsables') {
     // Ordre de progression : du plus BAS (A3) au plus HAUT (A7)
     const ordreProgression = {
@@ -217,7 +257,7 @@ const gradesPublic = useMemo(() => {
 const handleSelectMetierPublic = (metier) => {
   setSearchMetierPublic(metier.nom);
   setCategoriePublic(metier.categorieKey);
-  setGradeEntreeMetier(metier.grade_entree || ''); // ✅ NOUVEAU : Sauvegarder grade d'entrée
+  setGradeEntreeMetier(metier.grade_entree || '');
   setShowSuggestionsPublic(false);
   
   // ✅ Si c'est un haut responsable, mettre le grade automatiquement
@@ -229,18 +269,24 @@ const handleSelectMetierPublic = (metier) => {
   }
 };
 
+  // ========== HANDLER SUBMIT MODIFIÉ ==========
   const handleSubmit = (e) => {
     e.preventDefault();
     incrementStat('estimations').catch(console.error);
 
     if (sector === 'public') {
       if (!categoriePublic || !gradePublic) return;
+      
+      // ✅ NOUVEAU : Déterminer le type de salaire à afficher
+      const typeSalaire = determinerTypeSalaire(searchMetierPublic, categoriePublic);
+      
       navigate('/results', {
         state: {
           sector: 'public',
           metier: searchMetierPublic,
           categorie: categoriePublic,
-          grade: gradePublic
+          grade: gradePublic,
+          typeSalaire: typeSalaire // ✅ NOUVEAU : Passer le type de salaire aux résultats
         }
       });
       return;
@@ -617,8 +663,7 @@ const handleSelectMetierPublic = (metier) => {
                   )}
                 </div>
 
-                {/* Sélection grade */}
-{/* Sélection grade - CATÉGORIES NORMALES (A, B, C, D) */}
+                {/* Sélection grade - CATÉGORIES NORMALES (A, B, C, D) */}
 {categoriePublic && categoriePublic !== 'hauts_responsables' && (
   <div className="space-y-3 animate-slide-in">
     <label className="block">
@@ -688,7 +733,7 @@ const handleSelectMetierPublic = (metier) => {
   </div>
 )}
 
-{/* ✅ NOUVEAU : Confirmation pour Hauts Responsables (Ministre/Député) */}
+{/* Confirmation pour Hauts Responsables (Ministre/Député) */}
 {categoriePublic === 'hauts_responsables' && (
   <div className="space-y-4 animate-slide-in">
     {/* Badge de confirmation */}
